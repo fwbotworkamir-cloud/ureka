@@ -728,7 +728,7 @@ footer{background:var(--ink-3);color:var(--paper);padding:52px 0 28px}
   var ob=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');ob.unobserve(e.target)}})},{threshold:.1});
   document.querySelectorAll('.rv').forEach(function(el){ob.observe(el)});
 
-  const CF7_FORM_ID = 9201; // "IPP Applications" contact form — update if the live site's form has a different ID
+  const CF7_FORM_ID = location.hostname === 'ureka.co.uk' ? 9199 : 9201; // live : staging
   async function submitIPPForm() {
     const g = id => (document.getElementById(id).value || '').trim();
     const name = g('ipp-name'), email = g('ipp-email'), inst = g('ipp-institution'),

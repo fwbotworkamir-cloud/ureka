@@ -1177,7 +1177,7 @@ function nav(page) {
   if (page === 'cohort2025') renderParticipants(PARTICIPANTS_2025, 'pgrid2025', 'showP2025');
   if (page === 'ai' && document.getElementById('chat-messages').children.length === 0) setMode('guide');
 }
-const CF7_FORM_ID = 9200; // "ALS Applications" contact form — update if the live site's form has a different ID
+const CF7_FORM_ID = location.hostname === 'ureka.co.uk' ? 9198 : 9200; // live : staging
 async function submitForm() {
   const wrap = document.querySelector('.apply-form-wrap');
   const vals = Array.from(wrap.querySelectorAll('input[type="text"],input[type="email"],textarea')).map(el => el.value.trim());
