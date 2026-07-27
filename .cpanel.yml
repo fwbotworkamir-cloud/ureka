@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export STAGING=/home/pf5q6fgg782b/public_html/ureka-staging.myffuae.com/wp-content/themes/kingster-child
+    - /bin/cp -f wp-content/themes/kingster-child/page-als.php $STAGING/page-als.php
+    - /bin/cp -f wp-content/themes/kingster-child/als-app.html $STAGING/als-app.html
