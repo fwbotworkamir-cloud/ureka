@@ -13,3 +13,11 @@ deployment:
     - export STWC=/home/pf5q6fgg782b/public_html/ureka-staging.myffuae.com/wp-content
     - /bin/rm -f $STWC/advanced-cache.php
     - /bin/rm -rf $STWC/cache/speedycache
+    # LIVE ureka.co.uk (additive: new template files only, nothing overwritten)
+    - export LIVE=/home/pf5q6fgg782b/public_html/ureka.co.uk/wp-content/themes/kingster
+    - /bin/cp -f wp-content/themes/kingster-child/page-als.php $LIVE/page-als.php
+    - /bin/cp -f wp-content/themes/kingster-child/als-app.html $LIVE/als-app.html
+    - /bin/cp -f wp-content/themes/kingster-child/als-hero.mp4 $LIVE/als-hero.mp4
+    - /bin/cp -f wp-content/themes/kingster-child/page-ipp.php $LIVE/page-ipp.php
+    - /bin/cp -f wp-content/themes/kingster-child/ipp-app.html $LIVE/ipp-app.html
+    - /bin/cp -f wp-content/themes/kingster-child/ipp-hero.mp4 $LIVE/ipp-hero.mp4
