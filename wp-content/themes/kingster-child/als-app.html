@@ -1182,14 +1182,32 @@ function nav(page) {
   if (page === 'cohort2025') renderParticipants(PARTICIPANTS_2025, 'pgrid2025', 'showP2025');
   if (page === 'ai' && document.getElementById('chat-messages').children.length === 0) setMode('guide');
 }
-function submitForm() {
-  // ponytail: no form backend on WP host — expression of interest goes out as a mailto draft
+const CF7_FORM_ID = 9200; // "ALS Applications" contact form — update if the live site's form has a different ID
+async function submitForm() {
   const wrap = document.querySelector('.apply-form-wrap');
   const vals = Array.from(wrap.querySelectorAll('input[type="text"],input[type="email"],textarea')).map(el => el.value.trim());
   const labels = ['First name','Last name','Email','Institution','Role / title','Country','Interest'];
   const grant = document.getElementById('grant-chk').checked;
-  const body = labels.map((l, i) => l + ': ' + (vals[i] || '-')).join('\n') + '\nFinancial Grant interest: ' + (grant ? 'Yes' : 'No');
-  window.location.href = 'mailto:malak.j@ureka.co.uk?subject=' + encodeURIComponent('ALS Expression of Interest') + '&body=' + encodeURIComponent(body);
+  const summary = labels.map((l, i) => l + ': ' + (vals[i] || '-')).join('\n') + '\nFinancial Grant interest: ' + (grant ? 'Yes' : 'No');
+  const fd = new FormData();
+  fd.append('_wpcf7_unit_tag', 'wpcf7-als');
+  fd.append('your-name', (vals[0] + ' ' + vals[1]).trim() || '-');
+  fd.append('your-email', vals[2] || '');
+  fd.append('your-role', vals[4] || '-');
+  fd.append('your-institution', vals[3] || '-');
+  fd.append('your-country', vals[5] || '');
+  fd.append('your-message', (vals[6] ? 'Interest: ' + vals[6] + '\n' : '') + 'Financial Grant interest: ' + (grant ? 'Yes' : 'No'));
+  let ok = false;
+  try {
+    const r = await fetch('/wp-json/contact-form-7/v1/contact-forms/' + CF7_FORM_ID + '/feedback', { method: 'POST', body: fd });
+    const j = await r.json();
+    ok = j.status === 'mail_sent';
+    if (!ok && j.status === 'validation_failed') { alert((j.invalid_fields && j.invalid_fields[0] && j.invalid_fields[0].message) || j.message); return; }
+  } catch (e) { ok = false; }
+  if (!ok) {
+    // ponytail: backend unreachable — fall back to a mailto draft so no lead is lost
+    window.location.href = 'mailto:malak.j@ureka.co.uk?subject=' + encodeURIComponent('ALS Expression of Interest') + '&body=' + encodeURIComponent(summary);
+  }
   document.getElementById('form-success').style.display = 'block';
   document.getElementById('form-success').scrollIntoView({behavior:'smooth', block:'nearest'});
 }
