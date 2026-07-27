@@ -1,0 +1,40 @@
+# WordPress core — not ours, restored by installer
+/wp-admin/
+/wp-includes/
+/wp-*.php
+/index.php
+/xmlrpc.php
+/license.txt
+/readme.html
+
+# Secrets & environment
+wp-config.php
+wp-config-local.php
+.env
+*.pem
+*.key
+
+# Content that doesn't belong in git
+wp-content/uploads/
+wp-content/cache/
+wp-content/backups*/
+wp-content/upgrade/
+wp-content/ai1wm-backups/
+wp-content/backuply/
+wp-content/updraft/
+wp-content/debug.log
+
+# Export artifacts
+_export/
+*.wpress
+*.wpress.crdownload
+*.sql
+*.zip
+*.tar.gz
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+node_modules/
