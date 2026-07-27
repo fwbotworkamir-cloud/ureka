@@ -53,7 +53,9 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:560;letter-spacing:-0.012em
 
 /* ---------- HERO (matches landing page 1) ---------- */
 .hero{background:radial-gradient(ellipse 900px 500px at 82% -10%,rgba(184,145,46,.16),transparent 60%),radial-gradient(ellipse 700px 500px at -5% 110%,rgba(43,111,209,.18),transparent 60%),var(--ink);color:var(--paper);padding:70px 0 0;overflow:hidden}
-.hgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-bottom:58px}
+.hgrid{display:grid;grid-template-columns:1fr;gap:0;align-items:center;padding-bottom:58px;max-width:760px;margin:0 auto;text-align:center}
+.hgrid .hdates{margin-left:auto;margin-right:auto}
+.hgrid .hctas{justify-content:center}
 @media(max-width:940px){.hgrid{grid-template-columns:1fr}}
 .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:10px;color:var(--brass-lt)}
 .eyebrow::before{content:"";width:22px;height:1px;background:currentColor;opacity:.55}
@@ -285,23 +287,6 @@ footer{background:var(--ink-3);color:var(--paper);padding:52px 0 28px}
         </div>
       </div>
 
-      <div class="credential">
-        <div class="ctop">
-          <div class="clock">
-            <span class="mk"></span>
-            <div class="cbrand">International<br>Project Programme</div>
-          </div>
-          <span class="cstatus">Applications Open</span>
-        </div>
-        <div class="cfields">
-          <div><div class="cl">Access</div><div class="cv">Geneva Week</div></div>
-          <div><div class="cl">Delivered by</div><div class="cv">UNITAR × UREKA</div></div>
-          <div><div class="cl">Session</div><div class="cv">29 NOV – 05 DEC 2026</div></div>
-          <div><div class="cl">Duration</div><div class="cv">3 WEEKS TOTAL</div></div>
-        </div>
-        <div class="cbar"></div>
-        <div class="cser">IPP · GVA · 2026 · UNITAR-UREKA</div>
-      </div>
     </div>
   </div>
   <div class="ticks">
