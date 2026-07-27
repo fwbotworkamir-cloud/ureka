@@ -225,12 +225,50 @@ footer{background:var(--ink-3);color:var(--paper);padding:52px 0 28px}
 .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 :focus-visible{outline:2px solid var(--brass-lt);outline-offset:3px}
+
+/* ---------- HERO VIDEO ---------- */
+.hero{position:relative}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-video-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.35) 0%,rgba(0,0,0,0.15) 45%,rgba(0,0,0,0.45) 100%)}
+.hero .wrap,.hero .ticks{position:relative;z-index:1}
+.hero h1,.hero .lede,.hero .lede2,.hero .eyebrow,.hero .hdates{text-shadow:0 2px 18px rgba(0,0,0,0.45)}
+
+/* ---------- PARTNERSHIP BAND ---------- */
+.partner-band{background:var(--card);border-bottom:1px solid var(--rule-p);padding:1.75rem 2rem;display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap}
+.partner-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute-p)}
+.partner-band img{height:48px;width:auto;max-width:42vw;object-fit:contain}
+.partner-band img[src*="logo-HP"],
+.footer-logos img[src*="logo-HP"]{background:#1C2A44;border-radius:6px;padding:6px 10px}
+@media(max-width:420px){.partner-band{gap:1.25rem}.partner-band img{height:38px}}
+
+/* ---------- FOOTER LOGOS ---------- */
+.footer-logos{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:1.25rem}
+.footer-logos img{height:34px;width:auto;background:#fff;border-radius:6px;padding:4px 9px;object-fit:contain}
+.footer-logos img[src*="logo-HP"]{background:transparent;border:1px solid rgba(255,255,255,.25);padding:4px}
+
+/* ---------- APPLY FORM ---------- */
+.apply-form{margin-top:34px;background:rgba(255,255,255,.04);border:1px solid var(--rule-i);border-radius:10px;padding:28px 26px;max-width:640px}
+.apply-form h3{font-size:21px;margin-bottom:6px;color:#fff}
+.apply-form .fnote{font-size:13.5px;color:var(--mute-i);margin-bottom:20px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.frow{grid-template-columns:1fr}}
+.fgroup{margin-bottom:14px}
+.fgroup label{display:block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--mute-i);margin-bottom:6px}
+.fgroup input,.fgroup textarea{width:100%;background:rgba(255,255,255,.06);border:1px solid var(--rule-i);border-radius:4px;padding:12px 14px;font-family:'Manrope',sans-serif;font-size:14.5px;color:#fff}
+.fgroup input::placeholder,.fgroup textarea::placeholder{color:rgba(255,255,255,.35)}
+.fgroup input:focus,.fgroup textarea:focus{outline:none;border-color:var(--brass-lt)}
+.fgroup textarea{min-height:96px;resize:vertical}
+.form-alt{margin-top:14px;font-size:13px;color:var(--mute-i)}
+.form-alt a{color:var(--brass-lt)}
+.form-success{display:none;margin-top:16px;border:1px solid rgba(127,224,166,.45);color:#7FE0A6;border-radius:6px;padding:14px 16px;font-size:14px}
 </style>
 </head>
 <body>
 
 <!-- HERO -->
 <section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" src="/wp-content/themes/kingster/ipp-hero.mp4"></video>
+  <div class="hero-video-overlay"></div>
   <div class="wrap">
     <div class="hgrid">
       <div>
@@ -274,6 +312,12 @@ footer{background:var(--ink-3);color:var(--paper);padding:52px 0 28px}
     <span style="background:#2B6FD1"></span><span style="background:#5B7A6B"></span><span style="background:#2E8FA6"></span>
   </div>
 </section>
+
+<div class="partner-band">
+  <span class="partner-label">Delivered in partnership</span>
+  <img src="/wp-content/uploads/2025/04/UNITAR_2023_HORZ_blue-2.jpg" alt="UNITAR — United Nations Institute for Training and Research">
+  <img src="/wp-content/uploads/2023/03/logo-HP.png" alt="Ureka Education Group">
+</div>
 
 <!-- 02 AT A GLANCE -->
 <section class="band">
@@ -683,7 +727,22 @@ footer{background:var(--ink-3);color:var(--paper);padding:52px 0 28px}
       </div>
     </div>
     <div class="ctabox rv">
-      <a href="mailto:malak.j@ureka.co.uk?subject=IPP%20Geneva%20Application" class="btn btn-gold">Apply now <span class="ar">→</span></a>
+      <div class="apply-form">
+        <h3>Apply to IPP</h3>
+        <p class="fnote">Submit your details and our team will be in touch.</p>
+        <div class="frow">
+          <div class="fgroup"><label for="ipp-name">Full name *</label><input id="ipp-name" type="text" placeholder="e.g. Sarah Johnson"></div>
+          <div class="fgroup"><label for="ipp-email">Email *</label><input id="ipp-email" type="email" placeholder="you@institution.edu"></div>
+        </div>
+        <div class="frow">
+          <div class="fgroup"><label for="ipp-institution">University / Institution *</label><input id="ipp-institution" type="text" placeholder="University name"></div>
+          <div class="fgroup"><label for="ipp-country">Country</label><input id="ipp-country" type="text" placeholder="e.g. United Kingdom"></div>
+        </div>
+        <div class="fgroup"><label for="ipp-message">Message</label><textarea id="ipp-message" placeholder="A brief note about your interest..."></textarea></div>
+        <button class="btn btn-gold" onclick="submitIPPForm()">Apply now <span class="ar">→</span></button>
+        <p class="form-alt">Prefer email? Write to <a href="mailto:malak.j@ureka.co.uk?subject=IPP%20Geneva%20Application">malak.j@ureka.co.uk</a>.</p>
+        <div class="form-success" id="ipp-form-success">Thank you — your application has been received. Our team will be in touch.</div>
+      </div>
       <div class="keyfacts">
         <div><div class="kl">Geneva Week</div><div class="kv">29 November – 5 December 2026</div></div>
         <div><div class="kl">Location</div><div class="kv">Geneva, Switzerland</div></div>
@@ -712,6 +771,10 @@ footer{background:var(--ink-3);color:var(--paper);padding:52px 0 28px}
         <a href="https://ureka.co.uk">ureka.co.uk</a>
       </div>
     </div>
+    <div class="footer-logos" style="margin-top:22px">
+      <img src="/wp-content/uploads/2025/04/UNITAR_2023_HORZ_blue-2.jpg" alt="UNITAR">
+      <img src="/wp-content/uploads/2023/03/logo-HP.png" alt="Ureka Education Group">
+    </div>
     <div class="fbot">
       <span>© 2026 Ureka Education Group</span>
       <span>Delivered with UNITAR — United Nations Institute for Training and Research</span>
@@ -722,6 +785,35 @@ footer{background:var(--ink-3);color:var(--paper);padding:52px 0 28px}
 <script>
   var ob=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');ob.unobserve(e.target)}})},{threshold:.1});
   document.querySelectorAll('.rv').forEach(function(el){ob.observe(el)});
+
+  const CF7_FORM_ID = 9201; // "IPP Applications" contact form — update if the live site's form has a different ID
+  async function submitIPPForm() {
+    const g = id => (document.getElementById(id).value || '').trim();
+    const name = g('ipp-name'), email = g('ipp-email'), inst = g('ipp-institution'),
+          country = g('ipp-country'), msg = g('ipp-message');
+    const fd = new FormData();
+    fd.append('_wpcf7_unit_tag', 'wpcf7-ipp');
+    fd.append('your-name', name || '-');
+    fd.append('your-email', email);
+    fd.append('your-institution', inst || '-');
+    fd.append('your-country', country);
+    fd.append('your-message', msg);
+    let ok = false;
+    try {
+      const r = await fetch('/wp-json/contact-form-7/v1/contact-forms/' + CF7_FORM_ID + '/feedback', { method: 'POST', body: fd });
+      const j = await r.json();
+      ok = j.status === 'mail_sent';
+      if (!ok && j.status === 'validation_failed') { alert((j.invalid_fields && j.invalid_fields[0] && j.invalid_fields[0].message) || j.message); return; }
+    } catch (e) { ok = false; }
+    if (!ok) {
+      // ponytail: backend unreachable — fall back to a mailto draft so no lead is lost
+      const summary = 'Name: ' + name + '\nEmail: ' + email + '\nInstitution: ' + inst + '\nCountry: ' + country + '\nMessage: ' + msg;
+      window.location.href = 'mailto:malak.j@ureka.co.uk?subject=' + encodeURIComponent('IPP Geneva Application') + '&body=' + encodeURIComponent(summary);
+    }
+    const s = document.getElementById('ipp-form-success');
+    s.style.display = 'block';
+    s.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
 </script>
 </body>
 </html>
