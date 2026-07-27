@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Academic Leadership Suite · UNITAR Geneva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<style>
+:root {
+  --navy:#0b1f3a;--navy2:#132d52;--navy3:#1a3a68;
+  --gold:#c5973a;--gold2:#d4a84b;--gold3:#e8c878;
+  --cream:#f7f4ef;--cream2:#ede9e1;--cream3:#ddd8ce;
+  --white:#ffffff;--text:#1a1a1a;--muted:#5a5a5a;--light:#8a8a8a;
+  --border:#e0dbd2;--border2:#cdc8bf;
+  --r:10px;--rs:6px;--rl:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--text);line-height:1.6;font-size:15px}
+a{text-decoration:none;color:inherit}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1.2}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(11,31,58,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(197,151,58,0.2);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{display:flex;align-items:center;gap:10px;color:white}
+.nav-logo-mark{width:32px;height:32px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--gold)}
+.nav-logo-text{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:500;color:white;letter-spacing:0.03em}
+.nav-logo-sub{font-size:10px;color:rgba(197,151,58,0.8);letter-spacing:0.12em;text-transform:uppercase;display:block;margin-top:-2px}
+.nav-links{display:flex;gap:2px}
+.nav-links a{color:rgba(255,255,255,0.65);font-size:12px;letter-spacing:0.06em;text-transform:uppercase;padding:8px 14px;border-radius:var(--rs);transition:all .2s;cursor:pointer;font-weight:500}
+.nav-links a:hover,.nav-links a.active{color:white;background:rgba(255,255,255,0.08)}
+.nav-links a.active{color:var(--gold3)}
+.nav-cta{background:var(--gold);color:var(--navy);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;padding:9px 20px;border-radius:20px;border:none;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif}
+.nav-cta:hover{background:var(--gold2);transform:translateY(-1px)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;color:white;font-size:20px}
+@media(max-width:720px){
+  .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:var(--navy);flex-direction:column;padding:1rem;border-bottom:1px solid rgba(197,151,58,0.2)}
+  .nav-links.open{display:flex}
+  .hamburger{display:block}
+  .nav-cta{display:none}
+}
+
+/* PAGES */
+.page{display:none}.page.active{display:block}
+
+/* ── HOME PAGE ── */
+.hero{background:var(--navy);min-height:88vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:5rem 2rem 4rem}
+.hero-bg-pattern{position:absolute;inset:0;opacity:0.04;background-image:repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,1) 60px,rgba(255,255,255,1) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,1) 60px,rgba(255,255,255,1) 61px)}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;text-align:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:2rem}
+.hero-line{width:40px;height:1px;background:var(--gold)}
+.hero-eyebrow-text{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.hero h1{font-size:clamp(36px,6vw,68px);color:white;margin-bottom:1.25rem;font-weight:400;letter-spacing:-0.01em}
+.hero h1 em{color:var(--gold3);font-style:italic}
+.hero-sub{font-size:16px;color:rgba(255,255,255,0.55);max-width:520px;margin:0 auto 2.5rem;line-height:1.8;font-weight:300}
+.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-gold{background:var(--gold);color:var(--navy);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;padding:14px 32px;border-radius:30px;border:none;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;display:inline-flex;align-items:center;gap:8px}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:white;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;padding:14px 32px;border-radius:30px;border:1px solid rgba(255,255,255,0.25);cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.05)}
+.hero-stats{display:flex;justify-content:center;gap:0;margin-top:4rem;padding-top:3rem;border-top:1px solid rgba(255,255,255,0.1);flex-wrap:wrap}
+.hero-stat{text-align:center;padding:0 3rem;border-right:1px solid rgba(255,255,255,0.1)}
+.hero-stat:last-child{border-right:none}
+.hero-stat-n{font-family:'Cormorant Garamond',serif;font-size:40px;color:var(--gold3);line-height:1}
+.hero-stat-l{font-size:11px;color:rgba(255,255,255,0.4);margin-top:6px;letter-spacing:0.08em;text-transform:uppercase}
+@media(max-width:500px){.hero-stat{padding:1rem 1.5rem;border-right:none}}
+
+/* SECTION WRAPPER */
+.wrap{max-width:920px;margin:0 auto;padding:0 2rem}
+.section{padding:5rem 0}
+.section-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:1rem}
+.section-line{width:32px;height:1px;background:var(--gold)}
+.section-tag{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.section-title{font-size:clamp(28px,4vw,44px);color:var(--navy);margin-bottom:1rem;font-weight:400}
+.section-sub{font-size:15px;color:var(--muted);line-height:1.8;max-width:580px;font-weight:300}
+
+/* CARD STYLES */
+.card-grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5px;background:var(--border);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;margin-top:2.5rem}
+.feature-card{background:var(--white);padding:2rem 1.75rem}
+.feature-card-num{font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--cream3);line-height:1;margin-bottom:1rem}
+.feature-card h3{font-size:17px;color:var(--navy);margin-bottom:.5rem;font-weight:500}
+.feature-card p{font-size:13px;color:var(--muted);line-height:1.7;font-weight:300}
+
+/* PULL QUOTE */
+.pull-quote{background:var(--navy);padding:5rem 2rem}
+.pull-quote-inner{max-width:760px;margin:0 auto;text-align:center}
+.quote-mark{font-family:'Cormorant Garamond',serif;font-size:80px;color:var(--gold);line-height:.7;margin-bottom:1rem;display:block}
+.pull-quote blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,28px);color:white;font-weight:400;font-style:italic;line-height:1.6;margin-bottom:1.5rem}
+.pull-quote cite{font-size:12px;color:rgba(197,151,58,0.7);letter-spacing:0.1em;text-transform:uppercase;font-style:normal}
+
+/* CREAM STRIPE */
+.cream-section{background:var(--cream);padding:5rem 0}
+
+/* WHO ATTENDS */
+.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.5rem}
+.who-item{display:flex;gap:1rem;align-items:flex-start}
+.who-dash{width:20px;height:1px;background:var(--gold);margin-top:11px;flex-shrink:0}
+.who-text h4{font-size:15px;color:var(--navy);margin-bottom:4px;font-weight:500}
+.who-text p{font-size:13px;color:var(--muted);line-height:1.6;font-weight:300}
+@media(max-width:560px){.who-grid{grid-template-columns:1fr}}
+
+/* STRIP - feature band */
+.strip{background:var(--navy);border-top:1px solid rgba(197,151,58,0.15);border-bottom:1px solid rgba(197,151,58,0.15)}
+.strip-inner{max-width:920px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2rem}
+.strip-item{text-align:center}
+.strip-icon{font-size:22px;color:var(--gold3);margin-bottom:.5rem}
+.strip-title{font-size:13px;font-weight:500;color:white;margin-bottom:4px}
+.strip-text{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.5;font-weight:300}
+
+/* ABOUT page */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;align-items:start}
+.about-visual{background:var(--cream);border-radius:var(--r);padding:2.5rem;border:1px solid var(--border)}
+.about-visual-num{font-family:'Cormorant Garamond',serif;font-size:64px;color:var(--navy);line-height:1}
+.about-visual-label{font-size:12px;color:var(--light);letter-spacing:0.08em;text-transform:uppercase;margin-top:4px}
+.divider-h{height:1px;background:var(--border);margin:1.5rem 0}
+.outcome-item{display:flex;gap:12px;align-items:flex-start;margin-bottom:1.25rem}
+.outcome-num{width:28px;height:28px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--gold);flex-shrink:0;margin-top:1px;font-family:'Cormorant Garamond',serif;font-size:15px}
+.outcome-text h4{font-size:14px;font-weight:500;color:var(--navy);margin-bottom:2px}
+.outcome-text p{font-size:13px;color:var(--muted);font-weight:300;line-height:1.6}
+@media(max-width:640px){.about-grid{grid-template-columns:1fr}}
+
+/* PROGRAMME page — schedule */
+.sched-container{margin-top:2.5rem}
+.day-block{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:1rem}
+.day-header{background:var(--navy);padding:1rem 1.5rem;display:flex;align-items:center;gap:1rem;cursor:pointer;user-select:none}
+.day-pill{background:rgba(197,151,58,0.2);border:1px solid rgba(197,151,58,0.4);color:var(--gold3);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:4px 12px;border-radius:20px;font-weight:500}
+.day-title{font-family:'Cormorant Garamond',serif;font-size:18px;color:white;font-weight:400}
+.day-sub{font-size:12px;color:rgba(255,255,255,0.4);margin-left:auto}
+.day-events{padding:0}
+.ev{display:flex;gap:0;border-top:1px solid var(--border)}
+.ev-time{min-width:110px;padding:.85rem 1rem .85rem 1.5rem;font-size:12px;color:var(--light);border-right:1px solid var(--border);display:flex;align-items:flex-start;font-weight:300;flex-shrink:0}
+.ev-body{padding:.85rem 1.25rem;flex:1}
+.ev-title{font-size:14px;color:var(--navy);font-weight:500;margin-bottom:3px}
+.ev-loc{font-size:12px;color:var(--light);font-weight:300}
+.ev-badge{font-size:10px;padding:2px 8px;border-radius:10px;margin-left:auto;flex-shrink:0;font-weight:500;letter-spacing:0.04em;align-self:flex-start;margin-top:2px;text-transform:uppercase}
+.b-un{background:#e8f0f8;color:#1a4a7a}
+.b-soc{background:#e8f5e9;color:#1b5e20}
+.b-vis{background:#fef9ec;color:#7a5000}
+.b-cer{background:#f5eeff;color:#4a1a7a}
+.b-ws{background:#fce8e8;color:#7a1a1a}
+
+/* THEMES */
+.theme-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-top:2.5rem}
+.theme-card{background:var(--white);padding:1.75rem;position:relative}
+.theme-letter{font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--cream3);position:absolute;top:1rem;right:1.25rem;line-height:1}
+.theme-card h3{font-size:16px;color:var(--navy);margin-bottom:.5rem;font-weight:500;padding-right:2rem}
+.theme-card p{font-size:13px;color:var(--muted);line-height:1.7;font-weight:300}
+
+/* GENEVA */
+.transport-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-top:2rem}
+.transport-card{border:1px solid var(--border);border-radius:var(--r);padding:1.5rem}
+.transport-icon{font-size:24px;color:var(--gold);margin-bottom:.75rem}
+.transport-title{font-size:14px;font-weight:500;color:var(--navy);margin-bottom:.4rem}
+.transport-text{font-size:13px;color:var(--muted);line-height:1.6;font-weight:300}
+.tip-box{background:var(--cream);border-left:3px solid var(--gold);padding:1.25rem 1.5rem;border-radius:0 var(--rs) var(--rs) 0;margin:1.5rem 0}
+.tip-title{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:.4rem}
+.tip-text{font-size:13px;color:var(--muted);line-height:1.6;font-weight:300}
+.place-row{display:flex;gap:12px;padding:1rem 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.place-row:last-child{border-bottom:none}
+.place-icon{font-size:18px;color:var(--gold);flex-shrink:0;margin-top:1px}
+.place-name{font-size:14px;font-weight:500;color:var(--navy);margin-bottom:2px}
+.place-detail{font-size:12px;color:var(--muted);font-weight:300}
+.tag{display:inline-block;font-size:11px;padding:3px 10px;border-radius:20px;margin:3px;border:1px solid var(--border2);color:var(--muted);background:var(--white)}
+
+/* APPLY */
+.fee-hero{background:var(--navy);border-radius:var(--r);padding:3rem;text-align:center;margin-bottom:2rem;position:relative;overflow:hidden}
+.fee-hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 30px,rgba(197,151,58,0.03) 30px,rgba(197,151,58,0.03) 31px)}
+.fee-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(197,151,58,0.7);margin-bottom:.75rem;position:relative}
+.fee-amount{font-family:'Cormorant Garamond',serif;font-size:72px;color:white;line-height:1;position:relative}
+.fee-currency{font-size:28px;vertical-align:super}
+.fee-reduced{font-size:16px;color:var(--gold3);margin-top:.75rem;position:relative;font-weight:300}
+.includes-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:1.5rem}
+.include-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);font-weight:300}
+.include-item i{color:var(--gold);font-size:15px;flex-shrink:0}
+.process-steps{margin-top:2rem}
+.step{display:flex;gap:1.5rem;padding-bottom:2rem;position:relative}
+.step:not(:last-child)::before{content:'';position:absolute;left:17px;top:38px;bottom:0;width:1px;background:var(--border)}
+.step-num{width:36px;height:36px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);flex-shrink:0;background:var(--white)}
+.step-body h4{font-size:15px;font-weight:500;color:var(--navy);margin-bottom:4px}
+.step-body p{font-size:13px;color:var(--muted);line-height:1.6;font-weight:300}
+.apply-form-wrap{background:var(--cream);border-radius:var(--r);padding:2.5rem;margin-top:2rem;border:1px solid var(--border)}
+.apply-form-wrap h3{font-size:24px;color:var(--navy);margin-bottom:.25rem}
+.apply-form-wrap p{font-size:13px;color:var(--muted);margin-bottom:1.5rem;font-weight:300}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-group{display:flex;flex-direction:column;gap:5px}
+.form-group label{font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--light);font-weight:500}
+.form-group input,.form-group select,.form-group textarea{padding:10px 14px;border:1px solid var(--border2);border-radius:var(--rs);font-size:14px;font-family:'Inter',sans-serif;color:var(--text);background:var(--white);outline:none;transition:.15s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold)}
+.form-group textarea{resize:vertical;min-height:80px}
+.form-checkbox{display:flex;align-items:flex-start;gap:10px;margin-bottom:1rem}
+.form-checkbox input{margin-top:3px;accent-color:var(--gold);flex-shrink:0}
+.form-checkbox label{font-size:13px;color:var(--muted);font-weight:300}
+.submit-btn{width:100%;padding:14px;background:var(--navy);color:white;border:none;border-radius:30px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;margin-top:.5rem}
+.submit-btn:hover{background:var(--navy2)}
+.form-note{font-size:12px;color:var(--light);text-align:center;margin-top:.75rem;font-weight:300}
+.success-msg{background:#f0f7ee;border:1px solid #b8d9b0;border-radius:var(--rs);padding:1rem;text-align:center;font-size:13px;color:#1b5e20;margin-top:1rem;display:none}
+@media(max-width:500px){.form-row{grid-template-columns:1fr}.includes-grid{grid-template-columns:1fr}}
+
+/* COHORT */
+.cohort-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:2rem}
+.cstat{background:var(--cream);padding:1.25rem 1rem;text-align:center}
+.cstat-n{font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--navy)}
+.cstat-l{font-size:11px;color:var(--light);margin-top:2px;letter-spacing:0.06em;text-transform:uppercase;font-weight:300}
+.search-wrap{position:relative;margin-bottom:1.5rem}
+.search-wrap i{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:16px;color:var(--light);pointer-events:none}
+.search-input{width:100%;padding:11px 14px 11px 42px;border:1px solid var(--border2);border-radius:30px;font-size:14px;font-family:'Inter',sans-serif;color:var(--text);background:var(--white);outline:none;transition:.15s}
+.search-input:focus{border-color:var(--gold)}
+.p-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.p-card{background:var(--white);padding:1.5rem 1.25rem;text-align:center;cursor:pointer;transition:background .15s}
+.p-card:hover{background:var(--cream)}
+.p-av{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:500;font-size:15px;margin:0 auto 10px;font-family:'Cormorant Garamond',serif;font-size:18px}
+.p-name{font-size:13px;font-weight:500;color:var(--navy);line-height:1.3;margin-bottom:3px;font-family:'Cormorant Garamond',serif;font-size:15px}
+.p-role{font-size:11px;color:var(--light);font-weight:300;line-height:1.4}
+.p-country{font-size:11px;color:var(--gold);margin-top:3px;font-weight:300}
+.back-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--light);cursor:pointer;margin-bottom:1.5rem;font-weight:500;border:1px solid var(--border);padding:8px 16px;border-radius:20px;background:var(--white);font-family:'Inter',sans-serif;transition:.15s}
+.back-btn:hover{border-color:var(--gold);color:var(--gold)}
+.p-detail-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:2.5rem}
+.p-detail-header{display:flex;align-items:center;gap:1.5rem;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+.p-detail-av{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:24px;flex-shrink:0}
+.p-detail-name{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--navy);margin-bottom:4px;font-weight:400}
+.p-detail-role{font-size:14px;color:var(--muted);font-weight:300;margin-bottom:3px}
+.p-detail-country{font-size:13px;color:var(--gold)}
+.p-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+.p-info-item{border:1px solid var(--border);border-radius:var(--rs);padding:.85rem 1rem}
+.p-info-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--light);margin-bottom:4px;font-weight:500}
+.p-info-value{font-size:13px;color:var(--navy);font-weight:400;line-height:1.4}
+.ai-summary-box{background:var(--cream);border:1px solid var(--border);border-radius:var(--rs);padding:1.5rem;margin-top:1rem}
+.ai-summary-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;display:flex;align-items:center;gap:6px;font-weight:500}
+.ai-summary-text{font-size:14px;color:var(--muted);line-height:1.7;font-weight:300}
+.gen-btn{margin-top:1rem;padding:8px 18px;background:var(--navy);color:white;border:none;border-radius:20px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;font-family:'Inter',sans-serif;display:inline-flex;align-items:center;gap:6px;font-weight:500;transition:.15s}
+.gen-btn:hover{background:var(--navy2)}
+.gen-btn:disabled{opacity:.4;cursor:not-allowed}
+
+/* AI */
+.ai-wrapper{background:var(--cream);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-top:2rem}
+.ai-head{background:var(--navy);padding:1.25rem 1.5rem;display:flex;align-items:center;gap:10px}
+.ai-head-dot{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.ai-head-title{font-family:'Cormorant Garamond',serif;font-size:20px;color:white;font-weight:400}
+.ai-head-mode{font-size:11px;color:rgba(197,151,58,0.7);margin-left:auto;letter-spacing:0.06em;text-transform:uppercase}
+.ai-modes{display:flex;gap:6px;padding:1rem 1.25rem;border-bottom:1px solid var(--border);background:var(--white);flex-wrap:wrap}
+.ai-mode-btn{padding:7px 16px;border-radius:20px;border:1px solid var(--border2);background:var(--white);color:var(--muted);font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;transition:.15s;display:flex;align-items:center;gap:5px;letter-spacing:0.02em}
+.ai-mode-btn:hover{border-color:var(--gold);color:var(--gold)}
+.ai-mode-btn.active{background:var(--navy);color:white;border-color:var(--navy)}
+.chat-msgs{padding:1.5rem;min-height:300px;max-height:440px;overflow-y:auto;display:flex;flex-direction:column;gap:12px}
+.msg{max-width:80%;padding:12px 16px;font-size:14px;line-height:1.65;font-weight:300}
+.msg.bot{background:var(--white);border:1px solid var(--border);border-radius:4px 12px 12px 12px;align-self:flex-start;color:var(--text)}
+.msg.user{background:var(--navy);color:white;border-radius:12px 4px 12px 12px;align-self:flex-end}
+.msg.typing{background:var(--white);border:1px solid var(--border);border-radius:4px 12px 12px 12px;align-self:flex-start;color:var(--light);font-style:italic;font-size:13px}
+.chat-suggs{display:flex;gap:6px;padding:0 1.5rem .75rem;flex-wrap:wrap}
+.sugg{font-size:12px;padding:6px 12px;border:1px solid var(--border2);border-radius:20px;cursor:pointer;color:var(--muted);background:var(--white);transition:.15s;font-family:'Inter',sans-serif;font-weight:300}
+.sugg:hover{border-color:var(--gold);color:var(--gold)}
+.chat-input-row{display:flex;gap:8px;padding:1rem 1.25rem;border-top:1px solid var(--border);background:var(--white)}
+.chat-input{flex:1;padding:10px 16px;border:1px solid var(--border2);border-radius:25px;font-size:14px;outline:none;font-family:'Inter',sans-serif;color:var(--text);font-weight:300}
+.chat-input:focus{border-color:var(--gold)}
+.chat-send{width:38px;height:38px;border-radius:50%;background:var(--navy);color:white;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.15s}
+.chat-send:hover{background:var(--navy2)}
+.chat-send:disabled{opacity:.4;cursor:not-allowed}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 0;cursor:pointer;font-size:14px;font-weight:500;color:var(--navy);gap:12px;user-select:none;font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400}
+.faq-q:hover{color:var(--gold)}
+.faq-a{font-size:14px;color:var(--muted);line-height:1.7;padding-bottom:1.1rem;display:none;font-weight:300}
+.faq-a.open{display:block}
+
+/* FOOTER */
+.footer{background:var(--navy);border-top:1px solid rgba(197,151,58,0.15);padding:4rem 2rem 2rem}
+.footer-inner{max-width:920px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;margin-bottom:3rem}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:22px;color:white;font-weight:400;margin-bottom:.5rem}
+.footer-brand-sub{font-size:13px;color:rgba(255,255,255,0.35);line-height:1.7;font-weight:300}
+.footer-col h4{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(197,151,58,0.6);margin-bottom:1rem;font-weight:500}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:.5rem;cursor:pointer;transition:.15s;font-weight:300}
+.footer-col a:hover{color:white}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+.footer-bottom p{font-size:12px;color:rgba(255,255,255,0.2);font-weight:300}
+.footer-gold-line{width:40px;height:1px;background:var(--gold);margin:1rem 0}
+@media(max-width:640px){.footer-top{grid-template-columns:1fr}}
+
+/* REFUND TABLE */
+.refund-table{width:100%;border-collapse:collapse;margin-top:1.5rem;font-size:14px}
+.refund-table th{background:var(--navy);color:white;padding:10px 16px;text-align:left;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;font-weight:500}
+.refund-table td{padding:10px 16px;border-bottom:1px solid var(--border);color:var(--muted);font-weight:300}
+.refund-table tr:last-child td{border-bottom:none}
+.refund-table td:first-child{color:var(--navy);font-weight:500}
+.refund-ok{color:#1b5e20;font-weight:500}
+.refund-half{color:#7a5000;font-weight:500}
+.refund-no{color:#7a1a1a;font-weight:500}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">
+    <div class="nav-logo-mark">A</div>
+    <div>
+      <div class="nav-logo-text">Academic Leadership Suite</div>
+      <span class="nav-logo-sub">UNITAR · Ureka · Geneva</span>
+    </div>
+  </div>
+  <div class="nav-links" id="navlinks">
+    <a onclick="nav('home')" id="nav-home" class="active">Home</a>
+    <a onclick="nav('about')" id="nav-about">About</a>
+    <a onclick="nav('programme')" id="nav-programme">Programme</a>
+    <a onclick="nav('geneva')" id="nav-geneva">Geneva</a>
+    <a onclick="nav('apply')" id="nav-apply">Apply</a>
+    <a onclick="nav('cohort')" id="nav-cohort">2026 cohort</a>
+    <a onclick="nav('cohort2025')" id="nav-cohort2025">2025 cohort</a>
+    <a onclick="nav('ai')" id="nav-ai">ALS AI</a>
+  </div>
+  <button class="nav-cta" onclick="nav('apply')">Apply now</button>
+  <button class="hamburger" onclick="document.getElementById('navlinks').classList.toggle('open')"><i class="ti ti-menu-2"></i></button>
+</nav>
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow">
+        <div class="hero-line"></div>
+        <span class="hero-eyebrow-text">Next cohort: 27–30 October 2026 · Geneva</span>
+        <div class="hero-line"></div>
+      </div>
+      <h1>Shape the future<br>of <em>education</em><br>at the United Nations</h1>
+      <p class="hero-sub">A four-day executive programme in Geneva for academic leaders, deans, directors, and education decision-makers from around the world.</p>
+      <div class="hero-actions">
+        <button class="btn-gold" onclick="nav('apply')"><i class="ti ti-arrow-right" aria-hidden="true"></i> Apply now</button>
+        <button class="btn-ghost" onclick="nav('programme')">View programme</button>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-n">4</div><div class="hero-stat-l">Immersive days</div></div>
+        <div class="hero-stat"><div class="hero-stat-n">Oct 27</div><div class="hero-stat-l">Next cohort starts</div></div>
+        <div class="hero-stat"><div class="hero-stat-n">15+</div><div class="hero-stat-l">Countries per cohort</div></div>
+        <div class="hero-stat"><div class="hero-stat-n">UN</div><div class="hero-stat-l">Certified</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="strip">
+    <div class="strip-inner">
+      <div class="strip-item"><div class="strip-icon"><i class="ti ti-certificate" aria-hidden="true"></i></div><div class="strip-title">UNITAR certificate</div><div class="strip-text">Official UN certificate upon completion</div></div>
+      <div class="strip-item"><div class="strip-icon"><i class="ti ti-building-castle" aria-hidden="true"></i></div><div class="strip-title">Palais des Nations</div><div class="strip-text">Sessions at the UN's Geneva headquarters</div></div>
+      <div class="strip-item"><div class="strip-icon"><i class="ti ti-brain" aria-hidden="true"></i></div><div class="strip-title">AI leadership</div><div class="strip-text">Governance, ethics & responsible adoption in higher education</div></div>
+      <div class="strip-item"><div class="strip-icon"><i class="ti ti-users" aria-hidden="true"></i></div><div class="strip-title">Global network</div><div class="strip-text">A permanent cohort of international leaders</div></div>
+      <div class="strip-item"><div class="strip-icon"><i class="ti ti-users-group" aria-hidden="true"></i></div><div class="strip-title">Global Educators Summit</div><div class="strip-text">Full access — October 2026 edition is bigger than ever</div></div>
+    </div>
+  </div>
+
+  <div class="section wrap">
+    <div class="section-eyebrow"><div class="section-line"></div><span class="section-tag">Why ALS</span></div>
+    <h2 class="section-title">Built for the moment higher education is in</h2>
+    <p class="section-sub">AI is reshaping curricula. Governance frameworks are under pressure. International collaboration has never mattered more. ALS gives academic leaders the language, the network, and the UN platform to lead through it.</p>
+    <div class="card-grid-3">
+      <div class="feature-card"><div class="feature-card-num">01</div><h3>Global career readiness</h3><p>Understand how international organisations shape education policy and how your institution can align.</p></div>
+      <div class="feature-card"><div class="feature-card-num">02</div><h3>Diplomacy & governance</h3><p>Lessons from multilateral diplomacy applied directly to academic leadership and decision-making.</p></div>
+      <div class="feature-card"><div class="feature-card-num">03</div><h3>SDG alignment</h3><p>Position your institution as a credible, measurable contributor to the UN Sustainable Development Goals.</p></div>
+      <div class="feature-card"><div class="feature-card-num">04</div><h3>AI in education</h3><p>Navigate the AI transformation of higher education with governance frameworks from UN policy experts.</p></div>
+      <div class="feature-card"><div class="feature-card-num">05</div><h3>Cross-cultural leadership</h3><p>Build the cultural intelligence needed to lead diverse institutions and international partnerships.</p></div>
+      <div class="feature-card"><div class="feature-card-num">06</div><h3>Institutional impact</h3><p>Leave Geneva with a concrete action plan and a global peer network to implement change alongside.</p></div>
+    </div>
+  </div>
+
+  <div class="wrap" style="padding-bottom:0">
+  <div style="margin-top:3rem;background:var(--white);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
+    <div style="background:var(--navy);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+      <div>
+        <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:.3rem">ALS legacy network</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:white;font-weight:400">57 leaders · 2 cohorts · 20+ countries</div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button onclick="nav('cohort')" style="padding:9px 20px;border:1px solid rgba(197,151,58,0.5);border-radius:20px;background:transparent;color:var(--gold3);font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.06em;text-transform:uppercase;font-weight:500">July 2026 cohort</button>
+        <button onclick="nav('cohort2025')" style="padding:9px 20px;border:1px solid rgba(255,255,255,0.2);border-radius:20px;background:transparent;color:rgba(255,255,255,0.65);font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.06em;text-transform:uppercase;font-weight:500">July 2025 cohort</button>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0;background:var(--border)">
+      <div style="background:var(--cream);padding:1.5rem;text-align:center"><div style="font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--navy)">27</div><div style="font-size:11px;color:var(--light);text-transform:uppercase;letter-spacing:0.06em;margin-top:3px;font-weight:300">July 2026</div></div>
+      <div style="background:var(--cream);padding:1.5rem;text-align:center"><div style="font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--navy)">30</div><div style="font-size:11px;color:var(--light);text-transform:uppercase;letter-spacing:0.06em;margin-top:3px;font-weight:300">July 2025</div></div>
+      <div style="background:var(--cream);padding:1.5rem;text-align:center"><div style="font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--navy)">20+</div><div style="font-size:11px;color:var(--light);text-transform:uppercase;letter-spacing:0.06em;margin-top:3px;font-weight:300">Countries</div></div>
+      <div style="background:var(--cream);padding:1.5rem;text-align:center"><div style="font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--navy)">Oct 27</div><div style="font-size:11px;color:var(--light);text-transform:uppercase;letter-spacing:0.06em;margin-top:3px;font-weight:300">Next cohort</div></div>
+    </div>
+    <div style="padding:1.5rem 2rem;border-top:1px solid var(--border)">
+      <p style="font-size:13px;color:var(--muted);line-height:1.7;font-weight:300;max-width:640px">ALS is designed to become more than four days in Geneva. Past participant profiles are publicly visible to build the ALS legacy and showcase the calibre, diversity, and global reach of the network. Future applicants can see who attended before them.</p>
+    </div>
+  </div>
+</div>
+
+<div class="pull-quote">
+    <div class="pull-quote-inner">
+      <span class="quote-mark">"</span>
+      <blockquote>ALS should not be remembered only as four days in Geneva. It should become a living network of academic leaders who continue to learn from each other, collaborate across borders, and shape the future of higher education together.</blockquote>
+      <cite>Ureka Education Group · Programme vision</cite>
+    </div>
+  </div>
+
+  <div class="cream-section">
+    <div class="wrap">
+      <div class="section-eyebrow"><div class="section-line"></div><span class="section-tag">The cohort</span></div>
+      <h2 class="section-title">Who joins ALS</h2>
+      <p class="section-sub">ALS brings together a highly selective group of senior academic leaders. Each cohort is deliberately diverse — in geography, institution type, and leadership focus.</p>
+      <div class="who-grid">
+        <div class="who-item"><div class="who-dash"></div><div class="who-text"><h4>Vice chancellors & presidents</h4><p>Senior institutional leaders shaping strategic direction.</p></div></div>
+        <div class="who-item"><div class="who-dash"></div><div class="who-text"><h4>Deans & directors</h4><p>Faculty leaders close to curriculum, governance, and execution.</p></div></div>
+        <div class="who-item"><div class="who-dash"></div><div class="who-text"><h4>Senior administrators</h4><p>Registrars, provosts, and academic affairs leaders.</p></div></div>
+        <div class="who-item"><div class="who-dash"></div><div class="who-text"><h4>Education policymakers</h4><p>Public sector leaders involved in higher education reform.</p></div></div>
+        <div class="who-item"><div class="who-dash"></div><div class="who-text"><h4>Research leaders</h4><p>Heads of research, innovation, and academic development.</p></div></div>
+        <div class="who-item"><div class="who-dash"></div><div class="who-text"><h4>Education innovators</h4><p>Leaders working at the frontier of AI, EdTech, and global partnerships.</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="page" id="page-about">
+  <div class="hero" style="min-height:45vh;padding:3.5rem 2rem 3rem">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow"><div class="hero-line"></div><span class="hero-eyebrow-text">About the programme</span><div class="hero-line"></div></div>
+      <h1>The <em>Academic<br>Leadership Suite</em></h1>
+      <p class="hero-sub">A boutique, UN-certified executive programme delivered at the United Nations in Geneva in partnership with UNITAR and Ureka Education Group.</p>
+    </div>
+  </div>
+  <div class="section wrap">
+    <div class="about-grid">
+      <div>
+        <div class="section-eyebrow"><div class="section-line"></div><span class="section-tag">The programme</span></div>
+        <h2 class="section-title">A four-day immersion at the UN</h2>
+        <p style="font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:1.5rem;font-weight:300">ALS is not a conference. It is a structured, cohort-based executive programme combining expert-led sessions, institutional visits, and peer dialogue — all inside the United Nations in Geneva.</p>
+        <p style="font-size:15px;color:var(--muted);line-height:1.8;font-weight:300">Delivered as part of Global Education Week at UNITAR Geneva, ALS positions participants within a broader international platform for high-level dialogue, policy engagement, and innovation in education.</p>
+        <div class="footer-gold-line"></div>
+        <div class="section-eyebrow"><div class="section-line"></div><span class="section-tag">What you receive</span></div>
+        <div class="outcome-item"><div class="outcome-num">I</div><div class="outcome-text"><h4>UNITAR Certificate of Achievement</h4><p>Official UN certificate issued by UNITAR upon successful completion.</p></div></div>
+        <div class="outcome-item"><div class="outcome-num">II</div><div class="outcome-text"><h4>Personalised recommendation letter</h4><p>Co-signed by UNITAR and Ureka Education Group.</p></div></div>
+        <div class="outcome-item"><div class="outcome-num">III</div><div class="outcome-text"><h4>Named in the UNITAR Academic Leadership Framework</h4><p>Participants are named in the UNITAR Academic Leadership Framework: A Roadmap for Future-Ready Education — a practical white paper on institutional transformation and responsible innovation.</p></div></div>
+        <div class="outcome-item"><div class="outcome-num">IV</div><div class="outcome-text"><h4>Ureka Fellow recognition</h4><p>A professional title connected to the ALS leadership network and legacy.</p></div></div>
+        <div class="outcome-item"><div class="outcome-num">V</div><div class="outcome-text"><h4>Ureka Global Alumni Network</h4><p>Lifetime access with ongoing mentorship and collaboration opportunities.</p></div></div>
+      </div>
+      <div>
+        <div class="about-visual" style="margin-bottom:1.5rem">
+          <div class="about-visual-num">UNITAR</div>
+          <div class="about-visual-label">United Nations Institute for Training and Research</div>
+          <div class="divider-h"></div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.7;font-weight:300">The training arm of the United Nations, founded in 1963. Provides innovative learning solutions to enhance global decision-making, fully focused on the SDGs.</p>
+        </div>
+        <div class="about-visual">
+          <div class="about-visual-num">Ureka</div>
+          <div class="about-visual-label">Education Group · Global implementation partner</div>
+          <div class="divider-h"></div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.7;font-weight:300">Founded in London in 2014 by Sloan Fellows from London Business School. The largest provider of experiential learning programmes in the IMEA region. Network spans Oxford, LBS, University of London, and INSEAD.</p>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:4rem">
+      <div class="section-eyebrow"><div class="section-line"></div><span class="section-tag">Core themes</span></div>
+      <h2 class="section-title">What you will learn</h2>
+      <div class="theme-grid">
+        <div class="theme-card"><div class="theme-letter">A</div><h3>Global leadership & education strategy</h3><p>Frameworks for leading institutions through transformation in a globally connected world.</p></div>
+        <div class="theme-card"><div class="theme-letter">B</div><h3>AI-driven education & innovation</h3><p>Responsible AI adoption, EdTech deployment, assessment integrity, ethics, and digital transformation.</p></div>
+        <div class="theme-card"><div class="theme-letter">C</div><h3>SDGs & sustainability</h3><p>Translating commitments into measurable outcomes and credible institutional accountability.</p></div>
+        <div class="theme-card"><div class="theme-letter">D</div><h3>Diplomacy & multilateral governance</h3><p>Lessons from international diplomacy applied to academic leadership and cross-border collaboration.</p></div>
+        <div class="theme-card"><div class="theme-letter">E</div><h3>Crisis leadership & decision-making</h3><p>Leading institutions through uncertainty, disruption, and complex governance challenges.</p></div>
+        <div class="theme-card"><div class="theme-letter">F</div><h3>International accreditation & policy</h3><p>Navigating global accreditation frameworks and aligning institutional strategy with international standards.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRAMME -->
+<div class="page" id="page-programme">
+  <div class="hero" style="min-height:45vh;padding:3.5rem 2rem 3rem">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow"><div class="hero-line"></div><span class="hero-eyebrow-text">Programme details</span><div class="hero-line"></div></div>
+      <h1>The full <em>programme</em></h1>
+      <p class="hero-sub">Four structured days combining expert sessions, institutional visits, peer dialogue, and high-level summits — all in Geneva.</p>
+    </div>
+  </div>
+  <div class="section wrap">
+    <div class="section-eyebrow"><div class="section-line"></div><span class="section-tag">July 2026 cohort — official agenda</span></div>
+    <h2 class="section-title">Day-by-day schedule</h2>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:2rem;font-weight:300">All times Geneva (CEST). Business professional dress code for all UN sessions.</p>
+    <div class="sched-container">
+      <div class="day-block">
+        <div class="day-header"><span class="day-pill">Day 1</span><span class="day-title">Tuesday 7 July · AI, leadership & Palais tour</span><span class="day-sub">WHO Library Room, Bldg A 3F</span></div>
+        <div class="day-events">
+          <div class="ev"><div class="ev-time">09:00</div><div class="ev-body"><div class="ev-title">Arrival & registration</div><div class="ev-loc">World Health Organization — Library Room, Building A, 3rd Floor</div></div><span class="ev-badge b-un">Registration</span></div>
+          <div class="ev"><div class="ev-time">09:30–10:30</div><div class="ev-body"><div class="ev-title">Opening remarks & introduction</div><div class="ev-loc">WHO Library Room</div></div><span class="ev-badge b-un">Session</span></div>
+          <div class="ev"><div class="ev-time">10:30–13:00</div><div class="ev-body"><div class="ev-title">Leading transformation in the age of AI: strategy, innovation and the future of work</div><div class="ev-loc">WHO Library Room</div></div><span class="ev-badge b-un">Session</span></div>
+          <div class="ev"><div class="ev-time">13:00–13:45</div><div class="ev-body"><div class="ev-title">Lunch break</div></div><span class="ev-badge b-soc">Break</span></div>
+          <div class="ev"><div class="ev-time">14:00–15:00</div><div class="ev-body"><div class="ev-title">Guided tour — Palais des Nations</div><div class="ev-loc">Palais des Nations</div></div><span class="ev-badge b-vis">Visit</span></div>
+          <div class="ev"><div class="ev-time">15:00–15:15</div><div class="ev-body"><div class="ev-title">Coffee break</div></div><span class="ev-badge b-soc">Break</span></div>
+          <div class="ev"><div class="ev-time">15:30–17:30</div><div class="ev-body"><div class="ev-title">Engagement, governance and management within academia</div><div class="ev-loc">WHO Library Room</div></div><span class="ev-badge b-ws">Workshop</span></div>
+        </div>
+      </div>
+      <div class="day-block">
+        <div class="day-header"><span class="day-pill">Day 2</span><span class="day-title">Wednesday 8 July · SDGs, diplomacy & cruise dinner</span><span class="day-sub">WHO Library Room · Lake Geneva</span></div>
+        <div class="day-events">
+          <div class="ev"><div class="ev-time">09:30–12:30</div><div class="ev-body"><div class="ev-title">Sustainable Development Goals workshop</div><div class="ev-loc">WHO Library Room · Facilitated by Alice Kate Richard</div></div><span class="ev-badge b-ws">Workshop</span></div>
+          <div class="ev"><div class="ev-time">12:30–13:30</div><div class="ev-body"><div class="ev-title">Lunch break</div></div><span class="ev-badge b-soc">Break</span></div>
+          <div class="ev"><div class="ev-time">13:30–17:30</div><div class="ev-body"><div class="ev-title">Strategic leadership in a multilateral world: lessons from diplomacy for academic leaders</div><div class="ev-loc">WHO Library Room</div></div><span class="ev-badge b-un">Session</span></div>
+          <div class="ev"><div class="ev-time">17:30–18:30</div><div class="ev-body"><div class="ev-title">Refreshments</div></div><span class="ev-badge b-soc">Break</span></div>
+          <div class="ev"><div class="ev-time">18:30–21:30</div><div class="ev-body"><div class="ev-title">Cruise dinner on Lake Geneva</div><div class="ev-loc">Lake Geneva</div></div><span class="ev-badge b-soc">Social</span></div>
+        </div>
+      </div>
+      <div class="day-block">
+        <div class="day-header"><span class="day-pill">Day 3</span><span class="day-title">Thursday 9 July · AI for Good Summit</span><span class="day-sub">Route François-Peyrot 30</span></div>
+        <div class="day-events">
+          <div class="ev"><div class="ev-time">10:15–10:45</div><div class="ev-body"><div class="ev-title">Leaders TalkX 6 — skills for the future: leading inclusive capacity building</div><div class="ev-loc">WSIS</div></div><span class="ev-badge b-vis">Summit</span></div>
+          <div class="ev"><div class="ev-time">All day</div><div class="ev-body"><div class="ev-title">AI for Good Summit — full programme access</div><div class="ev-loc">Route François-Peyrot 30, 1218 Le Grand-Saconnex</div></div><span class="ev-badge b-vis">Summit</span></div>
+          <div class="ev"><div class="ev-time">17:00–18:00</div><div class="ev-body"><div class="ev-title">Partnerships and networking</div><div class="ev-loc">WMO Cafeteria</div></div><span class="ev-badge b-soc">Networking</span></div>
+        </div>
+      </div>
+      <div class="day-block">
+        <div class="day-header"><span class="day-pill">Day 4</span><span class="day-title">Friday 10 July · Global Educators Summit</span><span class="day-sub">Palais des Nations</span></div>
+        <div class="day-events">
+          <div class="ev"><div class="ev-time">09:00</div><div class="ev-body"><div class="ev-title">Meeting point — Pregny Gate</div><div class="ev-loc">Palais des Nations — 14 Avenue de la Paix, 1211 Geneva</div></div><span class="ev-badge b-un">Meeting point</span></div>
+          <div class="ev"><div class="ev-time">09:00–18:00</div><div class="ev-body"><div class="ev-title">Global Educators Summit 2026 — full day</div><div class="ev-loc">Palais des Nations</div></div><span class="ev-badge b-cer">Summit</span></div>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--navy);border-radius:var(--r);padding:2.5rem;margin:2.5rem 0;position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 30px,rgba(197,151,58,0.03) 30px,rgba(197,151,58,0.03) 31px)"></div>
+  <div style="position:relative">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem">
+      <div style="width:6px;height:6px;border-radius:50%;background:var(--gold)"></div>
+      <span style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);font-weight:500">October 2026 cohort · 27–30 October</span>
+    </div>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:28px;color:white;font-weight:400;margin-bottom:.75rem">Global Educators Summit — bigger than ever</h3>
+    <p style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.7;font-weight:300;max-width:580px">The October 2026 cohort includes full access to the Global Educators Summit — expected to be the largest edition to date, bringing together academic leaders, Ministry of Education officials, and education policymakers from around the world. In place of AI for Good (a July-only event), the Global Educators Summit is the October cohort's signature platform moment. AI leadership, governance, and responsible adoption remain core curriculum themes for all cohorts.</p>
+    <div style="margin-top:1.5rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem">
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(197,151,58,0.2);border-radius:var(--rs);padding:1rem"><div style="font-size:11px;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;font-weight:500">Sessions</div><div style="font-size:13px;color:rgba(255,255,255,0.75);font-weight:300">AI governance, SDGs, crisis leadership, institutional transformation</div></div>
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(197,151,58,0.2);border-radius:var(--rs);padding:1rem"><div style="font-size:11px;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;font-weight:500">Summit access</div><div style="font-size:13px;color:rgba(255,255,255,0.75);font-weight:300">Global Educators Summit 2026 — direct engagement with ministry officials</div></div>
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(197,151,58,0.2);border-radius:var(--rs);padding:1rem"><div style="font-size:11px;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;font-weight:500">Networking</div><div style="font-size:13px;color:rgba(255,255,255,0.75);font-weight:300">Cruise networking dinner on Lake Geneva + UN institutional visits</div></div>
+    </div>
+  </div>
+</div>
+<div style="margin-top:4rem">
+      <div class="section-eyebrow"><div class="section-line"></div><span class="section-tag">Preparation</span></div>
+      <h2 class="section-title">Before you arrive</h2>
+      <div class="transport-grid">
+        <div class="transport-card"><div class="transport-icon"><i class="ti ti-shirt" aria-hidden="true"></i></div><div class="transport-title">Dress code</div><div class="transport-text">Business professional for all UN sessions and the Palais des Nations tour. Smart casual for the cruise dinner and informal networking.</div></div>
+        <div class="transport-card"><div class="transport-icon"><i class="ti ti-id" aria-hidden="true"></i></div><div class="transport-title">Your badge</div><div class="transport-text">Issued at registration on Day 1. Bring your passport or national ID. Required for all UN access.</div></div>
+        <div class="transport-card"><div class="transport-icon"><i class="ti ti-book" aria-hidden="true"></i></div><div class="transport-title">Pre-reading</div><div class="transport-text">Pre-programme materials emailed 2–3 weeks before arrival. Review the ALS background document and the AI for Good and GES programmes.</div></div>
+        <div class="transport-card"><div class="transport-icon"><i class="ti ti-device-laptop" aria-hidden="true"></i></div><div class="transport-title">What to bring</div><div class="transport-text">Notebook or laptop for sessions. Business cards. A genuine question about your institution's biggest challenge.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GENEVA -->
+<div class="page" id="page-geneva">
+  <div class="hero" style="min-height:45vh;padding:3.5rem 2rem 3rem">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow"><div class="hero-line"></div><span class="hero-eyebrow-text">Geneva, Switzerland</span><div class="hero-line"></div></div>
+      <h1>Your <em>Geneva</em><br>experience</h1>
+      <p class="hero-sub">The diplomatic capital of the world. Here is everything you need to navigate it comfortably.</p>
+    </div>
+  </div>
+  <div class="section wrap">
+    <div class="tip-box"><div class="tip-title">July in Geneva</div><div class="tip-text">Warm (22–27°C), long evenings, the lake is beautiful. Occasional summer storms — bring a compact umbrella. The city is very walkable and the UN area is a 15-minute tram ride from the centre.</div></div>
+    <div class="section-eyebrow"><div class="section-line"></div><span class="section-tag">Getting around</span></div>
+    <h2 class="section-title">Transport in Geneva</h2>
+    <div class="transport-grid">
+      <div class="transport-card"><div class="transport-icon"><i class="ti ti-plane-arrival" aria-hidden="true"></i></div><div class="transport-title">From the airport (GVA)</div><div class="transport-text">Airport transfers are not included in the ALS fee. From Geneva Airport: free 80-min transit ticket at baggage claim. Train R to Gare Cornavin: 7 min, every 10 min. Taxi: ~20 min, CHF 35–45. Participants arrange their own transfer.</div></div>
+      <div class="transport-card"><div class="transport-icon"><i class="ti ti-train" aria-hidden="true"></i></div><div class="transport-title">Tram & bus</div><div class="transport-text">Lines 15 and F serve the UN area. Hotels in the canton of Geneva include a complimentary public transport pass.</div></div>
+      <div class="transport-card"><div class="transport-icon"><i class="ti ti-walk" aria-hidden="true"></i></div><div class="transport-title">Walking</div><div class="transport-text">City centre to Palais des Nations: ~25 min along the lake. Highly recommended in July.</div></div>
+      <div class="transport-card"><div class="transport-icon"><i class="ti ti-car" aria-hidden="true"></i></div><div class="transport-title">Taxi & Uber</div><div class="transport-text">Uber operates in Geneva. City centre to UN: CHF 15–25. TaxiPhone for metered taxis. A car is not necessary.</div></div>
+    </div>
+    <div class="tip-box" style="margin-top:2rem"><div class="tip-title">Accommodation — not included</div><div class="tip-text">Accommodation is always excluded from the ALS fee because participants have different budgets, hotel standards, room preferences, and lengths of stay. There is no official ALS hotel. Stay anywhere in Geneva with convenient public transport access to the UN, WMO, and WHO areas. Hotels in the canton of Geneva typically include a complimentary Geneva public transport pass for the duration of your stay — making daily travel to programme venues easy and free. Book as soon as your participation is confirmed.</div></div>
+    <div style="margin-top:3rem">
+      <div class="section-eyebrow"><div class="section-line"></div><span class="section-tag">Practicalities</span></div>
+      <h2 class="section-title">Day-to-day in Geneva</h2>
+      <div class="transport-grid" style="margin-top:1.5rem">
+        <div class="transport-card"><div class="transport-icon"><i class="ti ti-coin" aria-hidden="true"></i></div><div class="transport-title">Swiss Franc (CHF)</div><div class="transport-text">Switzerland uses CHF, not euros. Card payments widely accepted. Budget CHF 25–40 for a restaurant lunch. 1 USD ≈ 0.88 CHF.</div></div>
+        <div class="transport-card"><div class="transport-icon"><i class="ti ti-sun" aria-hidden="true"></i></div><div class="transport-title">July weather</div><div class="transport-text">22–27°C daytime, 15–17°C evenings. Occasional summer storms. Light layers for the cruise. Sunscreen recommended.</div></div>
+        <div class="transport-card"><div class="transport-icon"><i class="ti ti-plug" aria-hidden="true"></i></div><div class="transport-title">Power & connectivity</div><div class="transport-text">Switzerland uses Type J plugs (230V). Bring an adapter. Hotel WiFi is reliable. Swiss SIM cards at the airport CHF 10–20.</div></div>
+        <div class="transport-card"><div class="transport-icon"><i class="ti ti-language" aria-hidden="true"></i></div><div class="transport-title">Language</div><div class="transport-text">Geneva is French-speaking, but English is widely spoken in all professional and hospitality settings.</div></div>
+      </div>
+    </div>
+    <div style="margin-top:3rem">
+      <div class="section-eyebrow"><div class="section-line"></div><span class="section-tag">Recommended apps</span></div>
+      <div style="margin-top:1rem;margin-bottom:2rem">
+        <span class="tag">Google Maps</span><span class="tag">SBB Mobile (Swiss rail)</span><span class="tag">Publibike</span><span class="tag">TaxiPhone</span><span class="tag">Uber</span><span class="tag">Twint (payments)</span><span class="tag">MeteoSwiss</span><span class="tag">Google Translate (offline French)</span>
+      </div>
+    </div>
+    <div style="margin-top:1rem">
+      <div class="section-eyebrow"><div class="section-line"></div><span class="section-tag">Where to eat & what to see</span></div>
+      <h2 class="section-title">Food & culture</h2>
+      <div class="place-row"><div class="place-icon"><i class="ti ti-tools-kitchen-2" aria-hidden="true"></i></div><div><div class="place-name">Café de Paris <span style="color:var(--light);font-weight:300;font-size:12px">· Rue du Mont-Blanc</span></div><div class="place-detail">Iconic Geneva institution · entrecôte & secret-sauce frites · CHF 30–40 pp</div></div></div>
+      <div class="place-row"><div class="place-icon"><i class="ti ti-tools-kitchen-2" aria-hidden="true"></i></div><div><div class="place-name">La Fondue <span style="color:var(--light);font-weight:300;font-size:12px">· Rue du Cendrier</span></div><div class="place-detail">Traditional Swiss cheese fondue · essential Geneva experience · CHF 35–50 pp</div></div></div>
+      <div class="place-row"><div class="place-icon"><i class="ti ti-tools-kitchen-2" aria-hidden="true"></i></div><div><div class="place-name">Les Brasseurs <span style="color:var(--light);font-weight:300;font-size:12px">· Place de Cornavin</span></div><div class="place-detail">Craft beer & Swiss food · near train station · CHF 20–30 pp</div></div></div>
+      <div class="place-row"><div class="place-icon"><i class="ti ti-ripple" aria-hidden="true"></i></div><div><div class="place-name">Jet d'Eau</div><div class="place-detail">Geneva's iconic 140m water jet on the lake · free · 5 min from centre</div></div></div>
+      <div class="place-row"><div class="place-icon"><i class="ti ti-building-arch" aria-hidden="true"></i></div><div><div class="place-name">Vieille Ville</div><div class="place-detail">Medieval old town with St. Pierre Cathedral, ancient squares, and independent shops</div></div></div>
+      <div class="place-row"><div class="place-icon"><i class="ti ti-atom" aria-hidden="true"></i></div><div><div class="place-name">CERN Visitor Centre</div><div class="place-detail">World's largest particle physics lab · free guided tours · book in advance at cern.ch</div></div></div>
+      <div class="place-row"><div class="place-icon"><i class="ti ti-train" aria-hidden="true"></i></div><div><div class="place-name">Day trips</div><div class="place-detail">Montreux 1hr · Lavaux vineyards 45min · Annecy France 45min · Lausanne 40min</div></div></div>
+      <div style="margin-top:2rem">
+        <div class="section-eyebrow"><div class="section-line"></div><span class="section-tag">Emergency contacts</span></div>
+        <div class="place-row"><div class="place-icon"><i class="ti ti-user" aria-hidden="true"></i></div><div><div class="place-name">Programme coordinator — Malak Jaber</div><div class="place-detail">malak.j@ureka.co.uk · +971 50 207 3899</div></div></div>
+        <div class="place-row"><div class="place-icon"><i class="ti ti-shield" aria-hidden="true"></i></div><div><div class="place-name">Swiss emergency services</div><div class="place-detail">Police: 117 · Ambulance: 144 · Fire: 118</div></div></div>
+        <div class="place-row"><div class="place-icon"><i class="ti ti-building-hospital" aria-hidden="true"></i></div><div><div class="place-name">Geneva University Hospital (HUG)</div><div class="place-detail">Rue Gabrielle-Perret-Gentil 4 · +41 22 372 33 11</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- APPLY -->
+<div class="page" id="page-apply">
+  <div class="hero" style="min-height:45vh;padding:3.5rem 2rem 3rem">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow"><div class="hero-line"></div><span class="hero-eyebrow-text">Application open</span><div class="hero-line"></div></div>
+      <h1>Apply to<br><em>ALS Geneva</em></h1>
+      <p class="hero-sub">Places are limited and selection is competitive. Applications are reviewed on a rolling basis.</p>
+    </div>
+  </div>
+  <div class="section wrap">
+    <div class="fee-hero">
+      <div class="fee-label">Standard programme fee · per participant</div>
+      <div class="fee-amount"><span class="fee-currency">USD</span> 6,000</div>
+      <div class="fee-reduced">Reduced to USD 4,000 with grant + early bird discount</div>
+    </div>
+    <div class="includes-grid">
+      <div class="include-item"><i class="ti ti-check" aria-hidden="true"></i> UNITAR Certificate of Achievement</div>
+      <div class="include-item"><i class="ti ti-check" aria-hidden="true"></i> Personalised recommendation letter</div>
+      <div class="include-item"><i class="ti ti-check" aria-hidden="true"></i> UN expert-led training sessions</div>
+      <div class="include-item"><i class="ti ti-check" aria-hidden="true"></i> Exclusive institutional visits</div>
+      <div class="include-item"><i class="ti ti-check" aria-hidden="true"></i> Daily lunch and refreshments</div>
+      <div class="include-item"><i class="ti ti-check" aria-hidden="true"></i> Cruise networking dinner</div>
+      <div class="include-item"><i class="ti ti-check" aria-hidden="true"></i> Global Educators Summit access</div>
+      <div class="include-item"><i class="ti ti-check" aria-hidden="true"></i> AI for Good Summit (July cohorts only)</div>
+      <div class="include-item"><i class="ti ti-check" aria-hidden="true"></i> Named in UNITAR white paper</div>
+      <div class="include-item"><i class="ti ti-check" aria-hidden="true"></i> Ureka Fellow recognition</div>
+      <div class="include-item"><i class="ti ti-check" aria-hidden="true"></i> Visa support documentation</div>
+      <div class="include-item"><i class="ti ti-check" aria-hidden="true"></i> Alumni network access</div>
+    </div>
+    <p style="font-size:12px;color:var(--light);margin-top:1rem;font-weight:300"><strong style="color:var(--muted)">Not included:</strong> Flights · Accommodation (always excluded — participants choose based on budget and length of stay) · Airport transfers · Personal expenses. Note: hotels in the canton of Geneva typically include a complimentary local public transport pass.</p>
+    <div style="margin-top:3rem">
+      <div class="section-eyebrow"><div class="section-line"></div><span class="section-tag">Financial grant</span></div>
+      <h2 class="section-title">The Ureka Financial Grant</h2>
+      <div class="tip-box"><div class="tip-title">Grant amount</div><div class="tip-text">USD 1,500 reduction applied to the programme fee. October 2026 also offers a USD 500 early bird discount for payment by 31 July 2026. Combined, the total can be as low as USD 4,000.</div></div>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:1rem;font-weight:300">The grant is merit-based — not available to everyone. To be considered, submit a Statement of Purpose (max 600 words):</p>
+      <div style="background:var(--cream);border:1px solid var(--border);border-radius:var(--rs);padding:1.5rem;font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--navy);line-height:1.6;font-style:italic">"How will your participation in the Academic Leadership Suite enable you to drive institutional transformation, influence education policy, and create measurable, long-term impact within your academic ecosystem and beyond?"</div>
+    </div>
+    <div style="margin-top:3rem">
+      <div class="section-eyebrow"><div class="section-line"></div><span class="section-tag">Refund policy</span></div>
+      <h2 class="section-title">Cancellation & refunds</h2>
+      <table class="refund-table">
+        <thead><tr><th>Situation</th><th>Refund</th></tr></thead>
+        <tbody>
+          <tr><td>Visa rejection</td><td class="refund-ok">Full refund</td></tr>
+          <tr><td>Cancellation 21+ days before programme</td><td class="refund-ok">Full refund</td></tr>
+          <tr><td>Cancellation 8–14 days before programme</td><td class="refund-half">50% refund</td></tr>
+          <tr><td>Cancellation within 7 days of programme</td><td class="refund-no">No refund</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:13px;color:var(--light);margin-top:.75rem;font-weight:300">Seat transfers and deferrals to future cohorts may be considered by the ALS team. Contact malak.j@ureka.co.uk as early as possible.</p>
+    </div>
+    <div style="margin-top:3rem">
+      <div class="section-eyebrow"><div class="section-line"></div><span class="section-tag">Selection process</span></div>
+      <h2 class="section-title">How to apply</h2>
+      <div class="process-steps">
+        <div class="step"><div class="step-num">I</div><div class="step-body"><h4>Submit your CV and Statement of Purpose</h4><p>Prepare your academic or professional CV and a Statement of Purpose (~400 words for the programme; 600 words if also applying for the Financial Grant).</p></div></div>
+        <div class="step"><div class="step-num">II</div><div class="step-body"><h4>Online selection interview</h4><p>Shortlisted candidates are invited to a 20–30 minute online interview to discuss your leadership background and programme objectives.</p></div></div>
+        <div class="step"><div class="step-num">III</div><div class="step-body"><h4>Offer & enrolment</h4><p>Successful candidates receive an offer letter and programme acceptance pack. Full payment confirms your place. Visa support letter issued upon payment.</p></div></div>
+        <div class="step"><div class="step-num">IV</div><div class="step-body"><h4>Pre-departure briefing</h4><p>All participants receive pre-programme materials and a pre-departure briefing 2–3 weeks before the programme.</p></div></div>
+      </div>
+    </div>
+    <div class="apply-form-wrap">
+      <h3>Express interest</h3>
+      <p>Submit your details and our team will be in touch within 2 business days.</p>
+      <div class="form-row">
+        <div class="form-group"><label>First name</label><input type="text" placeholder="e.g. Sarah"></div>
+        <div class="form-group"><label>Last name</label><input type="text" placeholder="e.g. Johnson"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Email address</label><input type="email" placeholder="you@institution.edu"></div>
+        <div class="form-group"><label>Institution</label><input type="text" placeholder="University / College name"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Role / title</label><input type="text" placeholder="e.g. Dean of Faculty"></div>
+        <div class="form-group"><label>Country</label><input type="text" placeholder="e.g. United Kingdom"></div>
+      </div>
+      <div class="form-group" style="margin-bottom:1rem"><label>Why are you interested in ALS?</label><textarea placeholder="Brief note about your interest or institutional context..."></textarea></div>
+      <div class="form-checkbox"><input type="checkbox" id="grant-chk"><label for="grant-chk">I am interested in applying for the Ureka Financial Grant (USD 1,500 reduction)</label></div>
+      <button class="submit-btn" onclick="submitForm()">Submit expression of interest</button>
+      <p class="form-note">Your details are used only to contact you about ALS. We do not share your information with third parties.</p>
+      <div class="success-msg" id="form-success"><i class="ti ti-check" aria-hidden="true"></i> Thank you — our team will be in touch within 2 business days. You may also email malak.j@ureka.co.uk directly.</div>
+    </div>
+    <div style="margin-top:3rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+      <div class="transport-card"><div class="transport-icon"><i class="ti ti-mail" aria-hidden="true"></i></div><div class="transport-title">Email us</div><div class="transport-text">malak.j@ureka.co.uk<br><span style="color:var(--light);font-size:12px">Ms. Malak Jaber · Programme Coordinator</span></div></div>
+      <div class="transport-card"><div class="transport-icon"><i class="ti ti-phone" aria-hidden="true"></i></div><div class="transport-title">Call us</div><div class="transport-text">+971 50 207 3899<br><span style="color:var(--light);font-size:12px">Available Sun–Thu, 9am–6pm UAE time</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 2026 COHORT -->
+<div class="page" id="page-cohort">
+  <div class="hero" style="min-height:40vh;padding:3.5rem 2rem 3rem">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow"><div class="hero-line"></div><span class="hero-eyebrow-text">July 7–10, 2026</span><div class="hero-line"></div></div>
+      <h1>The <em>July 2026</em><br>cohort</h1>
+      <p class="hero-sub">27 academic leaders, deans, presidents, and innovators from universities and institutions across the world.</p>
+    </div>
+  </div>
+  <div class="section wrap">
+    <div class="cohort-stats">
+      <div class="cstat"><div class="cstat-n">27</div><div class="cstat-l">Participants</div></div>
+      <div class="cstat"><div class="cstat-n">15+</div><div class="cstat-l">Countries</div></div>
+      <div class="cstat"><div class="cstat-n">4</div><div class="cstat-l">Days</div></div>
+      <div class="cstat"><div class="cstat-n">Jul 7</div><div class="cstat-l">Start date</div></div>
+    </div>
+    <div id="cohort-list">
+      <div class="search-wrap">
+        <i class="ti ti-search" aria-hidden="true"></i>
+        <input type="text" id="psearch" class="search-input" placeholder="Search by name, role, institution or country...">
+      </div>
+      <div class="p-grid" id="pgrid"></div>
+    </div>
+    <div id="pdetail" style="display:none">
+      <button class="back-btn" onclick="backToList()"><i class="ti ti-arrow-left" aria-hidden="true"></i> All participants</button>
+      <div class="p-detail-card" id="pdetail-card"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 2025 COHORT -->
+<div class="page" id="page-cohort2025">
+  <div class="hero" style="min-height:40vh;padding:3.5rem 2rem 3rem">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow"><div class="hero-line"></div><span class="hero-eyebrow-text">July 24–25, 2025 · Inaugural cohort</span><div class="hero-line"></div></div>
+      <h1>The <em>July 2025</em><br>cohort</h1>
+      <p class="hero-sub">The inaugural ALS cohort — an exceptional group of academic leaders who gathered at the United Nations in Geneva in July 2025.</p>
+    </div>
+  </div>
+  <div class="section wrap">
+    <div class="cohort-stats">
+      <div class="cstat"><div class="cstat-n">30</div><div class="cstat-l">Participants</div></div>
+      <div class="cstat"><div class="cstat-n">14+</div><div class="cstat-l">Countries</div></div>
+      <div class="cstat"><div class="cstat-n">2</div><div class="cstat-l">Days</div></div>
+      <div class="cstat"><div class="cstat-n">Jul 24</div><div class="cstat-l">Start date</div></div>
+    </div>
+    <div id="cohort2025-list">
+      <div class="search-wrap">
+        <i class="ti ti-search" aria-hidden="true"></i>
+        <input type="text" id="psearch2025" class="search-input" placeholder="Search by name, role, institution or country...">
+      </div>
+      <div class="p-grid" id="pgrid2025"></div>
+    </div>
+    <div id="pdetail2025" style="display:none">
+      <button class="back-btn" onclick="backToList2025()"><i class="ti ti-arrow-left" aria-hidden="true"></i> All participants</button>
+      <div class="p-detail-card" id="pdetail2025-card"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ALS AI -->
+<div class="page" id="page-ai">
+  <div class="hero" style="min-height:40vh;padding:3.5rem 2rem 3rem">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow"><div class="hero-line"></div><span class="hero-eyebrow-text">AI-powered · Three modes</span><div class="hero-line"></div></div>
+      <h1>Your <em>ALS AI</em><br>assistant</h1>
+      <p class="hero-sub">Ask anything about the programme — powered by Claude AI and trained on all official ALS materials.</p>
+    </div>
+  </div>
+  <div class="section wrap">
+    <div class="ai-wrapper">
+      <div class="ai-head">
+        <div class="ai-head-dot"></div>
+        <div class="ai-head-title">ALS AI assistant</div>
+        <div class="ai-head-mode" id="mode-label">Mode: ALS Guide</div>
+      </div>
+      <div class="ai-modes">
+        <button class="ai-mode-btn active" onclick="setMode('guide')" id="mode-guide"><i class="ti ti-info-circle" aria-hidden="true"></i> ALS Guide</button>
+        <button class="ai-mode-btn" onclick="setMode('concierge')" id="mode-concierge"><i class="ti ti-user-check" aria-hidden="true"></i> Participant Concierge</button>
+        <button class="ai-mode-btn" onclick="setMode('collab')" id="mode-collab"><i class="ti ti-network" aria-hidden="true"></i> Alumni Collaboration</button>
+      </div>
+      <div class="chat-msgs" id="chat-messages"></div>
+      <div class="chat-suggs" id="chat-suggestions"></div>
+      <div class="chat-input-row">
+        <input class="chat-input" id="chat-input" type="text" placeholder="Ask anything about ALS..." onkeydown="if(event.key==='Enter')sendMsg()">
+        <button class="chat-send" id="chat-send" onclick="sendMsg()" aria-label="Send message"><i class="ti ti-send" aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <div style="margin-top:3rem">
+      <div class="section-eyebrow"><div class="section-line"></div><span class="section-tag">Common questions</span></div>
+      <h2 class="section-title">Frequently asked questions</h2>
+      <div id="faqlist" style="margin-top:1.5rem"></div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Academic Leadership Suite</div>
+        <div class="footer-gold-line"></div>
+        <div class="footer-brand-sub">A UN-certified executive programme for academic leaders, delivered by UNITAR and Ureka Education Group at the United Nations in Geneva.</div>
+      </div>
+      <div class="footer-col">
+        <h4>Programme</h4>
+        <a onclick="nav('about')">About ALS</a>
+        <a onclick="nav('programme')">Schedule</a>
+        <a onclick="nav('geneva')">Geneva guide</a>
+        <a onclick="nav('apply')">Fees & grants</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a>malak.j@ureka.co.uk</a>
+        <a>+971 50 207 3899</a>
+        <a>ureka.co.uk</a>
+        <a onclick="nav('apply')">Apply now</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Ureka Education Group · UNITAR programme · All rights reserved</p>
+      <p>United Nations Institute for Training and Research · Geneva, Switzerland</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+
+const PCOLORS=[
+  {bg:'#e8f0f8',tc:'#1a3a6a'},{bg:'#e8f5e9',tc:'#1b5020'},{bg:'#f5eeff',tc:'#3a1a7a'},
+  {bg:'#fef9ec',tc:'#6a4200'},{bg:'#fce8ec',tc:'#7a1a2a'},{bg:'#e0f7f4',tc:'#005040'},
+  {bg:'#f0f8e8',tc:'#2a5a10'},{bg:'#fce8e0',tc:'#6a2000'},{bg:'#ede8f8',tc:'#2a1a7a'},
+  {bg:'#e8eaf8',tc:'#1a1a6a'},{bg:'#e0f4f0',tc:'#004030'},{bg:'#fef8e0',tc:'#6a4800'}
+];
+
+const PARTICIPANTS = JSON.parse('[{"id":1,"name":"Yaw Amponsah Adoo","initials":"YA","role":"Dean, Dept of Business","inst":"Morris Brown College","country":"USA","email":"yaw.adoo@morrisbrown.edu","focus":"HBCU leadership, instructional design, SDGs","phd":"DBA, MPH — Argosy / East Stroudsburg","bio":"Strategic higher education leader with 20+ years across HBCU institutions. Dean of Business at Morris Brown College, with a rare combination of executive leadership, instructional design, and global community engagement. Mentored 7,000+ African students and established 15+ strategic institutional MOUs."},{"id":2,"name":"Renaud Bellemare","initials":"RB","role":"Director, Research & Innovation / CEO JACOBB","inst":"Collège de Bois-de-Boulogne","country":"Canada","email":"renaud.bellemare@bdeb.qc.ca","focus":"Responsible AI in education, research ecosystems","phd":"25 years in higher education leadership","bio":"Transformational leader who made his college the first post-secondary institution in Québec to adopt institution-wide responsible AI. Led 150% growth of an applied AI research centre in 6 months and directed international cooperation in 10+ countries across Africa, Latin America, and Europe."},{"id":3,"name":"Karleen Jones West","initials":"KJ","role":"Chair, Political Science & International Relations","inst":"SUNY Geneseo","country":"USA","email":"kwest@geneseo.edu","focus":"Latin American politics, internationalisation","phd":"PhD Political Science — University of Iowa","bio":"Professor and Department Chair with deep expertise in Latin American governance and indigenous rights. Author of two Oxford University Press books. Former Interim Vice Provost and Faculty Fellow for Internationalisation, with visiting professor experience in Japan."},{"id":4,"name":"Gonnie Klabbers","initials":"GK","role":"Programme Director, MSc Global Health","inst":"Maastricht University","country":"Netherlands","email":"g.klabbers@maastrichtuniversity.nl","focus":"Global health education, decolonising curricula","phd":"PhD — Maastricht University","bio":"Senior lecturer and Programme Director for the MSc Global Health at Maastricht University. Pioneering decolonised, competency-based health education with a strong transdisciplinary approach. Recently appointed Honorary Adjunct Professor at Ahfad University for Women in Sudan."},{"id":5,"name":"Damian Clarke","initials":"DC","role":"CEO Learnify / AI Advisor, Alabama State Univ.","inst":"Alabama State University (HBCU)","country":"Caribbean Region","email":"dclarke@alasu.edu","focus":"AI education, Global South, Caribbean & MENA","phd":"PhD — AI Education Leadership","bio":"Dual-appointment CEO of Learnify (AI-first EdTech) and Technology Advisor at Alabama State University. Translating UN SDGs into executable institutional AI strategy across the Caribbean and Global South. Led a $3.99M federal FIPSE grant proposal and advises the Ministry of Education of Trinidad & Tobago."},{"id":6,"name":"Himanshu Sharma","initials":"HS","role":"Principal (Academics)","inst":"Him Academy Public School","country":"India","email":"himanshuaaryan@gmail.com","focus":"School leadership, value education, UNESCO","phd":"PhD Educational Management — NIT Hamirpur","bio":"Principal with a PhD in Educational Management who developed a UNESCO-published value education programme (SEVA) and built international school partnerships with institutions in the UK and Australia. Named a Microsoft Innovative Educator Expert."},{"id":7,"name":"Dr Rumbidzai Nyanhoto","initials":"RN","role":"Senior Lecturer & Course Coordinator","inst":"ACAP University College","country":"Australia","email":"rumbi.nyanhoto@acap.edu.au","focus":"Social work, decolonising education, child protection","phd":"PhD Social Work — University of Fort Hare","bio":"Senior Lecturer in Social Work and founder of Safer Family Solutions. Extensive expertise in child protection, decolonising social work education, and culturally responsive practice. Published researcher spanning African and Australian contexts with national leadership in field education."},{"id":8,"name":"Dr Danny Buckley","initials":"DB","role":"Director of Studies, Executive Education","inst":"Loughborough University Business School","country":"UK","email":"d.buckley@lboro.ac.uk","focus":"Executive education strategy, MBA, apprenticeships","phd":"PhD — Higher Education Leadership","bio":"Senior academic leader specialising in executive and professional education at Loughborough Business School. Achieved a 260% increase in student enrolments at his prior institution. Two decades of commercial experience in sales and strategy with research published in The Guardian."},{"id":9,"name":"Dr Tiffany Cone","initials":"TC","role":"Head of Dept, Communications & Humanities","inst":"University of Doha for Science & Technology","country":"Qatar","email":"tiffanycone@gmail.com","focus":"Cultural anthropology, STEM humanities, Qatar/GCC","phd":"PhD Cultural Anthropology — Australian National Univ.","bio":"Cultural anthropologist and Head of Department at UDST, Qatar. Fellow of the Higher Education Academy. Research spans integrating rhetorical skills in STEM curricula and QRDI-funded cultural heritage projects. Previously Associate Dean at the Asian University for Women in Bangladesh."},{"id":10,"name":"Prof Erkan Oterkus","initials":"EO","role":"SUNY Empire Innovation Associate Professor","inst":"Stony Brook University","country":"USA","email":"erkan.oterkus@stonybrook.edu","focus":"Engineering, AI/ML, peridynamics, ocean energy","phd":"PhD Aerospace Engineering — University of Arizona","bio":"Prolific engineering professor with expertise across peridynamics, AI/ML in structural analysis, and ocean energy systems. Recently moved from a Chair Professorship at Strathclyde (UK) to Stony Brook. Former Director of the Ocean Energy Research Unit with visiting scientist positions at Stanford and the Chinese Academy of Sciences."},{"id":11,"name":"Prof Karen Freberg","initials":"KF","role":"Professor of Strategic Communication","inst":"University of Louisville","country":"USA","email":"karen.freberg@louisville.edu","focus":"Social media strategy, crisis communications, AI","phd":"PhD — Strategic Communication","bio":"Award-winning professor, textbook author, and founder of The Bird\'s Nest nonprofit student agency. Research consultant to Meta, NATO, CDC, Adobe, and GM. Author of SAGE\'s 2020 NCA Outstanding Textbook Award winner and international keynote speaker on social media strategy and AI in communications."},{"id":12,"name":"Prof W.C. Singh","initials":"WS","role":"Vice-Chancellor","inst":"Dhanamanjuri University, Govt of Manipur","country":"India","email":"drwcsingh@gmail.com","focus":"University governance, strategic transformation","phd":"PhD Commerce — Manipur University (Gold Medal)","bio":"Vice-Chancellor of Dhanamanjuri University (Government of Manipur) and additionally serving Manipur Technical University. Gold medallist with a distinguished career progressing from Associate Professor to Registrar of Manipur Central University to dual Vice-Chancellor roles."},{"id":13,"name":"MD Zahidul Islam","initials":"ZI","role":"CEO & Group Leader","inst":"Unibridge Group / UK Management College","country":"UK","email":"zahid118@ymail.com","focus":"Higher ed entrepreneurship, widening participation","phd":"Senior executive, international education development","bio":"Founder-CEO of the Unibridge Group and Chairman of the Central University of Science and Technology. Built a multi-sector education organisation focused on expanding access for disadvantaged learners in the UK and internationally."},{"id":14,"name":"Dennis Graham","initials":"DG","role":"Director of International Programs","inst":"Felician University","country":"USA","email":"GRAHAMD@FELICIAN.EDU","focus":"International student recruitment, study abroad, ESL","phd":"MA Philosophy & Education — Columbia Teachers College","bio":"Director managing international recruitment, admissions, and immigration services at Felician University, NJ. Georgetown Walsh School of Foreign Service graduate. Former English teacher in South Korea and Indonesia."},{"id":15,"name":"Prof Roméo Tédongap","initials":"RT","role":"Dean of Faculty & Full Professor of Finance","inst":"ESSEC Business School","country":"France","email":"tedongap@essec.edu","focus":"Finance, asset pricing, academic governance","phd":"PhD Economics — Universite de Montreal (Best PhD Award)","bio":"Dean of Faculty at ESSEC Business School, one of Europe\'s premier grandes ecoles. Best PhD Thesis Award recipient with publications in Management Science, Journal of Financial Economics, and Review of Financial Studies."},{"id":16,"name":"Thor Wasbotten","initials":"TW","role":"Executive Director, Kennedy Center for Business Ethics","inst":"Belmont University","country":"USA","email":"thor@belmont.edu","focus":"Business ethics, AI ethics, media leadership","phd":"20+ years higher education & entrepreneurship","bio":"Executive Director of the Edward C. Kennedy Center for Business Ethics at Belmont University, Nashville. Creator of the Ethical Intelligence and MOSAIC frameworks. Former Managing Director of the Markkula Center for Applied Ethics at Santa Clara University."},{"id":17,"name":"Jeremy D. VanHooser","initials":"JV","role":"Associate Director, Equity & Inclusion","inst":"Metropolitan State University of Denver","country":"USA","email":"jeremyvanhooser@me.com","focus":"Equity, Hispanic-Serving Institutions, belonging","phd":"PhD Leadership Studies (in progress) — Gonzaga Univ.","bio":"Higher education leader advancing equity and belonging at one of the USA\'s largest urban Hispanic-Serving Institutions (17,000+ students). Education policy advocate at state and federal level with over a decade of progressive responsibility."},{"id":18,"name":"Dr Yazmín Torres","initials":"YT","role":"Principal, Former NYSABE President","inst":"NYC Dept of Education","country":"USA","email":"ytorres13@schools.nyc.gov","focus":"Bilingual education, equity, multilingual learners","phd":"EdD Educational Leadership — St. John\'s University","bio":"Bilingual educational leader with 20+ years advancing multilingual learners in New York City. Former President of the New York State Association for Bilingual Education. Expert in culturally responsive education. Currently school principal in Queens, NYC."},{"id":19,"name":"Dr Anna Zeis","initials":"AZ","role":"Director, Learning & Innovation","inst":"WHU – Otto Beisheim School of Management","country":"Germany","email":"anna.zeis@whu.edu","focus":"Human-centric AI, EdTech, learning experience design","phd":"PhD Economics — 12 years across 7 countries","bio":"Director of Learning & Innovation at WHU, a leading German business school. Led one of Germany\'s first campus-wide AI upskilling rollouts with ~99% ChatGPT EDU adoption. Designed WHU\'s SPARK faculty development programme."},{"id":20,"name":"Allyson Gail Hall","initials":"AG","role":"Professor & Director, Educational Programs","inst":"University of Alabama at Birmingham","country":"USA","email":"hallag@uab.edu","focus":"Health policy, healthcare education, outcomes research","phd":"PhD Health Policy — Johns Hopkins University","bio":"Professor and Director of Educational Programs at UAB\'s School of Health Professions. Co-Director of the Centre for Outcomes Effectiveness Research and Education. PhD from Johns Hopkins, MBA from University of Florida. Former Program Officer at The Commonwealth Fund."},{"id":21,"name":"Lisa M. Coleman","initials":"LC","role":"Senior Academic & Fundraising Strategist","inst":"Formerly Harvard & NYU","country":"USA","email":"lisacolemanphd@gmail.com","focus":"Fundraising, institutional strategy, AI research culture","phd":"PhD — Distinguished Scholar & Fellow","bio":"Distinguished scholar who led fundraising for some of the largest campaigns in higher education history at Harvard and Tufts. Founder of the NYU Women Lead Initiative. Fellow of the National Endowment for the Humanities."},{"id":22,"name":"Dr Michael Torrence","initials":"MT","role":"President","inst":"Motlow State Community College","country":"USA","email":"michael.torrence@mscc.edu","focus":"Community college leadership, STEM, workforce dev","phd":"PhD — President since 2018","bio":"President of Motlow State Community College, Tennessee, serving 7,000+ students across 5 locations. Developed the STEA3MB concept and launched Mixed Reality, VR, AI, and AR seminars for faculty and community."},{"id":23,"name":"Monroe France","initials":"MF","role":"Senior Strategic Advisor to the President","inst":"Adler University","country":"USA","email":"Monroe.France@gmail.com","focus":"Global leadership, shared governance, inclusive excellence","phd":"PhD coursework — NYU Global Leadership & Innovation","bio":"Seasoned global leadership scholar and executive with 25+ years spanning higher education, corporate, non-profit, and creative arts. International practitioner with deep engagement across North America, South America, Africa, Europe, Asia, and the UAE."},{"id":24,"name":"Dr Shonda Harris-Muhammed","initials":"SH","role":"Acting Superintendent","inst":"Southampton County Schools","country":"USA","email":"shonda.harrsmuhammed@gmail.com","focus":"School district leadership, equity, strategic planning","phd":"EdD — Licensed Virginia School Superintendent","bio":"Licensed Virginia school superintendent with 23+ years of progressive leadership in public education. Expert in data-informed decision-making, capital projects, curriculum reform, and building collaborative communities."},{"id":25,"name":"Dr Sweta Sneha","initials":"SS","role":"Dean, Wright School of Business","inst":"Dalton State College","country":"USA","email":"swetasneha@yahoo.com","focus":"Business education, health informatics, AI, workforce","phd":"PhD Computer Information Systems — Georgia State","bio":"Award-winning Dean named Technology Leader of the Year by the Technology Association of Georgia and recognised by the US Capitol among the Top 20 Women. Multiple AMIA and Health 2.0 excellence awards. Titan100 Georgia top leader."},{"id":26,"name":"Dr Yolanda Watson Spiva","initials":"YW","role":"President","inst":"Complete College America","country":"USA","email":"ywatsonspiva@completecollege.org","focus":"College completion, equity, public policy, coaching","phd":"PhD Higher Education — Georgia State — Woodrow Wilson Fellow","bio":"President of Complete College America, the national initiative driving student completion across US institutions. Former CEO of College Success Foundation (135 employees, $46M budget, 44,000+ scholarship recipients). Board Certified Executive Coach."},{"id":27,"name":"Astrid Dauverne","initials":"AD","role":"Co-director, Executive MBA & Chair, International Business Management","inst":"HEG-Genève (Geneva School of Business Administration)","country":"Switzerland","email":"astrid.dauverne@hesge.ch","focus":"Executive education, leadership development, sustainability, executive coaching","phd":"MBA — ESSEC Business School Paris · Certified Professional Coach (ICF/IDC)","bio":"A rare combination of academic leadership and global corporate experience, Astrid co-directs the Executive MBA at HEG-Genève while chairing the International Business Management department (450+ students, 100+ faculty). A Certified Professional Coach and former VP at Coty and P&G, she joins ALS on home territory in Geneva."}]');
+
+const PARTICIPANTS_2025 = JSON.parse('[{"id":1,"name":"Prof Subir Verma","initials":"SV","role":"Former Director & Dean","inst":"Nirma University / IMI Delhi / IIM Ranchi","country":"India","email":"","focus":"Leadership development, change management, organizational behavior","phd":"Trained at IIM Ahmedabad, Lucknow & Bangalore; ISO Geneva Working Group member","bio":"A prolific leadership educator with 33+ years of research, teaching and consulting across premier Indian institutions including IIM Ranchi (founding Dean Academics), IMI Delhi, and MDI Gurgaon. Delivered 100+ leadership and negotiation workshops for global corporates including ONGC, Intel, Microsoft and PepsiCo. Member of the ISO Geneva Working Group on Asset and Innovation Management."},{"id":2,"name":"Jason Taylor","initials":"JT","role":"Senior Lecturer & Digital Design Lead","inst":"Manchester School of Architecture","country":"UK","email":"","focus":"AI in design education, digital literacy, ethical AI, EdTech","phd":"SFHEA; Fellow RSA & Adobe Education Institute; specialist across 210+ digital tools","bio":"Architectural digital design leader driving the school\'s AI and digital strategy at Manchester School of Architecture, with expertise spanning 210+ software platforms. Collaborator with Zaha Hadid Architects, ARUP, Foster & Partners and brands including Audi and Nike. A Senior Fellow of the Higher Education Academy."},{"id":3,"name":"Alexandra Viyuylkova","initials":"AV","role":"Visiting Professor & International Management Expert","inst":"Multiple universities — Russia/International","country":"Russia","email":"avbesttime@gmail.com","focus":"Strategic management, international corporate governance, asset protection","phd":"DBA — RANEPA Moscow; MBA (Russian-American Programme); Diploma — UC Los Angeles","bio":"A seasoned top manager with 20+ years in international companies and 10 years in education management, including board-level roles in a Top-50 Russian investment holding. Visiting Professor at multiple universities on strategic and corporate management, international relations and global finance."},{"id":4,"name":"Meghna Sharma","initials":"MS","role":"Founder-Director","inst":"Doon International School (CBSE & IGCSE)","country":"India","email":"director@doonamritsar.com","focus":"School leadership, early childhood education, curriculum innovation","phd":"Selected for Harvard Certificate in Leadership, Management & Strategy; Cambridge World Congress speaker","bio":"Visionary education leader who founded and scaled two premier institutions in Amritsar — Doon International School (1,000+ students, 150+ educators) and Doon Toddlers. A judge for the Queen\'s Commonwealth Essay Writing Competition, Hundred Innovation in Education Ambassador representing India."},{"id":5,"name":"Prof N. Nagaraju","initials":"NN","role":"Vice-Chancellor","inst":"English & Foreign Languages University, Hyderabad","country":"India","email":"","focus":"University governance, English language education, academic administration","phd":"Professor of English; 38+ years of teaching, research and administrative experience","bio":"Vice-Chancellor of the English and Foreign Languages University (a Central University), Hyderabad, and former Vice-Chancellor of Gangadhar Meher University. With 38 years of academic leadership spanning Head of Department, Dean of Languages, Registrar and multiple VC roles."},{"id":6,"name":"Dr Kikelomo Kila","initials":"KK","role":"Senior Lecturer & LLB Course Leader","inst":"University of Huddersfield","country":"UK/Nigeria","email":"kikelomokila@gmail.com","focus":"Environmental law, climate change, energy law, human rights","phd":"PhD Law — University of Exeter; SFHEA; Endorsed Exceptional Talent by the British Academy","bio":"A distinguished legal scholar endorsed as Exceptional Talent by the British Academy. Senior Lecturer and LLB Course Leader at Huddersfield, supervising five PhD students in climate change, energy and environmental law. Board Member of the Governance & Economic Policy Centre, Tanzania."},{"id":7,"name":"Prof Abdelbary Elhissi","initials":"AE","role":"Head of Pharmaceutical Sciences","inst":"Qatar University","country":"Qatar","email":"aelhissi@qu.edu.qa","focus":"Pharmaceutics, drug delivery, research excellence, knowledge management","phd":"PhD Pharmaceutics — UCL; Top 2% world scientists (Stanford 2019-2023); MIT Sloan & Cambridge certified","bio":"Ranked among the top 2% of world scientists for five consecutive years by Stanford University. Head of Pharmaceutical Sciences at Qatar University, with certifications from MIT Sloan and Cambridge Judge Business School."},{"id":8,"name":"Assoc Prof Sadie Heckenberg","initials":"SH","role":"Pro Vice-Chancellor, Aboriginal Leadership","inst":"University of Tasmania","country":"Australia","email":"","focus":"Indigenous higher education, decolonising research, Indigenous knowledges","phd":"PhD; ARC College of Experts; UN OHCHR Indigenous Fellowship Geneva (2024)","bio":"Pro Vice-Chancellor for Aboriginal Leadership and Director of the Institute of Indigenous Knowledges at the University of Tasmania. President of NATSIHEC and Board Member of the World Indigenous Nations Higher Education Consortium. Attended the UN OHCHR Indigenous Fellowship in Geneva in 2024."},{"id":9,"name":"Prof Sherif Kamel","initials":"SK","role":"Dean, Onsi Sawiris School of Business","inst":"American University in Cairo (AUC)","country":"Egypt","email":"","focus":"Digital transformation, IT in emerging economies, entrepreneurship, Africa","phd":"PhD Information Systems — London School of Economics; Eisenhower Fellow; Chair AACSB International Board","bio":"Dean of the Onsi Sawiris School of Business at AUC and Chair of the AACSB International Board of Directors. A London School of Economics PhD and Eisenhower Fellow, he sits on the board of the Central Bank of Egypt and the Global Alliance in Management Education (CEMS). Author of 300+ publications."},{"id":10,"name":"Prof Michael H. Allen","initials":"MA","role":"Associate Provost & Professor of International Studies","inst":"Bryn Mawr College","country":"USA","email":"mhallen@brynmawr.edu","focus":"International relations, African studies, global peace and security","phd":"PhD Economics (International Relations) — LSE; Rhodes Scholar; Harvard Research Fellow","bio":"Rhodes Scholar, LSE PhD and Associate Provost at Bryn Mawr College, holding the Harvey Wexler Chair in Political Science. Author of six books with Palgrave Macmillan. Associate Editor of Global Studies Quarterly and former Ford Foundation Research Fellow at Harvard."},{"id":11,"name":"Prof Damon Andrew","initials":"DA","role":"Dean, College of Education, Health & Human Sciences","inst":"Florida State University","country":"USA","email":"dandrew@fsu.edu","focus":"Higher education leadership, STEM, teacher education, college ranking strategy","phd":"PhD; Fellow National Academy of Kinesiology (FNAK); Florida State University","bio":"Dean at Florida State University (ranked #19 public university), overseeing 4,000 students, 201 faculty and a $162M budget. Elevated the college to its best-ever #6 national ranking. Previously inaugural Dean at Louisiana State University."},{"id":12,"name":"Dr Brittany Bounds","initials":"BB","role":"Instructional Associate Professor of U.S. History","inst":"Texas A&M University at Qatar","country":"Qatar/USA","email":"Brittany.bounds@qatar.tamu.edu","focus":"US history, military history, American studies, international education","phd":"PhD History — Texas A&M; MA — CSUN; BA — UC Santa Barbara","bio":"Based at Texas A&M\'s Qatar campus in Education City, Dr Bounds brings expertise in American military history and international pedagogy. Former Program Director at the National Defense University in Washington DC, supervising international military fellows from 70+ countries."},{"id":13,"name":"Dr Hamdah Alghamdi","initials":"HA","role":"Dean, College of Languages","inst":"Princess Nourah bint Abdulrahman University (PNU)","country":"Saudi Arabia","email":"haabalghamdi@pnu.edu.sa","focus":"Linguistics, discourse analysis, women leadership, Saudi Vision 2030","phd":"PhD Linguistics — University of Canberra; INSEAD Women Leaders Programme; Fellow HEA","bio":"Dean of the College of Languages at PNU, Saudi Arabia\'s largest women\'s university. A specialist in youth language discourse analysis, she has trained 9 cohorts of women leaders at PNU through INSEAD programmes. Committed to embedding Saudi identity into global academic standards."},{"id":14,"name":"Dr Iram Fatima Ansari","initials":"IA","role":"Head, Department of Accounting","inst":"Sultan Qaboos University","country":"Oman","email":"iram@squ.edu.om","focus":"Corporate governance, AI in boardrooms, fraud examination, accounting","phd":"PhD Business Studies — Cardiff Business School (Distinction); CPA Australia; CFE","bio":"Head of Accounting at Sultan Qaboos University and former Endowed Professor at Mannheim Business School. A Certified Fraud Examiner and CPA Australia conducting research on AI-supported board decision-making. Adjunct Trainer for PwC\'s Academy Middle East."},{"id":15,"name":"Dr Poorna Dias Gunasekera","initials":"PG","role":"Associate Dean (International) & Associate Professor","inst":"University of Plymouth","country":"UK/Sri Lanka","email":"poornagunsi@yahoo.com","focus":"Global health, SDGs, international partnerships, leave no one behind","phd":"MBBS; MSc Community Eye Health — UCL (Commonwealth Scholarship); FHEA","bio":"Associate Dean (International) at Plymouth\'s Faculty of Health. Led a 400+ person maternal mortality trial in Ghana. Founder of MegaReach (five continents) and the Global Plymouth community network (1,500+ members). Research focuses on the SDG founding principles of leaving no one behind."},{"id":16,"name":"Prof Basem Shomar","initials":"BS","role":"Manager of Research Excellence & Professor","inst":"Qatar University","country":"Qatar/Germany","email":"basemshomarphd@hotmail.com","focus":"Water & environmental sciences, research governance, UN SDGs, sustainability","phd":"PhD & Habilitation — University of Heidelberg; h-index 31, 48 i10-indexed publications","bio":"A German-national environmental scientist and Research Excellence manager at Qatar University, with an h-index of 31. Former Research Director at Qatar Foundation\'s QEERI and holder of a German Habilitation in Environmental Sciences from Heidelberg."},{"id":17,"name":"Prof V.K. Narayanan","initials":"VN","role":"Deloitte Touche Stubbs Professor of Strategy & Entrepreneurship","inst":"Drexel University (LeBow College of Business)","country":"USA","email":"","focus":"Strategic management, technology innovation, AI strategy, entrepreneurship","phd":"PhD — University of Pittsburgh; PGDBA — IIM Ahmedabad; BTech — IIT Madras; Fulbright-Nehru Scholar","bio":"Endowed Chair Professor at Drexel\'s LeBow College and IIT Madras/IIM Ahmedabad/Pittsburgh alumnus. A Fulbright-Nehru Senior Scholar with recent research on transformative AI strategy directly addressing the ALS curriculum\'s core themes."},{"id":18,"name":"Dr Swati Pitale","initials":"SP","role":"Principal","inst":"Shailendra Education Society\'s College, Mumbai","country":"India","email":"swati.pitale@gmail.com","focus":"College leadership, political science, SDG initiatives, curriculum accreditation","phd":"PhD Political Science — University of Mumbai; three NAAC accreditation cycles led","bio":"Principal leading a 1,000+ student institution in Mumbai through three NAAC accreditation cycles and National Education Policy 2020 implementation. Organised four international conferences and secured ICWA funding. PhD guide at the University of Mumbai."},{"id":19,"name":"Shruti Sharma","initials":"SS2","role":"Head of HR — Multiple Divisions","inst":"Tata Capital Limited","country":"India","email":"shruti_sk@yahoo.com","focus":"Organisational behaviour, HR strategy, leadership, workforce management","phd":"PhD (Pursuing) Organisational Behaviour — XLRI Jamshedpur; Wharton CHRO Programme; ICF-ACC Coach","bio":"A senior HR leader at Tata Capital with 24+ years of experience and a doctoral researcher in Organisational Behaviour at XLRI Jamshedpur. An ICF-certified coach and Wharton CHRO Programme alumna bringing a sharp behavioural science lens to leadership development."},{"id":20,"name":"Prof Norma Juma","initials":"NJ","role":"Brenneman Professor of Strategic Management","inst":"Washburn University","country":"USA/Kenya","email":"norma.juma@washburn.edu","focus":"Strategic management, African business, entrepreneurship, intellectual capital","phd":"PhD Strategic Management — University of Texas at Arlington; Emerald Literati Award winner","bio":"Holder of the Brenneman endowed professorship and Vice-President of the Academy of African Business & Development. Roy Myers Excellence in Research Award winner (2019) and Emerald Literati Outstanding Paper Award recipient."},{"id":21,"name":"Dr Lilian Jasper","initials":"LJ","role":"Principal & Secretary","inst":"Women\'s Christian College, Chennai","country":"India","email":"","focus":"English literature, ecoliterature, women\'s higher education, internationalisation","phd":"PhD English Literature — University of Madras; Harvard Leadership Institute (2018); UBCHEA Fellow","bio":"Principal of Women\'s Christian College, Chennai, and a pioneering voice in ecoliterature. Trained at Harvard University\'s Leadership Institute and as a UBCHEA Fellow. International Peace Commission Outstanding Leadership Award recipient."},{"id":22,"name":"Dr Leona Vaughn","initials":"LV","role":"Senior Lecturer, Slavery & Unfree Labour Research","inst":"University of Liverpool / formerly UN University","country":"UK","email":"","focus":"Modern slavery, anti-trafficking, radicalisation policy, safeguarding in research","phd":"PhD Sociology — University of Liverpool; former UN University Centre for Policy Research (New York)","bio":"Senior Lecturer at Liverpool and former Vulnerable Populations Workstream Lead at the United Nations University in New York. Former National Policy Advisor at the Crown Prosecution Service and published by the European Academy of Law."},{"id":23,"name":"Dr Lia Roberts","initials":"LR","role":"Chair, History & Political Science / Director, Global Initiatives","inst":"Mount St. Mary\'s University, Los Angeles","country":"USA","email":"lroberts@msmu.edu","focus":"Gender and politics, Latin American studies, Global Women in STEM, internationalisation","phd":"PhD Political Science — UC Santa Barbara; NEH co-PI ($150K award); Fulbright Educators awardee","bio":"Department Chair and Academic Director of the Center for Global Initiatives at Mount St. Mary\'s. Co-PI on a $150K National Endowment for the Humanities award. Co-director of the Global Women in STEM & Policy research programme with field work in South America and India."},{"id":24,"name":"Mohamed Goga","initials":"MG","role":"CEO","inst":"MANCOSA","country":"South Africa","email":"mohamed@oconsult.co.za","focus":"Private higher education, Africa, corporate governance, institutional growth","phd":"B.Compt (Hons) — UNISA; B.Comm — University of Natal; Chartered Accountant (SAICA)","bio":"CEO of MANCOSA, a leading South African private business school with 600+ employees and pan-African operations spanning six countries. A Chartered Accountant with deep experience in private equity accountability and building international university partnerships."},{"id":25,"name":"Prof Zaheer Hamid","initials":"ZH","role":"Chief Academic Officer","inst":"MANCOSA","country":"South Africa","email":"Zaheer.hamid@mancosa.co.za","focus":"Academic leadership, EdTech, private higher education, South African HE transformation","phd":"PhD — North West University; MBA — University of Bedfordshire; Professor at Novosibirsk State University","bio":"Chief Academic Officer at MANCOSA and South African representative on the Honoris United University Academic Council. Member of the CHE Institutional Audit Committee and professor at Novosibirsk State University (Siberia)."},{"id":26,"name":"Dr Krishnashree Achuthan","initials":"KA","role":"Dean PG Programs & CEO, Technology Business Incubator","inst":"Amrita Vishwa Vidyapeetham University","country":"India","email":"krishna@amrita.edu","focus":"AI governance, cybersecurity, virtual labs, EdTech, SDGs","phd":"PhD — Clarkson University, NY, USA; Senior Member IEEE; 157 publications; 34 international patents","bio":"A prolific researcher with 157 publications and 34 international patents spanning AI governance, cybersecurity, IoT, and virtual education. Dean of PG Programs and CEO of Amrita Technology Business Incubator. Her Virtual Labs initiative has reached 7 million+ learners across 95+ countries."},{"id":27,"name":"Prof Sherif Kamel","initials":"SK","role":"Dean, Onsi Sawiris School of Business","inst":"American University in Cairo (AUC)","country":"Egypt","email":"","focus":"Digital transformation, IT in emerging economies, entrepreneurship, Africa","phd":"PhD Information Systems — London School of Economics; Eisenhower Fellow; Chair AACSB International Board","bio":"Dean of the Onsi Sawiris School of Business at AUC and Chair of the AACSB International Board. A London School of Economics PhD and Eisenhower Fellow, sitting on the board of the Central Bank of Egypt. Author of 300+ publications and internationally recognised on digital transformation in emerging economies."},{"id":28,"name":"Lamjed Bettaieb","initials":"LB","role":"Deputy CEO, ESPRIT Group / Chairman, MANCOSA Board","inst":"ESPRIT School of Engineering, Tunisia","country":"Tunisia","email":"lamjed.bettaieb@esprit.tn","focus":"Engineering education reform, active learning, AI-supported pedagogy, CDIO framework","phd":"Engineering Degree Computer Science — ENSI; MBA — IAE-Dauphine; Master Clinical Psychology","bio":"Deputy CEO of ESPRIT Group, Tunisia\'s largest private engineering school, and Chairman of the MANCOSA Board in South Africa. Co-chair of the CDIO Conference 2024 (the MIT-Harvard framework adopted by 150+ engineering schools globally) and co-chair of an Esprit UNESCO Chair."},{"id":29,"name":"Asha Alexander","initials":"AA","role":"Principal & CEO / Executive Leader, Climate Change","inst":"GEMS Legacy School, Dubai / GEMS Education","country":"UAE","email":"asha.a_gls@gemsedu.com","focus":"K-12 leadership, climate change education, digital curriculum, sustainability","phd":"30+ years in K-12 education; UNCC Climate Change Leader since 2019; COP 25, 26 & 28 attendee","bio":"Principal and CEO of GEMS Legacy School (400+ teachers, 800+ staff) and Executive Leader for Climate Change at GEMS Education. A UNITAR-featured impact leader and UNCC Climate Change Leader since 2019. Designed a school-level COP Exposition for students ahead of Dubai\'s COP28."},{"id":30,"name":"Dr Nouf Almagoushi","initials":"NA","role":"Vice Dean, College of Business Administration","inst":"Prince Sultan University","country":"Saudi Arabia","email":"nmagoushi@psu.edu.sa","focus":"Gender diversity, HRM, organisational management, Saudi Vision 2030","phd":"PhD Management — Brunel University London; MSc Management — Glasgow Caledonian University; Chartered Management Institute","bio":"Vice Dean of the College of Business Administration at Prince Sultan University, Riyadh, and a Brunel University London PhD specialising in gender diversity management in multinational corporations. A Certified Management & Business Educator and member of the British Academy of Management."}]');
+
+function renderParticipants(list, gridId, clickFn) {
+  const g = document.getElementById(gridId);
+  if (!g) return;
+  if (list.length === 0) { g.innerHTML = '<div style="padding:3rem;text-align:center;color:var(--light);grid-column:1/-1">No participants found.</div>'; return; }
+  g.innerHTML = list.map((p, i) => {
+    const c = PCOLORS[i % PCOLORS.length];
+    return `<div class="p-card" onclick="${clickFn}(${p.id})">
+      <div class="p-av" style="background:${c.bg};color:${c.tc}">${p.initials}</div>
+      <div class="p-name">${p.name}</div>
+      <div class="p-role">${p.role}</div>
+      <div class="p-country">${p.country}</div>
+    </div>`;
+  }).join('');
+}
+
+function buildDetailCard(p, cardId, backFn, summaryPrefix) {
+  const idx = (PARTICIPANTS.find(x=>x.id===p.id) ? PARTICIPANTS : PARTICIPANTS_2025).indexOf(p);
+  const c = PCOLORS[idx % PCOLORS.length];
+  document.getElementById(cardId).innerHTML = `
+    <div class="p-detail-header">
+      <div class="p-detail-av" style="background:${c.bg};color:${c.tc}">${p.initials}</div>
+      <div>
+        <div class="p-detail-name">${p.name}</div>
+        <div class="p-detail-role">${p.role}</div>
+        <div class="p-detail-country"><i class="ti ti-map-pin" style="font-size:12px;margin-right:4px"></i>${p.country}</div>
+      </div>
+    </div>
+    <div class="p-info-grid">
+      <div class="p-info-item"><div class="p-info-label">Institution</div><div class="p-info-value">${p.inst}</div></div>
+      <div class="p-info-item"><div class="p-info-label">Country</div><div class="p-info-value">${p.country}</div></div>
+      <div class="p-info-item"><div class="p-info-label">Focus area</div><div class="p-info-value">${p.focus}</div></div>
+      <div class="p-info-item"><div class="p-info-label">Credentials</div><div class="p-info-value">${p.phd}</div></div>
+    </div>
+    ${p.email ? `<div class="p-info-item" style="margin-bottom:1rem"><div class="p-info-label">Email</div><div class="p-info-value"><a href="mailto:${p.email}" style="color:var(--gold)">${p.email}</a></div></div>` : ''}
+    <div class="ai-summary-box">
+      <div class="ai-summary-label"><i class="ti ti-sparkles"></i> Participant summary</div>
+      <div class="ai-summary-text" id="${summaryPrefix}${p.id}">${p.bio}</div>
+      <button class="gen-btn" id="genbtn-${summaryPrefix}${p.id}" onclick="genSummary('${summaryPrefix}', ${p.id}, ${JSON.stringify(p).replace(/'/g,'&apos;')})">
+        <i class="ti ti-refresh"></i> Regenerate with AI
+      </button>
+    </div>`;
+}
+
+function showP(id) {
+  const p = PARTICIPANTS.find(x => x.id === id);
+  document.getElementById('cohort-list').style.display = 'none';
+  document.getElementById('pdetail').style.display = 'block';
+  buildDetailCard(p, 'pdetail-card', 'backToList', 'ai2026-');
+}
+function backToList() {
+  document.getElementById('cohort-list').style.display = '';
+  document.getElementById('pdetail').style.display = 'none';
+}
+function showP2025(id) {
+  const p = PARTICIPANTS_2025.find(x => x.id === id);
+  document.getElementById('cohort2025-list').style.display = 'none';
+  document.getElementById('pdetail2025').style.display = 'block';
+  buildDetailCard(p, 'pdetail2025-card', 'backToList2025', 'ai2025-');
+}
+function backToList2025() {
+  document.getElementById('cohort2025-list').style.display = '';
+  document.getElementById('pdetail2025').style.display = 'none';
+}
+function filterP() {
+  const q = document.getElementById('psearch').value.toLowerCase();
+  renderParticipants(PARTICIPANTS.filter(p => [p.name,p.inst,p.country,p.role,p.focus].some(v=>v.toLowerCase().includes(q))), 'pgrid', 'showP');
+}
+function filterP2025() {
+  const q = document.getElementById('psearch2025').value.toLowerCase();
+  renderParticipants(PARTICIPANTS_2025.filter(p => [p.name,p.inst,p.country,p.role,p.focus].some(v=>v.toLowerCase().includes(q))), 'pgrid2025', 'showP2025');
+}
+async function genSummary(prefix, id, pObj) {
+  const p = typeof pObj === 'string' ? JSON.parse(pObj) : pObj;
+  const btn = document.getElementById('genbtn-' + prefix + id);
+  const txt = document.getElementById(prefix + id);
+  btn.disabled = true; btn.innerHTML = '<i class="ti ti-loader"></i> Generating...';
+  txt.innerHTML = '<em style="color:var(--light)">Writing summary...</em>';
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({model:'claude-sonnet-4-6', max_tokens:800,
+        messages:[{role:'user', content:`Write a 3-sentence professional handbook summary for an ALS participant at UNITAR Geneva. Participant: ${p.name}, ${p.role} at ${p.inst} (${p.country}). Credentials: ${p.phd}. Focus: ${p.focus}. Be specific, warm, and highlight their unique value to the cohort. No preamble.`}]})});
+    const d = await res.json();
+    txt.textContent = d.content && d.content[0] ? d.content[0].text : p.bio;
+  } catch(e) { txt.textContent = p.bio; }
+  btn.innerHTML = '<i class="ti ti-refresh"></i> Regenerate'; btn.disabled = false;
+}
+
+// ── ALS KNOWLEDGE BASE ──
+const ALS_KNOWLEDGE = `
+ACADEMIC LEADERSHIP SUITE (ALS) — COMPREHENSIVE KNOWLEDGE BASE
+
+PROGRAMME OVERVIEW:
+The Academic Leadership Suite (ALS) is a UN-certified executive programme for academic leaders delivered by UNITAR and Ureka Education Group at the United Nations in Geneva. It is a four-day programme — NOT a student programme. It covers governance, AI in education, SDGs, crisis leadership, international collaboration, and institutional strategy.
+
+COHORT DATES:
+July 2025 cohort: 24-25 July 2025 (inaugural 2-day cohort).
+July 2026 cohort: 7 to 10 July 2026, Geneva.
+October 2026 cohort: 27 to 30 October 2026, Geneva.
+
+WHO SHOULD ATTEND:
+Chancellors, vice chancellors, presidents, provosts, deans, directors, department heads, registrars, senior faculty, and education policymakers. Deans are an ideal profile. Early-career academics are not the target audience.
+
+PROGRAMME FEE:
+Standard fee: USD 6,000 per participant. Ureka Financial Grant: USD 1,500 reduction (merit-based, not cash). Early bird discount October 2026: USD 500 off if paid by 31 July 2026. Total after grant and early bird: USD 4,000. Grant is NOT guaranteed — it is merit-based.
+
+WHAT IS INCLUDED:
+UNITAR Certificate of Achievement, personalised recommendation letter (UNITAR-Ureka co-signed), UN expert-led sessions, selected official programme activities, daily lunch and refreshments, Cultural Evening and Cruise Networking Dinner, AI for Good Summit access (July cohorts only), Global Educators Summit access, named in UNITAR white paper, Ureka Fellow recognition, visa support documentation, alumni network access.
+
+NOT INCLUDED:
+Flights, accommodation (fully excluded — never included), airport transfers, personal expenses, additional dinners beyond those listed.
+
+ACCOMMODATION:
+NOT included. Not ever included. Participants book their own hotel. No official ALS hotel. Stay anywhere in Geneva with good transport access to UN venues. Hotels in the canton of Geneva typically include a complimentary public transport pass. Book as soon as participation is confirmed.
+
+AIRPORT TRANSFERS:
+NOT included. From Geneva Airport (GVA): free 80-min transit ticket at baggage claim. Train R to Gare Cornavin: 7 min, every 10 min. Taxi: CHF 35-45, ~20 min.
+
+REFUND POLICY:
+Visa rejection: FULL refund. Cancellation 21+ days before: FULL refund. Cancellation 14 days before: 50% refund. Cancellation within 7 days: NO refund. Seat transfers and deferrals to future cohorts may be considered. Contact ALS team early.
+
+VISA:
+Visa support letter provided upon full payment (email malak.j@ureka.co.uk). Does not guarantee visa approval. Switzerland is Schengen — many nationalities (EU, UAE, USA, UK) do not need a visa. Apply 6-8 weeks before travel.
+
+JULY 2026 SCHEDULE:
+Day 1 (Tue 7 July) at WHO Library Room, Building A, 3rd Floor: registration 9am, opening remarks 9:30-10:30, AI & Future of Work session 10:30-13:00, lunch 13:00-13:45, Palais des Nations tour 14:00-15:00, coffee 15:00-15:15, Engagement, Governance and Management within Academia 15:30-17:30.
+Day 2 (Wed 8 July) at WHO Library Room: SDGs Workshop (Alice Kate Richard) 9:30-12:30, lunch 12:30-13:30, Strategic Leadership in a Multilateral World 13:30-17:30, refreshments 17:30-18:30, Cruise Dinner on Lake Geneva 18:30-21:30.
+Day 3 (Thu 9 July): AI for Good Summit all day at Route Francois-Peyrot 30, 1218 Le Grand-Saconnex; Leaders TalkX 6 at WSIS 10:15-10:45; Partnerships and Networking at WMO Cafeteria 17:00-18:00.
+Day 4 (Fri 10 July): Global Educators Summit, Palais des Nations Pregny Gate, 14 Avenue de la Paix, 9:00-18:00.
+
+GLOBAL EDUCATORS SUMMIT (GES):
+Included for July 2026 (Day 4) and October 2026 (part of programme). October 2026 GES is expected to be bigger than previous editions. Attendance is not optional — it is part of the ALS experience.
+
+AI FOR GOOD SUMMIT:
+Included for July 2026 only (Day 3). NOT included in October 2026 — AI for Good is annual and held only in July. AI remains a core curriculum theme for all cohorts regardless.
+
+UNITAR ACADEMIC LEADERSHIP FRAMEWORK (WHITE PAPER):
+A UNITAR-led white paper titled "A Roadmap for Future-Ready Education." Earlier materials called it the Geneva Declaration — current preferred term is the UNITAR Academic Leadership Framework. Participants are named in it. Not a peer-reviewed journal article. Can be cited professionally.
+
+UREKA FELLOW:
+A recognition/title — NOT an academic degree — connected to the ALS leadership network. Successful ALS participants may be recognised as Ureka Fellows. Can be mentioned on LinkedIn and in professional biographies. Does not guarantee speaking opportunities or guaranteed collaboration.
+
+OCTOBER 2026 COHORT:
+Dates: 27-30 October 2026. Standard fee: USD 6,000. Includes Global Educators Summit (expected to be bigger than previous editions). AI for Good is NOT included (July-only event). AI is still a core curriculum theme.
+
+APPLICATION:
+Submit CV and Statement of Purpose. Shortlisted candidates invited for online interview. Payment does not guarantee a place — selection is merit-based. SOP prompt: "How will your participation in ALS enable you to drive institutional transformation, influence education policy, and create measurable, long-term impact within your academic ecosystem and beyond?" Contact: malak.j@ureka.co.uk / +971 50 207 3899.
+
+IMPORTANT LIMITATIONS:
+The AI cannot: guarantee visa approval, confirm personal refund eligibility, confirm visa letter status, make admissions decisions, promise speaking opportunities, guarantee partnerships. Always direct specific operational queries to malak.j@ureka.co.uk.
+
+CONTACT:
+Ms. Malak Jaber — malak.j@ureka.co.uk — +971 50 207 3899 — ureka.co.uk
+`;
+
+const MODES = {
+  guide: {
+    label: 'Mode: ALS Guide',
+    system: `You are the ALS Guide AI for the Academic Leadership Suite at UNITAR Geneva. Answer questions warmly, concisely and accurately using ONLY the knowledge base below. If something is not in the knowledge base, say so clearly and direct to malak.j@ureka.co.uk. Never make up information or guarantee outcomes.
+
+Knowledge base:
+
+${ALS_KNOWLEDGE}`,
+    welcome: "Hello! I'm the ALS Guide — your AI assistant for the Academic Leadership Suite. I can answer questions about the programme, fees, schedule, application, visa, Geneva logistics, and much more. What would you like to know?",
+    suggestions: ["What does the programme fee include?","Is accommodation included?","What is the refund policy?","What is the difference between July and October cohorts?","How do I apply for the financial grant?"]
+  },
+  concierge: {
+    label: 'Mode: Participant Concierge',
+    system: `You are the ALS Participant Concierge — a warm personal assistant helping confirmed ALS participants prepare for Geneva. Help with practical preparation: what to pack, how to navigate each session, how to make the most of ALS, Geneva transport, dress code, the cruise dinner, networking tips. Be specific and practical.
+
+Knowledge base:
+
+${ALS_KNOWLEDGE}`,
+    welcome: "Welcome to ALS! I'm your personal concierge for the programme. I'm here to help you prepare for Geneva — from what to pack to how to make the most of every session. What would you like to know?",
+    suggestions: ["What should I pack for Geneva in July?","How do I get from the airport to my hotel?","What is the dress code for the cruise dinner?","How should I prepare for the SDGs workshop?","What sessions should I prioritise for networking?"]
+  },
+  collab: {
+    label: 'Mode: Alumni Collaboration',
+    system: `You are the ALS Alumni Collaboration AI — helping ALS participants and alumni think through post-programme collaboration. The ALS network includes presidents, vice-chancellors, deans, directors, researchers, and innovators from 15+ countries across multiple cohorts. Suggest concrete, realistic collaborations: research partnerships, MOUs, faculty exchanges, joint grants, co-publications, regional working groups, guest lectures, curriculum development. Be creative and specific.
+
+Knowledge base:
+
+${ALS_KNOWLEDGE}`,
+    welcome: "Hello! I'm the ALS Collaboration AI. I can help you think through research collaborations, institutional partnerships, faculty exchanges, joint publications, and post-ALS action plans. The ALS network is remarkable — let's make the most of it. What are you working on?",
+    suggestions: ["What collaborations are possible after ALS?","How do I stay connected with fellow participants?","Suggest a post-ALS action plan for my institution","What MOU possibilities exist within the ALS network?","How can ALS help my institution build international partnerships?"]
+  }
+};
+
+let currentMode = 'guide';
+let chatHistory = [];
+
+function setMode(mode) {
+  currentMode = mode;
+  document.querySelectorAll('.ai-mode-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('mode-' + mode).classList.add('active');
+  document.getElementById('mode-label').textContent = MODES[mode].label;
+  chatHistory = [];
+  document.getElementById('chat-messages').innerHTML = '';
+  addMsg(MODES[mode].welcome, 'bot');
+  renderSuggestions(MODES[mode].suggestions);
+}
+function addMsg(text, type) {
+  const el = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = 'msg ' + type;
+  div.textContent = text;
+  el.appendChild(div);
+  el.scrollTop = el.scrollHeight;
+  return div;
+}
+function renderSuggestions(suggs) {
+  document.getElementById('chat-suggestions').innerHTML = suggs.map(s =>
+    `<button class="sugg" onclick="sendSugg('${s.replace(/'/g,"\'")}')">${s}</button>`).join('');
+}
+function sendSugg(text) { document.getElementById('chat-input').value = text; sendMsg(); }
+async function sendMsg() {
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim(); if (!text) return;
+  input.value = '';
+  document.getElementById('chat-send').disabled = true;
+  document.getElementById('chat-suggestions').innerHTML = '';
+  addMsg(text, 'user');
+  chatHistory.push({role:'user', content:text});
+  const typing = addMsg('Thinking...', 'typing');
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({model:'claude-sonnet-4-6', max_tokens:1024, system: MODES[currentMode].system, messages: chatHistory})});
+    const d = await res.json();
+    const reply = d.content && d.content[0] ? d.content[0].text : "I'm unable to answer that right now. Please email malak.j@ureka.co.uk.";
+    typing.remove(); addMsg(reply, 'bot');
+    chatHistory.push({role:'assistant', content:reply});
+  } catch(e) { typing.remove(); addMsg("I'm having trouble connecting. Please email malak.j@ureka.co.uk for immediate assistance.", 'bot'); }
+  document.getElementById('chat-send').disabled = false;
+}
+
+const FAQS = [
+  {q:"What is included in the USD 6,000 programme fee?", a:"The fee includes: UNITAR Certificate of Achievement, UN expert-led sessions, exclusive institutional visits (Palais des Nations, AI for Good Summit for July cohorts, Global Educators Summit), daily lunch and refreshments, cruise networking dinner on Lake Geneva, named contribution to the UNITAR white paper, Ureka Fellow recognition, and visa support documentation. NOT included: flights, accommodation, airport transfers, and personal expenses."},
+  {q:"Is accommodation included?", a:"No. Accommodation is not included in the ALS programme fee and will not be. Participants are fully responsible for booking their own hotel in Geneva. There is no official ALS hotel. We recommend staying anywhere in Geneva with convenient public transport access to the UN area. Hotels in the canton of Geneva typically include a complimentary local transport pass with your stay."},
+  {q:"What is the refund policy?", a:"Visa rejection: full refund. Cancellation 21 or more days before the programme: full refund. Cancellation 14 days before: 50% refund. Cancellation within 7 days: no refund. Seat transfers to a colleague and deferrals to future cohorts may be considered by the ALS team. Contact malak.j@ureka.co.uk as early as possible."},
+  {q:"Is AI for Good included in October 2026 ALS?", a:"No. AI for Good is an annual UNITAR event held only in July. The October 2026 cohort includes the Global Educators Summit instead, which is expected to be bigger than previous editions. AI remains a core curriculum theme for all cohorts regardless."},
+  {q:"What is the Ureka Financial Grant?", a:"A merit-based fee reduction of USD 1,500. Not available to everyone — it requires a Statement of Purpose (max 600 words) and possibly a brief interview. The October 2026 cohort also offers a USD 500 early bird discount if payment is made by 31 July 2026. Combined, the total can be as low as USD 4,000."},
+  {q:"What is the UNITAR Academic Leadership Framework?", a:"A UNITAR-led white paper titled 'A Roadmap for Future-Ready Education.' ALS participants are named in it as part of the cohort contribution and legacy. Earlier materials referred to this as the Geneva Declaration — the current preferred term is the UNITAR Academic Leadership Framework. It is not a peer-reviewed journal article, but participants may cite their association professionally."},
+  {q:"What is the Ureka Fellow recognition?", a:"A professional title — not an academic degree — connected to the ALS leadership network and programme legacy. Successful ALS participants may be recognised as Ureka Fellows. It can be mentioned on LinkedIn and in professional biographies. It creates visibility and connection within the network but does not guarantee specific speaking or collaboration opportunities."},
+  {q:"Do I need a visa for Switzerland?", a:"Switzerland is Schengen. Many nationalities (EU/EEA, UAE, USA, UK) do not need a visa. If you do, an official visa support letter is provided upon full payment — email malak.j@ureka.co.uk. Apply at least 6–8 weeks before travel. The letter supports your application but does not guarantee approval — that decision rests with the relevant embassy."},
+  {q:"Can I attend only part of the programme?", a:"No. ALS is a complete executive experience and full attendance is expected. Missing sessions may affect your certificate eligibility and the overall programme experience."},
+  {q:"Who should I contact for questions?", a:"Ms. Malak Jaber — Programme Coordinator. Email: malak.j@ureka.co.uk · Phone: +971 50 207 3899 · Website: ureka.co.uk"}
+];
+
+function renderFAQs() {
+  document.getElementById('faqlist').innerHTML = FAQS.map((f, i) => `
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(${i})"><span>${f.q}</span><i class="ti ti-chevron-down" id="ficon-${i}" style="font-size:15px;color:var(--light);flex-shrink:0;transition:transform .2s"></i></div>
+      <div class="fqa" id="fa-${i}">${f.a}</div>
+    </div>`).join('');
+}
+function toggleFAQ(i) {
+  const a = document.getElementById('fa-'+i), ic = document.getElementById('ficon-'+i), open = a.classList.contains('open');
+  a.classList.toggle('open', !open); ic.style.transform = open ? '' : 'rotate(180deg)';
+}
+
+function nav(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => { a.classList.remove('active'); });
+  document.getElementById('page-' + page).classList.add('active');
+  const el = document.getElementById('nav-' + page);
+  if (el) el.classList.add('active');
+  window.scrollTo(0, 0);
+  document.getElementById('navlinks').classList.remove('open');
+  if (page === 'cohort') renderParticipants(PARTICIPANTS, 'pgrid', 'showP');
+  if (page === 'cohort2025') renderParticipants(PARTICIPANTS_2025, 'pgrid2025', 'showP2025');
+  if (page === 'ai' && document.getElementById('chat-messages').children.length === 0) setMode('guide');
+}
+function submitForm() {
+  document.getElementById('form-success').style.display = 'block';
+  document.getElementById('form-success').scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+// Search bindings
+document.addEventListener('DOMContentLoaded', function() {
+  const ps = document.getElementById('psearch');
+  if (ps) ps.addEventListener('input', filterP);
+  const ps2 = document.getElementById('psearch2025');
+  if (ps2) ps2.addEventListener('input', filterP2025);
+  renderFAQs();
+});
+
+</script>
+</body>
+</html>
