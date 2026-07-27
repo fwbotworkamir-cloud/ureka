@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Academic Leadership Suite · UNITAR Geneva</title>
+<meta name="description" content="The Academic Leadership Suite (ALS) — a four-day UN-certified executive programme in Geneva for academic leaders, deans, directors, and education decision-makers, delivered by UNITAR and Ureka Education Group.">
+<link rel="canonical" href="https://ureka.co.uk/als/">
+<link rel="icon" href="/favicon.ico">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Academic Leadership Suite · UNITAR Geneva">
+<meta property="og:description" content="A four-day UN-certified executive programme in Geneva for academic leaders, delivered by UNITAR and Ureka Education Group.">
+<meta property="og:url" content="https://ureka.co.uk/als/">
+<meta property="og:site_name" content="Ureka Education Group">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -813,9 +822,9 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
-        <a>malak.j@ureka.co.uk</a>
-        <a>+971 50 207 3899</a>
-        <a>ureka.co.uk</a>
+        <a href="mailto:malak.j@ureka.co.uk">malak.j@ureka.co.uk</a>
+        <a href="tel:+971502073899">+971 50 207 3899</a>
+        <a href="https://ureka.co.uk/">ureka.co.uk</a>
         <a onclick="nav('apply')">Apply now</a>
       </div>
     </div>
@@ -876,7 +885,7 @@ function buildDetailCard(p, cardId, backFn, summaryPrefix) {
     <div class="ai-summary-box">
       <div class="ai-summary-label"><i class="ti ti-sparkles"></i> Participant summary</div>
       <div class="ai-summary-text" id="${summaryPrefix}${p.id}">${p.bio}</div>
-      <button class="gen-btn" id="genbtn-${summaryPrefix}${p.id}" onclick="genSummary('${summaryPrefix}', ${p.id}, ${JSON.stringify(p).replace(/'/g,'&apos;')})">
+      <button class="gen-btn" id="genbtn-${summaryPrefix}${p.id}" onclick="genSummary('${summaryPrefix}', ${p.id})">
         <i class="ti ti-refresh"></i> Regenerate with AI
       </button>
     </div>`;
@@ -910,8 +919,9 @@ function filterP2025() {
   const q = document.getElementById('psearch2025').value.toLowerCase();
   renderParticipants(PARTICIPANTS_2025.filter(p => [p.name,p.inst,p.country,p.role,p.focus].some(v=>v.toLowerCase().includes(q))), 'pgrid2025', 'showP2025');
 }
-async function genSummary(prefix, id, pObj) {
-  const p = typeof pObj === 'string' ? JSON.parse(pObj) : pObj;
+async function genSummary(prefix, id) {
+  const p = (prefix === 'ai2025-' ? PARTICIPANTS_2025 : PARTICIPANTS).find(x => x.id === id);
+  if (!p) return;
   const btn = document.getElementById('genbtn-' + prefix + id);
   const txt = document.getElementById(prefix + id);
   btn.disabled = true; btn.innerHTML = '<i class="ti ti-loader"></i> Generating...';
@@ -1090,7 +1100,7 @@ function renderFAQs() {
   document.getElementById('faqlist').innerHTML = FAQS.map((f, i) => `
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFAQ(${i})"><span>${f.q}</span><i class="ti ti-chevron-down" id="ficon-${i}" style="font-size:15px;color:var(--light);flex-shrink:0;transition:transform .2s"></i></div>
-      <div class="fqa" id="fa-${i}">${f.a}</div>
+      <div class="faq-a" id="fa-${i}">${f.a}</div>
     </div>`).join('');
 }
 function toggleFAQ(i) {
@@ -1111,6 +1121,13 @@ function nav(page) {
   if (page === 'ai' && document.getElementById('chat-messages').children.length === 0) setMode('guide');
 }
 function submitForm() {
+  // ponytail: no form backend on WP host — expression of interest goes out as a mailto draft
+  const wrap = document.querySelector('.apply-form-wrap');
+  const vals = Array.from(wrap.querySelectorAll('input[type="text"],input[type="email"],textarea')).map(el => el.value.trim());
+  const labels = ['First name','Last name','Email','Institution','Role / title','Country','Interest'];
+  const grant = document.getElementById('grant-chk').checked;
+  const body = labels.map((l, i) => l + ': ' + (vals[i] || '-')).join('\n') + '\nFinancial Grant interest: ' + (grant ? 'Yes' : 'No');
+  window.location.href = 'mailto:malak.j@ureka.co.uk?subject=' + encodeURIComponent('ALS Expression of Interest') + '&body=' + encodeURIComponent(body);
   document.getElementById('form-success').style.display = 'block';
   document.getElementById('form-success').scrollIntoView({behavior:'smooth', block:'nearest'});
 }
