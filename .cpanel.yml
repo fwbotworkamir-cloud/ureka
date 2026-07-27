@@ -6,6 +6,8 @@ deployment:
     - /bin/cp -f wp-content/themes/kingster-child/page-als.php $STAGING/page-als.php
     - /bin/cp -f wp-content/themes/kingster-child/als-app.html $STAGING/als-app.html
     - /bin/cp -f wp-content/themes/kingster-child/als-hero.mp4 $STAGING/als-hero.mp4
+    - /bin/cp -f wp-content/themes/kingster-child/als-hero-poster.jpg $STAGING/als-hero-poster.jpg
+    - /bin/cp -f wp-content/themes/kingster-child/ipp-hero-poster.jpg $STAGING/ipp-hero-poster.jpg
     - /bin/cp -f wp-content/themes/kingster-child/page-ipp.php $STAGING/page-ipp.php
     - /bin/cp -f wp-content/themes/kingster-child/ipp-app.html $STAGING/ipp-app.html
     - /bin/cp -f wp-content/themes/kingster-child/ipp-hero.mp4 $STAGING/ipp-hero.mp4
@@ -18,6 +20,8 @@ deployment:
     - /bin/cp -f wp-content/themes/kingster-child/page-als.php $LIVE/page-als.php
     - /bin/cp -f wp-content/themes/kingster-child/als-app.html $LIVE/als-app.html
     - /bin/cp -f wp-content/themes/kingster-child/als-hero.mp4 $LIVE/als-hero.mp4
+    - /bin/cp -f wp-content/themes/kingster-child/als-hero-poster.jpg $LIVE/als-hero-poster.jpg
+    - /bin/cp -f wp-content/themes/kingster-child/ipp-hero-poster.jpg $LIVE/ipp-hero-poster.jpg
     - /bin/cp -f wp-content/themes/kingster-child/page-ipp.php $LIVE/page-ipp.php
     - /bin/cp -f wp-content/themes/kingster-child/ipp-app.html $LIVE/ipp-app.html
     - /bin/cp -f wp-content/themes/kingster-child/ipp-hero.mp4 $LIVE/ipp-hero.mp4
