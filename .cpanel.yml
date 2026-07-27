@@ -21,3 +21,6 @@ deployment:
     - /bin/cp -f wp-content/themes/kingster-child/page-ipp.php $LIVE/page-ipp.php
     - /bin/cp -f wp-content/themes/kingster-child/ipp-app.html $LIVE/ipp-app.html
     - /bin/cp -f wp-content/themes/kingster-child/ipp-hero.mp4 $LIVE/ipp-hero.mp4
+    # live: SpeedyCache purge is unreliable — clear only our two pages' cache each deploy
+    - /bin/rm -rf /home/pf5q6fgg782b/public_html/ureka.co.uk/wp-content/cache/speedycache/ureka.co.uk/als
+    - /bin/rm -rf /home/pf5q6fgg782b/public_html/ureka.co.uk/wp-content/cache/speedycache/ureka.co.uk/ipp
