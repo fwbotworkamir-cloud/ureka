@@ -58,6 +58,13 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1
 /* ── HOME PAGE ── */
 .hero{background:var(--navy);min-height:88vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:5rem 2rem 4rem}
 .hero-bg-pattern{position:absolute;inset:0;opacity:0.04;background-image:repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,1) 60px,rgba(255,255,255,1) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,1) 60px,rgba(255,255,255,1) 61px)}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.38}
+.hero-video-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,31,58,0.55) 0%,rgba(11,31,58,0.75) 60%,var(--navy) 100%)}
+.voices{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem}
+.voice-card{background:white;border:1px solid var(--border);border-radius:var(--r);padding:2rem}
+.voice-card p{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;line-height:1.6;color:var(--text);margin-bottom:1.25rem}
+.voice-card cite{font-style:normal;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted)}
+.voice-card cite strong{display:block;color:var(--navy);font-size:13px;margin-bottom:2px}
 .hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;text-align:center}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:2rem}
 .hero-line{width:40px;height:1px;background:var(--gold)}
@@ -327,6 +334,8 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1
 <!-- HOME -->
 <div class="page active" id="page-home">
   <div class="hero">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" src="/wp-content/themes/kingster/als-hero.mp4"></video>
+    <div class="hero-video-overlay"></div>
     <div class="hero-bg-pattern"></div>
     <div class="hero-inner">
       <div class="hero-eyebrow">
@@ -402,6 +411,27 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1
       <span class="quote-mark">"</span>
       <blockquote>ALS should not be remembered only as four days in Geneva. It should become a living network of academic leaders who continue to learn from each other, collaborate across borders, and shape the future of higher education together.</blockquote>
       <cite>Ureka Education Group · Programme vision</cite>
+    </div>
+  </div>
+
+  <div class="cream-section">
+    <div class="wrap">
+      <div class="section-eyebrow"><div class="section-line"></div><span class="section-tag">Voices from the cohort</span></div>
+      <h2 class="section-title">What July 2026 participants said</h2>
+      <div class="voices">
+        <div class="voice-card">
+          <p>"I came home with a notebook full of ideas and an amazing network I did not have seven days ago. As a group, we really clicked."</p>
+          <cite><strong>Danny Buckley</strong>Director of Studies · Loughborough University</cite>
+        </div>
+        <div class="voice-card">
+          <p>"This programme already exceeded my expectations. The connections you cannot plan for are the ones that matter — that is where the collaborations form that last decades."</p>
+          <cite><strong>Dr Anna Zeis</strong>Director, Learning Innovation · WHU</cite>
+        </div>
+        <div class="voice-card">
+          <p>"I came to Geneva to contribute, and you all made sure we left as family. The best cohort ever."</p>
+          <cite><strong>Dr. Yaw Amponsah Adoo</strong>Associate Professor &amp; Chair · Morris Brown College</cite>
+        </div>
+      </div>
     </div>
   </div>
 
