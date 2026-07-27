@@ -6,4 +6,4 @@
  * bypassing the kingster header/footer — it is a self-contained
  * landing page with its own nav, fonts, and styles.
  */
-readfile( __DIR__ . '/als/als.html' );
+readfile( __DIR__ . '/als-app.html' );
