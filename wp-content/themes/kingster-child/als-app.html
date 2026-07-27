@@ -35,7 +35,7 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1
 /* NAV */
 .nav{position:sticky;top:0;z-index:100;background:rgba(11,31,58,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(46,143,166,0.2);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
 .nav-logo{display:flex;align-items:center;gap:10px;color:white}
-.nav-logo-mark{width:32px;height:32px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--gold)}
+.nav-logo-mark{width:36px;height:36px;border-radius:50%;background:#fff;padding:4px;object-fit:contain;flex-shrink:0}
 .nav-logo-text{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:500;color:white;letter-spacing:0.03em}
 .nav-logo-sub{font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:0.12em;text-transform:uppercase;display:block;margin-top:-2px}
 .nav-links{display:flex;gap:2px}
@@ -60,15 +60,6 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1
 .hero-bg-pattern{position:absolute;inset:0;opacity:0.04;background-image:repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,1) 60px,rgba(255,255,255,1) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,1) 60px,rgba(255,255,255,1) 61px)}
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1}
 .hero-video-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.35) 0%,rgba(0,0,0,0.15) 45%,rgba(0,0,0,0.45) 100%)}
-/* hero: neutral, no blue cast — header keeps navy */
-.hero-eyebrow-text{color:#fff}
-.hero-line{background:rgba(255,255,255,0.7)}
-.hero h1 em{color:#fff}
-.hero-stat-n{color:#fff}
-.hero-stat-l{color:rgba(255,255,255,0.65)}
-.hero .btn-gold{background:#fff;color:#14202f;border-color:#fff}
-.hero .hero-bg-pattern{display:none}
-.hero h1,.hero-sub,.hero-eyebrow-text{text-shadow:0 2px 18px rgba(0,0,0,0.45)}
 .voices{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem}
 .voice-card{background:white;border:1px solid var(--border);border-radius:var(--r);padding:2rem}
 .voice-card p{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;line-height:1.6;color:var(--text);margin-bottom:1.25rem}
@@ -92,6 +83,25 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1
 .hero-stat-n{font-family:'Cormorant Garamond',serif;font-size:40px;color:var(--gold3);line-height:1}
 .hero-stat-l{font-size:11px;color:rgba(255,255,255,0.4);margin-top:6px;letter-spacing:0.08em;text-transform:uppercase}
 @media(max-width:500px){.hero-stat{padding:1rem 1.5rem;border-right:none}}
+/* hero: neutral, no blue cast — header keeps navy. Keep AFTER all .hero-* rules above so these win. */
+.hero-eyebrow-text{color:#fff}
+.hero-line{background:rgba(255,255,255,0.7)}
+.hero h1 em{color:#fff}
+.hero-stat-n{color:#fff}
+.hero-stat-l{color:rgba(255,255,255,0.65)}
+.hero .btn-gold{background:#fff;color:#14202f;border-color:#fff}
+.hero .hero-bg-pattern{display:none}
+.hero h1,.hero-sub,.hero-eyebrow-text{text-shadow:0 2px 18px rgba(0,0,0,0.45)}
+
+/* PARTNERSHIP BAND */
+.partner-band{background:var(--white);border-bottom:1px solid var(--border);padding:1.75rem 2rem;display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap}
+.partner-label{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--light);font-weight:500}
+.partner-band img{height:48px;width:auto;max-width:42vw;object-fit:contain}
+@media(max-width:420px){.partner-band{gap:1.25rem}.partner-band img{height:38px}}
+
+/* FOOTER LOGOS */
+.footer-logos{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:1.25rem}
+.footer-logos img{height:34px;width:auto;background:#fff;border-radius:6px;padding:4px 9px;object-fit:contain}
 
 /* SECTION WRAPPER */
 .wrap{max-width:920px;margin:0 auto;padding:0 2rem}
@@ -114,7 +124,7 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1
 .pull-quote-inner{max-width:760px;margin:0 auto;text-align:center}
 .quote-mark{font-family:'Cormorant Garamond',serif;font-size:80px;color:var(--gold);line-height:.7;margin-bottom:1rem;display:block}
 .pull-quote blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,28px);color:white;font-weight:400;font-style:italic;line-height:1.6;margin-bottom:1.5rem}
-.pull-quote cite{font-size:12px;color:rgba(46,143,166,0.7);letter-spacing:0.1em;text-transform:uppercase;font-style:normal}
+.pull-quote cite{font-size:12px;color:rgba(141,215,229,0.8);letter-spacing:0.1em;text-transform:uppercase;font-style:normal}
 
 /* CREAM STRIPE */
 .cream-section{background:var(--cream);padding:5rem 0}
@@ -193,7 +203,7 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1
 /* APPLY */
 .fee-hero{background:var(--navy);border-radius:var(--r);padding:3rem;text-align:center;margin-bottom:2rem;position:relative;overflow:hidden}
 .fee-hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 30px,rgba(46,143,166,0.03) 30px,rgba(46,143,166,0.03) 31px)}
-.fee-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(46,143,166,0.7);margin-bottom:.75rem;position:relative}
+.fee-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(141,215,229,0.85);margin-bottom:.75rem;position:relative}
 .fee-amount{font-family:'Cormorant Garamond',serif;font-size:72px;color:white;line-height:1;position:relative}
 .fee-currency{font-size:28px;vertical-align:super}
 .fee-reduced{font-size:16px;color:var(--gold3);margin-top:.75rem;position:relative;font-weight:300}
@@ -264,7 +274,7 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1
 .ai-head{background:var(--navy);padding:1.25rem 1.5rem;display:flex;align-items:center;gap:10px}
 .ai-head-dot{width:8px;height:8px;border-radius:50%;background:var(--gold)}
 .ai-head-title{font-family:'Cormorant Garamond',serif;font-size:20px;color:white;font-weight:400}
-.ai-head-mode{font-size:11px;color:rgba(46,143,166,0.7);margin-left:auto;letter-spacing:0.06em;text-transform:uppercase}
+.ai-head-mode{font-size:11px;color:rgba(141,215,229,0.85);margin-left:auto;letter-spacing:0.06em;text-transform:uppercase}
 .ai-modes{display:flex;gap:6px;padding:1rem 1.25rem;border-bottom:1px solid var(--border);background:var(--white);flex-wrap:wrap}
 .ai-mode-btn{padding:7px 16px;border-radius:20px;border:1px solid var(--border2);background:var(--white);color:var(--muted);font-size:12px;cursor:pointer;font-family:'Jost',sans-serif;transition:.15s;display:flex;align-items:center;gap:5px;letter-spacing:0.02em}
 .ai-mode-btn:hover{border-color:var(--gold);color:var(--gold)}
@@ -297,7 +307,7 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;margin-bottom:3rem}
 .footer-brand{font-family:'Cormorant Garamond',serif;font-size:22px;color:white;font-weight:400;margin-bottom:.5rem}
 .footer-brand-sub{font-size:13px;color:rgba(255,255,255,0.35);line-height:1.7;font-weight:300}
-.footer-col h4{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(46,143,166,0.6);margin-bottom:1rem;font-weight:500}
+.footer-col h4{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(141,215,229,0.7);margin-bottom:1rem;font-weight:500}
 .footer-col a{display:block;font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:.5rem;cursor:pointer;transition:.15s;font-weight:300}
 .footer-col a:hover{color:white}
 .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
@@ -320,7 +330,7 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1
 
 <nav class="nav">
   <div class="nav-logo">
-    <div class="nav-logo-mark">A</div>
+    <img class="nav-logo-mark" src="/wp-content/uploads/2023/03/logo-HP.png" alt="Ureka Education Group">
     <div>
       <div class="nav-logo-text">Academic Leadership Suite</div>
       <span class="nav-logo-sub">UNITAR · Ureka · Geneva</span>
@@ -367,6 +377,12 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1
     </div>
   </div>
 
+  <div class="partner-band">
+    <span class="partner-label">Delivered in partnership</span>
+    <img src="/wp-content/uploads/2025/04/UNITAR_2023_HORZ_blue-2.jpg" alt="UNITAR — United Nations Institute for Training and Research">
+    <img src="/wp-content/uploads/2023/03/logo-HP.png" alt="Ureka Education Group">
+  </div>
+
   <div class="strip">
     <div class="strip-inner">
       <div class="strip-item"><div class="strip-icon"><i class="ti ti-certificate" aria-hidden="true"></i></div><div class="strip-title">UNITAR certificate</div><div class="strip-text">Official UN certificate upon completion</div></div>
@@ -395,7 +411,7 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1
   <div style="margin-top:3rem;background:var(--white);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
     <div style="background:var(--navy);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
       <div>
-        <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:.3rem">ALS legacy network</div>
+        <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold3);font-weight:500;margin-bottom:.3rem">ALS legacy network</div>
         <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:white;font-weight:400">57 leaders · 2 cohorts · 20+ countries</div>
       </div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
@@ -574,14 +590,14 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1
   <div style="position:relative">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem">
       <div style="width:6px;height:6px;border-radius:50%;background:var(--gold)"></div>
-      <span style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);font-weight:500">October 2026 cohort · 27–30 October</span>
+      <span style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold3);font-weight:500">October 2026 cohort · 27–30 October</span>
     </div>
     <h3 style="font-family:'Cormorant Garamond',serif;font-size:28px;color:white;font-weight:400;margin-bottom:.75rem">Global Educators Summit — bigger than ever</h3>
     <p style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.7;font-weight:300;max-width:580px">The October 2026 cohort includes full access to the Global Educators Summit — expected to be the largest edition to date, bringing together academic leaders, Ministry of Education officials, and education policymakers from around the world. In place of AI for Good (a July-only event), the Global Educators Summit is the October cohort's signature platform moment. AI leadership, governance, and responsible adoption remain core curriculum themes for all cohorts.</p>
     <div style="margin-top:1.5rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem">
-      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(46,143,166,0.2);border-radius:var(--rs);padding:1rem"><div style="font-size:11px;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;font-weight:500">Sessions</div><div style="font-size:13px;color:rgba(255,255,255,0.75);font-weight:300">AI governance, SDGs, crisis leadership, institutional transformation</div></div>
-      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(46,143,166,0.2);border-radius:var(--rs);padding:1rem"><div style="font-size:11px;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;font-weight:500">Summit access</div><div style="font-size:13px;color:rgba(255,255,255,0.75);font-weight:300">Global Educators Summit 2026 — direct engagement with ministry officials</div></div>
-      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(46,143,166,0.2);border-radius:var(--rs);padding:1rem"><div style="font-size:11px;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;font-weight:500">Networking</div><div style="font-size:13px;color:rgba(255,255,255,0.75);font-weight:300">Cruise networking dinner on Lake Geneva + UN institutional visits</div></div>
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(46,143,166,0.2);border-radius:var(--rs);padding:1rem"><div style="font-size:11px;color:var(--gold3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;font-weight:500">Sessions</div><div style="font-size:13px;color:rgba(255,255,255,0.75);font-weight:300">AI governance, SDGs, crisis leadership, institutional transformation</div></div>
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(46,143,166,0.2);border-radius:var(--rs);padding:1rem"><div style="font-size:11px;color:var(--gold3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;font-weight:500">Summit access</div><div style="font-size:13px;color:rgba(255,255,255,0.75);font-weight:300">Global Educators Summit 2026 — direct engagement with ministry officials</div></div>
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(46,143,166,0.2);border-radius:var(--rs);padding:1rem"><div style="font-size:11px;color:var(--gold3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;font-weight:500">Networking</div><div style="font-size:13px;color:rgba(255,255,255,0.75);font-weight:300">Cruise networking dinner on Lake Geneva + UN institutional visits</div></div>
     </div>
   </div>
 </div>
@@ -866,6 +882,10 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1
         <a href="https://ureka.co.uk/">ureka.co.uk</a>
         <a onclick="nav('apply')">Apply now</a>
       </div>
+    </div>
+    <div class="footer-logos">
+      <img src="/wp-content/uploads/2025/04/UNITAR_2023_HORZ_blue-2.jpg" alt="UNITAR">
+      <img src="/wp-content/uploads/2023/03/logo-HP.png" alt="Ureka Education Group">
     </div>
     <div class="footer-bottom">
       <p>© 2026 Ureka Education Group · UNITAR programme · All rights reserved</p>
