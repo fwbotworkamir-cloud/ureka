@@ -6,3 +6,7 @@ deployment:
     - /bin/cp -f wp-content/themes/kingster-child/page-als.php $STAGING/page-als.php
     - /bin/cp -f wp-content/themes/kingster-child/als-app.html $STAGING/als-app.html
     - /bin/cp -f wp-content/themes/kingster-child/als-hero.mp4 $STAGING/als-hero.mp4
+    # staging runs without page cache; SpeedyCache drop-in serves stale files even when the plugin is off
+    - export STWC=/home/pf5q6fgg782b/public_html/ureka-staging.myffuae.com/wp-content
+    - /bin/rm -f $STWC/advanced-cache.php
+    - /bin/rm -rf $STWC/cache/speedycache
