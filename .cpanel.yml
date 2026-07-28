@@ -35,3 +35,5 @@ deployment:
     # staging: install Rank Math plugin files (one-shot; activation done in wp-admin)
     - export SPLUG=/home/pf5q6fgg782b/public_html/ureka-staging.myffuae.com/wp-content/plugins
     - /bin/sh -c 'test -d $SPLUG/seo-by-rank-math || (cd /tmp && curl -sL -o rankmath.zip https://downloads.wordpress.org/plugin/seo-by-rank-math.latest-stable.zip && unzip -oq rankmath.zip -d $SPLUG && rm -f rankmath.zip)'
+    # staging: mu-plugin with RM caps fix, alt fallback, header hardening
+    - /bin/cp -f wp-content/mu-plugins/ureka-seo-tweaks.php /home/pf5q6fgg782b/public_html/ureka-staging.myffuae.com/wp-content/mu-plugins/ureka-seo-tweaks.php
