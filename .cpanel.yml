@@ -32,3 +32,6 @@ deployment:
     - export SDOC=/home/pf5q6fgg782b/public_html/ureka-staging.myffuae.com
     - /bin/grep -q UREKA-HTTPS-REDIRECT $SDOC/.htaccess || /bin/cat htaccess-https.snippet $SDOC/.htaccess > $SDOC/.htaccess.new
     - /bin/grep -q UREKA-HTTPS-REDIRECT $SDOC/.htaccess || /bin/mv -f $SDOC/.htaccess.new $SDOC/.htaccess
+    # staging: install Rank Math plugin files (one-shot; activation done in wp-admin)
+    - export SPLUG=/home/pf5q6fgg782b/public_html/ureka-staging.myffuae.com/wp-content/plugins
+    - /bin/sh -c 'test -d $SPLUG/seo-by-rank-math || (cd /tmp && curl -sL -o rankmath.zip https://downloads.wordpress.org/plugin/seo-by-rank-math.latest-stable.zip && unzip -oq rankmath.zip -d $SPLUG && rm -f rankmath.zip)'
