@@ -28,3 +28,7 @@ deployment:
     # live: SpeedyCache purge is unreliable — clear only our two pages' cache each deploy
     - /bin/rm -rf /home/pf5q6fgg782b/public_html/ureka.co.uk/wp-content/cache/speedycache/*/*/als
     - /bin/rm -rf /home/pf5q6fgg782b/public_html/ureka.co.uk/wp-content/cache/speedycache/*/*/ipp
+    # staging: force https (audit fix #3) — prepend once, marker-guarded
+    - export SDOC=/home/pf5q6fgg782b/public_html/ureka-staging.myffuae.com
+    - /bin/grep -q UREKA-HTTPS-REDIRECT $SDOC/.htaccess || /bin/cat htaccess-https.snippet $SDOC/.htaccess > $SDOC/.htaccess.new
+    - /bin/grep -q UREKA-HTTPS-REDIRECT $SDOC/.htaccess || /bin/mv -f $SDOC/.htaccess.new $SDOC/.htaccess
