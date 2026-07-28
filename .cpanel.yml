@@ -41,3 +41,14 @@ deployment:
     - /bin/sh -c 'test -d $SPLUG/seo-by-rank-math || (cd /tmp && curl -sL -o rankmath.zip https://downloads.wordpress.org/plugin/seo-by-rank-math.latest-stable.zip && unzip -oq rankmath.zip -d $SPLUG && rm -f rankmath.zip)'
     # staging: mu-plugin with RM caps fix, alt fallback, header hardening
     - /bin/cp -f wp-content/mu-plugins/ureka-seo-tweaks.php /home/pf5q6fgg782b/public_html/ureka-staging.myffuae.com/wp-content/mu-plugins/ureka-seo-tweaks.php
+    # ---- LIVE SEO rollout (mirrors staging; all idempotent) ----
+    - export LDOC=/home/pf5q6fgg782b/public_html/ureka.co.uk
+    # live: force https 301 (audit fix #3), marker-guarded so it runs once
+    - /bin/grep -q UREKA-HTTPS-REDIRECT $LDOC/.htaccess || /bin/cp -f $LDOC/.htaccess $LDOC/.htaccess.bak-preseo
+    - /bin/grep -q UREKA-HTTPS-REDIRECT $LDOC/.htaccess || /bin/cat htaccess-https.snippet $LDOC/.htaccess > $LDOC/.htaccess.new
+    - /bin/grep -q UREKA-HTTPS-REDIRECT $LDOC/.htaccess || /bin/mv -f $LDOC/.htaccess.new $LDOC/.htaccess
+    # live: Rank Math plugin files (activation happens in wp-admin)
+    - /bin/mkdir -p $LDOC/wp-content/mu-plugins
+    - /bin/sh -c 'test -d $LDOC/wp-content/plugins/seo-by-rank-math || (cd /tmp && curl -sL -o rm-live.zip https://downloads.wordpress.org/plugin/seo-by-rank-math.latest-stable.zip && unzip -oq rm-live.zip -d $LDOC/wp-content/plugins && rm -f rm-live.zip)'
+    # live: mu-plugin (RM caps fix, image alt fallback, HSTS + no PHP version header)
+    - /bin/cp -f wp-content/mu-plugins/ureka-seo-tweaks.php $LDOC/wp-content/mu-plugins/ureka-seo-tweaks.php
