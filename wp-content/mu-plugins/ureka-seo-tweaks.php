@@ -6,10 +6,9 @@
 
 // One-time: grant Rank Math admin capabilities to administrators
 // (REST-based activation skips Rank Math's capability registration).
+// Runs every admin load: Rank Math re-registers (and can drop) these on activation,
+// and add_cap() is a no-op when the cap is already present.
 add_action( 'admin_init', function () {
-	if ( get_option( 'ureka_rm_caps_fixed' ) ) {
-		return;
-	}
 	$role = get_role( 'administrator' );
 	if ( ! $role ) {
 		return;
@@ -23,9 +22,10 @@ add_action( 'admin_init', function () {
 		'rank_math_edit_htaccess', 'rank_math_content_ai',
 	);
 	foreach ( $caps as $cap ) {
-		$role->add_cap( $cap );
+		if ( ! $role->has_cap( $cap ) ) {
+			$role->add_cap( $cap );
+		}
 	}
-	update_option( 'ureka_rm_caps_fixed', 1 );
 } );
 
 // SEO: derive alt text from attachment title/filename when alt is missing (97% of images had none).
