@@ -1257,7 +1257,7 @@ async function submitForm() {
     const r = await fetch('/wp-json/contact-form-7/v1/contact-forms/' + CF7_FORM_ID + '/feedback', { method: 'POST', body: fd });
     const j = await r.json();
     ok = j.status === 'mail_sent';
-    if (ok && typeof gtag === 'function') gtag('event','generate_lead',{form:'ALS Application',page_location:location.href});
+    if (ok) { window.location.href = '/thank-you-als/'; return; }
     if (!ok && j.status === 'validation_failed') { alert((j.invalid_fields && j.invalid_fields[0] && j.invalid_fields[0].message) || j.message); return; }
   } catch (e) { ok = false; }
   if (!ok) {

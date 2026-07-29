@@ -9,6 +9,7 @@ deployment:
     - /bin/cp -f wp-content/themes/kingster-child/als-hero-poster.jpg $STAGING/als-hero-poster.jpg
     - /bin/cp -f wp-content/themes/kingster-child/ipp-hero-poster.jpg $STAGING/ipp-hero-poster.jpg
     - /bin/cp -f wp-content/themes/kingster-child/page-ipp.php $STAGING/page-ipp.php
+    - /bin/cp -f wp-content/themes/kingster-child/page-thankyou.php $STAGING/page-thankyou.php
     - /bin/cp -f wp-content/themes/kingster-child/ipp-app.html $STAGING/ipp-app.html
     - /bin/cp -f wp-content/themes/kingster-child/ipp-hero.mp4 $STAGING/ipp-hero.mp4
     - /bin/mkdir -p $STAGING/speakers
@@ -27,6 +28,7 @@ deployment:
     - /bin/cp -f wp-content/themes/kingster-child/als-hero-poster.jpg $LIVE/als-hero-poster.jpg
     - /bin/cp -f wp-content/themes/kingster-child/ipp-hero-poster.jpg $LIVE/ipp-hero-poster.jpg
     - /bin/cp -f wp-content/themes/kingster-child/page-ipp.php $LIVE/page-ipp.php
+    - /bin/cp -f wp-content/themes/kingster-child/page-thankyou.php $LIVE/page-thankyou.php
     - /bin/cp -f wp-content/themes/kingster-child/ipp-app.html $LIVE/ipp-app.html
     - /bin/cp -f wp-content/themes/kingster-child/ipp-hero.mp4 $LIVE/ipp-hero.mp4
     - /bin/mkdir -p $LIVE/speakers
@@ -36,6 +38,7 @@ deployment:
     # live: SpeedyCache purge is unreliable — clear only our two pages' cache each deploy
     - /bin/rm -rf /home/pf5q6fgg782b/public_html/ureka.co.uk/wp-content/cache/speedycache/*/*/als
     - /bin/rm -rf /home/pf5q6fgg782b/public_html/ureka.co.uk/wp-content/cache/speedycache/*/*/ipp
+    - /bin/rm -rf /home/pf5q6fgg782b/public_html/ureka.co.uk/wp-content/cache/speedycache/*/*/thank-you-*
     # staging: force https (audit fix #3) — prepend once, marker-guarded
     - export SDOC=/home/pf5q6fgg782b/public_html/ureka-staging.myffuae.com
     - /bin/grep -q UREKA-HTTPS-REDIRECT $SDOC/.htaccess || /bin/cat htaccess-https.snippet $SDOC/.htaccess > $SDOC/.htaccess.new
