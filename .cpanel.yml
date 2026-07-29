@@ -13,6 +13,8 @@ deployment:
     - /bin/cp -f wp-content/themes/kingster-child/ipp-hero.mp4 $STAGING/ipp-hero.mp4
     - /bin/mkdir -p $STAGING/speakers
     - /bin/cp -f wp-content/themes/kingster-child/speakers/*.jpg wp-content/themes/kingster-child/speakers/*.webp $STAGING/speakers/
+    - /bin/mkdir -p $STAGING/venues
+    - /bin/cp -f wp-content/themes/kingster-child/venues/*.jpg wp-content/themes/kingster-child/venues/*.webp $STAGING/venues/
     # staging runs without page cache; SpeedyCache drop-in serves stale files even when the plugin is off
     - export STWC=/home/pf5q6fgg782b/public_html/ureka-staging.myffuae.com/wp-content
     - /bin/rm -f $STWC/advanced-cache.php
@@ -29,6 +31,8 @@ deployment:
     - /bin/cp -f wp-content/themes/kingster-child/ipp-hero.mp4 $LIVE/ipp-hero.mp4
     - /bin/mkdir -p $LIVE/speakers
     - /bin/cp -f wp-content/themes/kingster-child/speakers/*.jpg wp-content/themes/kingster-child/speakers/*.webp $LIVE/speakers/
+    - /bin/mkdir -p $LIVE/venues
+    - /bin/cp -f wp-content/themes/kingster-child/venues/*.jpg wp-content/themes/kingster-child/venues/*.webp $LIVE/venues/
     # live: SpeedyCache purge is unreliable — clear only our two pages' cache each deploy
     - /bin/rm -rf /home/pf5q6fgg782b/public_html/ureka.co.uk/wp-content/cache/speedycache/*/*/als
     - /bin/rm -rf /home/pf5q6fgg782b/public_html/ureka.co.uk/wp-content/cache/speedycache/*/*/ipp
