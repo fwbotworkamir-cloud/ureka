@@ -380,6 +380,10 @@ img[src*="logo-HP"]{background:#1C2A44;border-radius:10px;padding:6px}
   .cohort-stats{grid-template-columns:1fr 1fr}
 }
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0BJ1XCV8LZ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
 </head>
 <body>
 
@@ -1253,6 +1257,7 @@ async function submitForm() {
     const r = await fetch('/wp-json/contact-form-7/v1/contact-forms/' + CF7_FORM_ID + '/feedback', { method: 'POST', body: fd });
     const j = await r.json();
     ok = j.status === 'mail_sent';
+    if (ok && typeof gtag === 'function') gtag('event','generate_lead',{form:'ALS Application',page_location:location.href});
     if (!ok && j.status === 'validation_failed') { alert((j.invalid_fields && j.invalid_fields[0] && j.invalid_fields[0].message) || j.message); return; }
   } catch (e) { ok = false; }
   if (!ok) {

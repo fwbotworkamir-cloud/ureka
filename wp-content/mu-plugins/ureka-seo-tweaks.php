@@ -51,6 +51,21 @@ add_filter( 'the_content', function ( $content ) {
 	}, $content );
 }, 20 );
 
+// GA4 site-wide. The /als/ and /ipp/ templates bypass wp_head, so they carry
+// their own copy of this tag — guard against double-tagging there.
+define( 'UREKA_GA4_ID', 'G-0BJ1XCV8LZ' );
+add_action( 'wp_head', function () {
+	if ( is_page( array( 'als', 'ipp' ) ) ) {
+		return;
+	}
+	printf(
+		'<script async src="https://www.googletagmanager.com/gtag/js?id=%1$s"></script>' .
+		'<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}' .
+		'gtag("js",new Date());gtag("config","%1$s");</script>',
+		esc_js( UREKA_GA4_ID )
+	);
+}, 1 );
+
 // Security/headers: drop PHP version disclosure, add HSTS on https.
 add_action( 'send_headers', function () {
 	header_remove( 'X-Powered-By' );

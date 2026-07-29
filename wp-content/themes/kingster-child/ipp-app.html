@@ -380,6 +380,10 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);outline:none;bo
 .footer-logos img{height:34px;width:auto;background:#fff;border-radius:6px;padding:4px 9px;object-fit:contain}
 .footer-logos img[src*="logo-HP"]{background:transparent;border:1px solid rgba(255,255,255,.25);padding:4px}
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0BJ1XCV8LZ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
 </head>
 <body>
 
@@ -1451,7 +1455,7 @@ UREKA-HIDDEN-END-->
     fetch('/wp-json/contact-form-7/v1/contact-forms/' + CF7_FORM_ID + '/feedback', {method:'POST', body:fd})
       .then(function(r){ return r.json(); })
       .then(function(j){
-        if(j.status === 'mail_sent'){ showDone(readiness); return; }
+        if(j.status === 'mail_sent'){ if(typeof gtag==='function') gtag('event','generate_lead',{form:'IPP Application',readiness:readiness||'',page_location:location.href}); showDone(readiness); return; }
         if(j.status === 'validation_failed'){
           var f = j.invalid_fields && j.invalid_fields[0];
           alert((f && f.message) || j.message || 'Please check your answers and try again.');
