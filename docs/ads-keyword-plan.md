@@ -1,7 +1,8 @@
 # Ureka — Data-Backed Keyword & Competitor Plan
 
 Researched 1 Aug 2026 via Ahrefs (paid-pages index dated 1 Jul 2026 — August not yet indexed).
-All CPCs in USD. Volumes = monthly, per-country. This document **revises** `ads-strategy.md` §2–3.
+LinkedIn intel added 1 Aug 2026 (Amir's session). All CPCs in USD. Volumes = monthly, per-country.
+This document **revises** `ads-strategy.md` §2–3. Amir approved: MUN campaign + UNITAR probe (1 Aug).
 
 ---
 
@@ -75,19 +76,63 @@ kids' day camps; negative). A ~$8–10/day campaign is feasible; nothing more.
 | **IPP – Abroad/Exchange** | US | study abroad for hs / exchange programs / travel programs / summer abroad (2027 pipeline flag) | `/ipp/` | **$10** |
 | **Brand** | All 3 | ureka, ureka education, ureka als/ipp | `/` , `/ipp/` | $5 |
 | **UAE – IPP** | AE | leadership program dubai / winter camp (teen-qualified) / summer programs for hs | `/ipp/` | $8 |
-| ~~UNITAR-adjacent~~ | — | **KILL** — partner-brand risk + navigational free-course intent + can't spend $8/day on 10–50/mo terms | — | $0 |
+| **MUN angle** | US + AE | model united nations (US 543/mo, AE 100/mo, global 5,900, CPC $0.80, **0% paid clicks — no one bids, we own the SERP**) + model un conference variants | `/ipp/` | **$8** |
+| **UNITAR probe** | US + AE | exact only: unitar certificate programme geneva, unitar leadership programme. Negatives: free, online, course(s), login, e-learning. **Week-4 gate: judged on lead QUALITY, not count** — dies if leads are free-course seekers | `/ipp/` | **$5** |
 | Qatar Search | — | **Do not build** | — | $0 |
 
-Total Search: **~$48/day (~$1,450/mo)** — up from the defensive $18/day, because the market
+**MUN rationale (supersedes audit A9's "wrong intent" verdict):** the product fact that changed
+it — IPP participants get to speak at the UN ("MUN but real, and more time"). MUN searchers are
+self-selected into exactly this activity; the ad copy qualifies intent for us ("Done Model UN?
+Speak at the real United Nations in Geneva") and the $3,000 price filters the rest. ⚠️ Ad-copy
+gate: confirm with Ureka whether speaking is **guaranteed for every participant** or selective —
+determines whether "speak at the UN" or "present at the Palais des Nations" is the compliant claim.
+
+**UNITAR probe rationale:** originally killed for partner-brand risk; risk withdrawn 1 Aug after
+LinkedIn showed the relationship is joint-venture depth (co-published Sports Diplomacy White Paper
+with UNITAR; co-delivered programmes at UN HQ). Volume is still tiny (≤10–50/mo) — this is a $280
+max-damage quality probe, not a growth line.
+
+Total Search: **~$61/day (~$1,850/mo)** — up from the defensive $18/day, because the market
 turned out to exist. Demand Gen / paid social budget unchanged from strategy doc.
 
 **Day-one negatives:** free, online, virtual, research, near me, jobs, internship (as standalone
-job intent), scholarship*, salary, mun, model un, unitar, camp (UAE: unless teen-qualified),
-day camp, 2025. *(`law internships for hs students` is high-volume but the searcher wants an
-internship, not a paid Geneva trip — leave to NSLC.)*
+job intent), scholarship*, salary, camp (UAE: unless teen-qualified), day camp, 2025, what is,
+how to join. *(`law internships for hs students` is high-volume but the searcher wants an
+internship, not a paid Geneva trip — leave to NSLC. `mun`/`model un`/`unitar` REMOVED from the
+negative list — they now have their own campaigns; keep them as negatives on Campaigns 1–3 only,
+so their traffic routes to the right ad copy.)*
 
-## 6. What this does NOT change
+## 6. LinkedIn intel (1 Aug 2026) — the delegation channel is already proven
 
-Delegations remain the highest-ROI motion; ALS Oct stays out of paid; Demand Gen still owns
-prospecting; all 5 gates in `ADS-SESSION-BRIEF.md` §4 still block launch. This doc only
-upgrades Search from "defensive insurance" to "small real channel" — on evidence.
+Read via Amir's LinkedIn session (company page: linkedin.com/company/ureka-limited, 5K followers):
+
+- **Abu Dhabi University sent a faculty-accompanied student delegation to IPP July 2026**
+  (9–15 Jul Geneva + 2 remote weeks; students from 3 ADU colleges; organised through ADU's
+  **Internationalization Office**; chaperoned by Dr. Andrea Bolívar, International Relations).
+  Both ADU and the professor posted public write-ups, and ADU's post explicitly invites students
+  to "the next International Project program **Winter Session this November**."
+- **Consequences for this plan:**
+  1. The delegation channel is proven, not hypothetical — and in UAE, the first target market.
+  2. Buyer persona is now named: **university Internationalization Offices + deans** (not
+     generic international-office heads). Build the outreach list on this title.
+  3. **ADU re-booking for November = delegation lead #1.** Warmest possible lead.
+  4. Faculty accompaniment is institutionally sanctioned absence — kills the term-time
+     objection (audit A10) for the delegation route, exactly as predicted.
+  5. The `/delegations/` page and outreach deck should lead with the ADU case study
+     (posts are public; still get Ureka's OK to name them).
+- **IPP itinerary is stronger than the website conveys:** WHO, ILO, ICRC, CERN, UNOG visits —
+  prime Demand Gen creative material.
+- **Ureka has never run LinkedIn ads** (ad library empty; reach is organic reposts only).
+  LinkedIn = the delegation channel's medium: organic + Wael's-network DMs first (free);
+  LinkedIn Ads to internationalization-office titles only if outreach stalls. Google cannot
+  target those roles; LinkedIn can.
+- UNITAR relationship is joint-venture depth (Sports Diplomacy White Paper co-published after
+  a World Cup Diplomacy Summit at UN HQ NY; third product exists: Executive Diploma in Sports
+  Leadership, UNITAR+VSI+Ureka, Jan 2027). Recurring organisers: Mazin Khan, Pierre Pascal,
+  Malak Jaber.
+
+## 7. What this does NOT change
+
+Delegations remain the highest-ROI motion (now with proof); ALS Oct stays out of paid; Demand
+Gen still owns prospecting; all 5 gates in `ADS-SESSION-BRIEF.md` §4 still block launch. This
+doc only upgrades Search from "defensive insurance" to "small real channel" — on evidence.
