@@ -105,8 +105,8 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:560;letter-spacing:-0.012em
 .navlogos{display:flex;align-items:center;gap:6px;margin-top:4px}
 .navlogos img{width:auto;object-fit:contain;display:block}
 .navlogos img[src*="UNITAR"]{height:15px;background:#fff;border-radius:3px;padding:2px 4px}
-.navlogos img[src*="logo-HP"]{height:20px;border:1px solid rgba(255,255,255,.28);border-radius:3px;padding:2px}
-@media(max-width:420px){.navlogos img[src*="UNITAR"]{height:12px}.navlogos img[src*="logo-HP"]{height:15px}}
+.navlogos img[src*="logo-HP"]{height:26px;border:1px solid rgba(255,255,255,.28);border-radius:4px;padding:3px}
+@media(max-width:420px){.mk{width:26px;height:26px}.navlogos img[src*="logo-HP"]{height:22px}}
 .navlinks{display:flex;gap:24px;margin-left:auto}
 .navlinks a{font-size:13.5px;font-weight:600;color:#D6DDE6;text-decoration:none;transition:color .15s}
 .navlinks a:hover{color:var(--brass-lt)}
@@ -149,9 +149,8 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:560;letter-spacing:-0.012em
 .credential:hover{transform:rotate(0) translateY(-4px)}
 .ctop{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:16px}
 .clock{display:flex;align-items:center;gap:8px}
-.mk{width:24px;height:24px;border-radius:50%;border:1.4px solid var(--brass-lt);position:relative;flex:none}
-.mk::before{content:"";position:absolute;inset:5px;border-radius:50%;border:1px solid var(--brass-lt);opacity:.5}
-.mk::after{content:"";position:absolute;top:50%;left:50%;width:3px;height:3px;background:var(--brass-lt);border-radius:50%;transform:translate(-50%,-50%)}
+.mk{width:30px;height:30px;border-radius:50%;border:1.4px solid var(--brass-lt);background:#fff;flex:none;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:3px}
+.mk img{width:100%;height:100%;object-fit:contain;display:block}
 .cbrand{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:var(--mute-i);text-transform:uppercase;line-height:1.4}
 .cstatus{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#7FE0A6;border:1px solid rgba(127,224,166,.45);padding:4px 8px;border-radius:20px;text-transform:uppercase;white-space:nowrap}
 .cphoto{border-radius:6px;overflow:hidden;margin-bottom:16px;position:relative;border:1px solid rgba(255,255,255,.1)}
@@ -474,10 +473,9 @@ gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
 <nav class="topnav" aria-label="Primary">
   <div class="wrap">
     <a class="navbrand" href="#top">
-      <span class="mk"></span>
+      <span class="mk"><img src="/wp-content/themes/kingster/ipp-img/unitar-emblem.jpg" width="256" height="256" alt="UNITAR"></span>
       <span><b>IPP</b>
         <span class="navlogos">
-          <img src="/wp-content/uploads/2025/04/UNITAR_2023_HORZ_blue-2.jpg" width="1325" height="367" alt="UNITAR">
           <img src="/wp-content/uploads/2023/03/logo-HP.png" width="1806" height="1806" alt="Ureka Education">
         </span>
       </span>
