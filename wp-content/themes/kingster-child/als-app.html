@@ -887,16 +887,16 @@ gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
   <div class="hero" style="min-height:40vh;padding:3.5rem 2rem 3rem">
     <div class="hero-bg-pattern"></div>
     <div class="hero-inner">
-      <div class="hero-eyebrow"><div class="hero-line"></div><span class="hero-eyebrow-text">AI-powered · Three modes</span><div class="hero-line"></div></div>
-      <h1>Your <em>ALS AI</em><br>assistant</h1>
-      <p class="hero-sub">Ask anything about the programme — powered by Claude AI and trained on all official ALS materials.</p>
+      <div class="hero-eyebrow"><div class="hero-line"></div><span class="hero-eyebrow-text">Instant answers · Three modes</span><div class="hero-line"></div></div>
+      <h1>Your <em>ALS</em><br>assistant</h1>
+      <p class="hero-sub">Instant answers drawn from the official ALS materials — fees, dates, visas, schedule and Geneva logistics.</p>
     </div>
   </div>
   <div class="section wrap">
     <div class="ai-wrapper">
       <div class="ai-head">
         <div class="ai-head-dot"></div>
-        <div class="ai-head-title">ALS AI assistant</div>
+        <div class="ai-head-title">ALS assistant</div>
         <div class="ai-head-mode" id="mode-label">Mode: ALS Guide</div>
       </div>
       <div class="ai-modes">
@@ -1035,21 +1035,19 @@ function filterP2025() {
   const q = document.getElementById('psearch2025').value.toLowerCase();
   renderParticipants(PARTICIPANTS_2025.filter(p => [p.name,p.inst,p.country,p.role,p.focus].some(v=>v.toLowerCase().includes(q))), 'pgrid2025', 'showP2025');
 }
-async function genSummary(prefix, id) {
+function genSummary(prefix, id) {
   const p = (prefix === 'ai2025-' ? PARTICIPANTS_2025 : PARTICIPANTS).find(x => x.id === id);
   if (!p) return;
-  const btn = document.getElementById('genbtn-' + prefix + id);
   const txt = document.getElementById(prefix + id);
-  btn.disabled = true; btn.innerHTML = '<i class="ti ti-loader"></i> Generating...';
-  txt.innerHTML = '<em style="color:var(--light)">Writing summary...</em>';
-  try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({model:'claude-sonnet-4-6', max_tokens:800,
-        messages:[{role:'user', content:`Write a 3-sentence professional handbook summary for an ALS participant at UNITAR Geneva. Participant: ${p.name}, ${p.role} at ${p.inst} (${p.country}). Credentials: ${p.phd}. Focus: ${p.focus}. Be specific, warm, and highlight their unique value to the cohort. No preamble.`}]})});
-    const d = await res.json();
-    txt.textContent = d.content && d.content[0] ? d.content[0].text : p.bio;
-  } catch(e) { txt.textContent = p.bio; }
-  btn.innerHTML = '<i class="ti ti-refresh"></i> Regenerate'; btn.disabled = false;
+  // Composed from the participant record itself. The previous version called the
+  // Anthropic API from the browser with no key, so it always fell back to p.bio anyway.
+  const bits = [];
+  bits.push(p.name + ' is ' + p.role + ' at ' + p.inst + ' in ' + p.country + '.');
+  if (p.phd) bits.push(p.phd + '.');
+  if (p.focus) bits.push('Their focus at ALS is ' + p.focus.charAt(0).toLowerCase() + p.focus.slice(1) + '.');
+  txt.textContent = p.bio ? p.bio : bits.join(' ');
+  const btn = document.getElementById('genbtn-' + prefix + id);
+  if (btn) btn.style.display = 'none';
 }
 
 // ── ALS KNOWLEDGE BASE ──
@@ -1119,35 +1117,301 @@ CONTACT:
 Ms. Malak Jaber — malak.j@ureka.co.uk — +971 50 207 3899 — ureka.co.uk
 `;
 
+// ── ALS ANSWER BANK ──
+// Every answer is grounded in ALS_KNOWLEDGE above or in general, verifiable Geneva
+// travel facts. Nothing here guesses at admissions, visa or refund outcomes — those
+// always route to Malak. `k` holds extra keywords the matcher can hit on.
+const ALS_QA = [
+// ---------- FEES & PAYMENT ----------
+{q:"How much does ALS cost?",k:"fee price cost tuition usd dollars how much expensive",a:"The standard programme fee is USD 6,000 per participant. With the merit-based Ureka Financial Grant (USD 1,500 reduction) and the October 2026 early bird discount (USD 500 off if paid by 31 July 2026), the total can come down to USD 4,000. The grant is not guaranteed — it is awarded on merit."},
+{q:"What is the standard programme fee?",k:"standard full fee list price normal",a:"USD 6,000 per participant. Reductions are possible through the Ureka Financial Grant and, for October 2026, an early bird discount."},
+{q:"What is the lowest price I could pay?",k:"cheapest lowest minimum best price discount stack reduce",a:"USD 4,000 — the standard USD 6,000 less the USD 1,500 Ureka Financial Grant and the USD 500 October 2026 early bird discount. Both have conditions: the grant is merit-based and not guaranteed, and the early bird requires payment by 31 July 2026."},
+{q:"Can the grant and early bird discount be combined?",k:"combine stack both grant early bird together same time",a:"Yes. For the October 2026 cohort an awarded Ureka Financial Grant (USD 1,500) and the early bird discount (USD 500, paid by 31 July 2026) can combine, bringing the fee to USD 4,000."},
+{q:"How do I pay the programme fee?",k:"payment method bank transfer card invoice pay how",a:"Payment arrangements, invoicing and institutional purchase orders are handled directly by the programme team. Email malak.j@ureka.co.uk and Ms. Malak Jaber will send the correct payment details for your situation."},
+{q:"Can my university pay on my behalf?",k:"institution employer sponsor invoice purchase order university pays funding",a:"Yes, institutional sponsorship is common. Ask malak.j@ureka.co.uk for a formal invoice or programme letter addressed to your institution — that is usually what finance departments need to release funds."},
+{q:"Can I pay in instalments?",k:"instalment installment split payment partial deposit staged phases",a:"Payment terms are handled case by case by the programme team rather than published as a fixed policy. Email malak.j@ureka.co.uk with what you need and they will confirm what is possible."},
+{q:"Does paying guarantee me a place?",k:"payment guarantee place seat secure confirmed admission automatic",a:"No. Payment does not guarantee a place — selection is merit-based. Applicants submit a CV and Statement of Purpose, and shortlisted candidates are invited to an online interview."},
+{q:"Is there a deposit to hold my seat?",k:"deposit hold reserve seat booking secure",a:"Deposit and seat-holding arrangements are confirmed directly by the programme team. Contact malak.j@ureka.co.uk to discuss your case."},
+{q:"What currency is the fee in?",k:"currency usd dollars chf francs exchange quoted",a:"The fee is quoted in US dollars (USD 6,000 standard). Day-to-day spending in Geneva is in Swiss francs (CHF)."},
+{q:"Is there a group or delegation rate?",k:"group delegation multiple colleagues team several rate discount institution",a:"Sending more than one leader from the same institution is welcomed, but group pricing is not published. Email malak.j@ureka.co.uk with the number of attendees and they will advise."},
+{q:"Are there any hidden costs?",k:"hidden extra additional surprise costs beyond fee budget",a:"No hidden costs, but the fee is deliberately not all-inclusive. Budget separately for flights, accommodation, airport transfers, personal expenses and any dinners beyond the Cultural Evening and Cruise Networking Dinner."},
+{q:"What is the early bird deadline?",k:"early bird deadline date 31 july cutoff discount expires",a:"For the October 2026 cohort, the USD 500 early bird discount applies if payment is made by 31 July 2026."},
+{q:"Is the fee tax deductible?",k:"tax deductible claim expense professional development write off",a:"That depends on your country and your institution's policy, and we cannot advise on tax treatment. Many participants have the fee covered as professional development — ask your finance or HR department, and request a formal invoice from malak.j@ureka.co.uk."},
+{q:"Do you offer a full scholarship?",k:"scholarship free full funding fully funded waiver bursary sponsored",a:"There is no full scholarship. The support available is the Ureka Financial Grant — a merit-based USD 1,500 reduction — plus the October 2026 early bird discount. Requests beyond that should go to malak.j@ureka.co.uk."},
+
+// ---------- UREKA FINANCIAL GRANT ----------
+{q:"What is the Ureka Financial Grant?",k:"grant financial aid reduction 1500 merit funding support",a:"A merit-based fee reduction of USD 1,500 — a reduction, not a cash payment. It is not available to everyone: it requires a Statement of Purpose of up to 600 words and possibly a brief interview."},
+{q:"How do I apply for the financial grant?",k:"apply grant application process sop statement purpose request",a:"Submit a Statement of Purpose of up to 600 words alongside your application. A short interview may also form part of the assessment. The grant is awarded on merit, so a specific, evidence-led SOP matters."},
+{q:"Is the grant guaranteed?",k:"guaranteed grant everyone automatic certain assured",a:"No. The Ureka Financial Grant is merit-based and explicitly not guaranteed. Budget for the standard USD 6,000 unless and until a grant is confirmed to you."},
+{q:"Is the grant paid to me in cash?",k:"cash payment money transfer reimbursement grant disbursed",a:"No. It is a USD 1,500 reduction applied to your programme fee, not a cash disbursement."},
+{q:"What should my Statement of Purpose cover?",k:"sop statement purpose write content prompt 600 words topic",a:"The prompt is: How will your participation in ALS enable you to drive institutional transformation, influence education policy, and create measurable, long-term impact within your academic ecosystem and beyond? Maximum 600 words. Be concrete about your institution, your remit and the change you intend to lead."},
+{q:"How long should the Statement of Purpose be?",k:"sop length words limit 600 how long maximum",a:"Up to 600 words."},
+{q:"When will I know if I received the grant?",k:"grant decision timeline when notified result outcome hear back",a:"Grant decisions are communicated by the programme team as part of the selection process. For the timeline on your specific application, contact malak.j@ureka.co.uk."},
+
+// ---------- WHAT IS INCLUDED ----------
+{q:"What is included in the programme fee?",k:"included includes covered what do i get inclusions benefits",a:"Included: the UNITAR Certificate of Achievement, a personalised UNITAR-Ureka co-signed recommendation letter, UN expert-led sessions, selected official programme activities, daily lunch and refreshments, the Cultural Evening and Cruise Networking Dinner, AI for Good Summit access (July cohorts only), Global Educators Summit access, being named in the UNITAR white paper, Ureka Fellow recognition, visa support documentation and alumni network access."},
+{q:"What is not included in the fee?",k:"not included excluded exclusions extra pay separately missing",a:"Not included: flights, accommodation (never included), airport transfers, personal expenses, and any additional dinners beyond the Cultural Evening and Cruise Networking Dinner."},
+{q:"Are meals included?",k:"meals food lunch breakfast dinner refreshments catering eat",a:"Daily lunch and refreshments are included on programme days, as are the Cultural Evening and the Cruise Networking Dinner. Breakfast and other dinners are your own arrangement."},
+{q:"Is the cruise dinner included?",k:"cruise dinner lake geneva boat networking included evening",a:"Yes. The Cruise Networking Dinner on Lake Geneva is included — for July 2026 it runs on Day 2 (Wednesday 8 July), 18:30 to 21:30."},
+{q:"Are flights included?",k:"flights airfare airline ticket travel included air",a:"No. Flights are not included and are the participant's responsibility."},
+{q:"Is there a welcome or cultural evening?",k:"cultural evening welcome reception social event party",a:"Yes — a Cultural Evening is part of the included programme activities, alongside the Cruise Networking Dinner."},
+{q:"Do I get a recommendation letter?",k:"recommendation letter reference co-signed personalised unitar",a:"Yes. A personalised recommendation letter co-signed by UNITAR and Ureka is included for participants."},
+
+// ---------- ACCOMMODATION ----------
+{q:"Is accommodation included?",k:"accommodation hotel included lodging stay room housing",a:"No — and it will not be. Accommodation is fully excluded from the ALS fee. Participants book their own hotel in Geneva."},
+{q:"Is there an official ALS hotel?",k:"official hotel recommended partner block booking where stay designated",a:"There is no official ALS hotel and no room block. You are free to stay anywhere in Geneva with convenient public transport access to the UN area."},
+{q:"Where should I stay in Geneva?",k:"where stay area neighbourhood location hotel recommend district best",a:"Anywhere in Geneva with good public transport links to the UN area works well. A practical bonus: hotels in the canton of Geneva typically give you a complimentary local public transport pass for the duration of your stay."},
+{q:"When should I book my hotel?",k:"book hotel when timing early reserve availability advance",a:"As soon as your participation is confirmed. Geneva fills up quickly around major UN events, and both cohorts coincide with summit weeks."},
+{q:"Do I get a free transport pass with my hotel?",k:"transport pass free geneva card hotel public transport tickets complimentary",a:"Yes, typically. Hotels in the canton of Geneva usually include a complimentary public transport pass with your stay, covering trams and buses around the city including the UN area."},
+{q:"Can you book accommodation for me?",k:"book for me arrange accommodation help booking organise",a:"No — accommodation is arranged by each participant. The programme team can answer questions about location and transport but does not book rooms. Contact malak.j@ureka.co.uk if you need guidance."},
+
+// ---------- TRAVEL & TRANSPORT ----------
+{q:"How do I get from Geneva Airport to the city?",k:"airport gva transfer city centre arrive train taxi transport reach",a:"At baggage claim in Geneva Airport (GVA) a machine dispenses a free 80-minute public transport ticket — take one. Train R to Gare Cornavin takes about 7 minutes and runs every 10 minutes. A taxi costs roughly CHF 35-45 and takes about 20 minutes."},
+{q:"Are airport transfers included?",k:"airport transfer pickup shuttle included car collection",a:"No. Airport transfers are not included. The journey is short and inexpensive — a free transit ticket is available at baggage claim and the train to Gare Cornavin takes about 7 minutes."},
+{q:"Is there a free ticket at Geneva Airport?",k:"free ticket airport 80 minutes baggage claim machine transit",a:"Yes. A machine at baggage claim dispenses a free 80-minute public transport ticket valid for your journey into the city."},
+{q:"How much is a taxi from the airport?",k:"taxi cost price airport chf fare uber ride",a:"Roughly CHF 35-45, taking about 20 minutes."},
+{q:"How do I get around Geneva?",k:"getting around transport tram bus metro walk local travel move",a:"Geneva's tram and bus network is excellent and covers the UN area well. Your hotel will usually provide a complimentary transport pass, and the city is compact enough that walking is often practical."},
+{q:"Which airport should I fly into?",k:"airport fly into gva geneva cointrin nearest arrive",a:"Geneva Airport (GVA) — just outside the city and close to the UN district."},
+
+// ---------- VISA ----------
+{q:"Do I need a visa for Switzerland?",k:"visa required need schengen entry permit swiss",a:"Switzerland is in the Schengen area. Many nationalities — including EU/EEA, UAE, USA and UK passport holders — do not need a visa. If your nationality does require one, an official visa support letter is provided upon full payment."},
+{q:"How do I get a visa support letter?",k:"visa letter support invitation documentation obtain request",a:"Email malak.j@ureka.co.uk. The official visa support letter is issued upon full payment of the programme fee."},
+{q:"Does the visa letter guarantee my visa?",k:"guarantee visa approval rejected embassy decision letter certain",a:"No. The letter supports your application, but the decision rests entirely with the relevant embassy or consulate. Neither Ureka nor UNITAR can guarantee approval."},
+{q:"When should I apply for my visa?",k:"when apply visa timing weeks before deadline appointment start",a:"At least 6-8 weeks before travel. Schengen appointment availability varies a lot by country, so start as early as you can."},
+{q:"What happens if my visa is rejected?",k:"visa rejected refused denied refund what happens fails",a:"Visa rejection qualifies for a full refund of the programme fee. Contact malak.j@ureka.co.uk as soon as you have the decision."},
+{q:"What documents do I need for the visa?",k:"documents required visa application checklist paperwork evidence",a:"Requirements are set by the embassy handling your application, not by ALS. Typically you will need your passport, the visa support letter, proof of accommodation, travel insurance and financial means — check your embassy's published checklist."},
+{q:"Can you contact the embassy for me?",k:"embassy contact intervene help expedite call chase",a:"No. The programme provides the official visa support letter but cannot contact embassies on your behalf or influence a decision."},
+
+// ---------- DATES & COHORTS ----------
+{q:"When is the next ALS cohort?",k:"next cohort dates when upcoming programme 2026 date",a:"Two 2026 cohorts are scheduled: 7-10 July 2026 in Geneva, and 27-30 October 2026 in Geneva."},
+{q:"What are the July 2026 dates?",k:"july 2026 dates cohort when schedule 7 10",a:"7 to 10 July 2026, in Geneva — four days."},
+{q:"What are the October 2026 dates?",k:"october 2026 dates cohort when schedule 27 30 autumn",a:"27 to 30 October 2026, in Geneva — four days."},
+{q:"How long is the programme?",k:"duration length days how long four programme",a:"Four days. Note that the inaugural July 2025 cohort was a two-day edition; the current programme is four days."},
+{q:"What is the difference between the July and October cohorts?",k:"difference july october compare which choose better cohort",a:"The core curriculum is the same. The difference is the summit: July 2026 includes the AI for Good Summit (Day 3) plus the Global Educators Summit (Day 4). October 2026 does not include AI for Good — that is an annual July-only UNITAR event — but includes the Global Educators Summit, which is expected to be bigger than previous editions. AI remains a core curriculum theme in both."},
+{q:"Which cohort should I choose?",k:"which cohort choose recommend better pick select july october",a:"If access to the AI for Good Summit matters to you, choose July 2026 — it is a July-only event. If your calendar suits autumn, October 2026 offers a Global Educators Summit expected to be larger than previous editions. The core leadership curriculum is identical."},
+{q:"Was there a 2025 cohort?",k:"2025 cohort inaugural first previous past history",a:"Yes — the inaugural cohort ran 24-25 July 2025 as a two-day edition. The programme has since expanded to four days."},
+{q:"Where is the programme held?",k:"where location venue city geneva held place",a:"Geneva, Switzerland — at United Nations venues including the Palais des Nations and the WHO building."},
+{q:"Will there be a 2027 cohort?",k:"2027 future cohorts next year upcoming later",a:"Future cohorts beyond October 2026 are not yet published. Email malak.j@ureka.co.uk to register your interest and be notified."},
+{q:"Is the programme online or in person?",k:"online virtual remote in person hybrid attend zoom",a:"In person, in Geneva. ALS is built around UN venue access, expert-led sessions and face-to-face networking — none of which translates to a remote format."},
+
+// ---------- JULY 2026 SCHEDULE ----------
+{q:"What is the July 2026 schedule?",k:"schedule agenda programme timetable july day by day itinerary",a:"Day 1 (Tue 7 July, WHO Library Room): registration 09:00, opening remarks 09:30-10:30, AI and the Future of Work 10:30-13:00, lunch 13:00-13:45, Palais des Nations tour 14:00-15:00, coffee 15:00-15:15, Engagement, Governance and Management within Academia 15:30-17:30. Day 2 (Wed 8 July, WHO Library Room): SDGs Workshop with Alice Kate Richard 09:30-12:30, lunch 12:30-13:30, Strategic Leadership in a Multilateral World 13:30-17:30, refreshments 17:30-18:30, Cruise Dinner on Lake Geneva 18:30-21:30. Day 3 (Thu 9 July): AI for Good Summit all day, with Leaders TalkX 6 at WSIS 10:15-10:45 and Partnerships and Networking at the WMO Cafeteria 17:00-18:00. Day 4 (Fri 10 July): Global Educators Summit at Palais des Nations, 09:00-18:00."},
+{q:"What happens on day one?",k:"day 1 first day opening registration start begins arrival",a:"Day 1 (Tuesday 7 July 2026) is at the WHO Library Room, Building A, 3rd Floor: registration at 09:00, opening remarks 09:30-10:30, AI and the Future of Work 10:30-13:00, lunch, then a Palais des Nations tour 14:00-15:00, and Engagement, Governance and Management within Academia 15:30-17:30."},
+{q:"What happens on day two?",k:"day 2 second day sdg workshop cruise schedule",a:"Day 2 (Wednesday 8 July 2026) at the WHO Library Room: the SDGs Workshop led by Alice Kate Richard 09:30-12:30, lunch, Strategic Leadership in a Multilateral World 13:30-17:30, refreshments, then the Cruise Dinner on Lake Geneva 18:30-21:30."},
+{q:"What happens on day three?",k:"day 3 third day ai for good summit wsis",a:"Day 3 (Thursday 9 July 2026) is the AI for Good Summit, all day, at Route Francois-Peyrot 30, 1218 Le Grand-Saconnex. It includes Leaders TalkX 6 at WSIS from 10:15-10:45 and a Partnerships and Networking session at the WMO Cafeteria 17:00-18:00."},
+{q:"What happens on day four?",k:"day 4 fourth final day global educators summit last",a:"Day 4 (Friday 10 July 2026) is the Global Educators Summit at the Palais des Nations, Pregny Gate, 14 Avenue de la Paix, from 09:00 to 18:00."},
+{q:"Where are the sessions held?",k:"venue room building where sessions who library palais location",a:"Days 1 and 2 are at the WHO Library Room, Building A, 3rd Floor. Day 3 is at the AI for Good Summit venue, Route Francois-Peyrot 30, 1218 Le Grand-Saconnex. Day 4 is at the Palais des Nations, Pregny Gate, 14 Avenue de la Paix."},
+{q:"Do I visit the Palais des Nations?",k:"palais des nations tour visit un headquarters building",a:"Yes. A Palais des Nations tour is scheduled on Day 1 (14:00-15:00), and Day 4's Global Educators Summit is held at the Palais des Nations via the Pregny Gate."},
+{q:"What time does the programme start each day?",k:"start time morning begin daily hours schedule what time",a:"Day 1 registration opens at 09:00. Day 2 begins at 09:30. Day 3 runs all day at the AI for Good Summit. Day 4 runs 09:00-18:00."},
+{q:"Can I attend only part of the programme?",k:"partial attend some days skip miss part attendance flexible",a:"No. ALS is a complete executive experience and full attendance is expected. Missing sessions may affect your certificate eligibility and diminishes the experience for you and the cohort."},
+{q:"Who leads the SDGs workshop?",k:"sdg workshop leader facilitator alice richard who teaches",a:"Alice Kate Richard leads the SDGs Workshop, scheduled on Day 2 of the July 2026 cohort, 09:30-12:30."},
+{q:"Is there free time in the schedule?",k:"free time leisure sightseeing personal own time gaps",a:"The four days are full, with sessions running into the evening on Day 2. Evenings outside scheduled activities are yours, but plan sightseeing for before or after the programme rather than during it."},
+
+// ---------- SUMMITS ----------
+{q:"Is AI for Good included?",k:"ai for good summit included access attend itu",a:"For July cohorts, yes — the July 2026 cohort includes AI for Good on Day 3. It is not included in October 2026, because AI for Good is an annual event held only in July."},
+{q:"Why is AI for Good not in the October cohort?",k:"why not october ai for good missing excluded absent",a:"Because AI for Good is an annual UNITAR-linked event that takes place only in July. The October 2026 cohort includes the Global Educators Summit instead, and AI remains a core curriculum theme regardless of cohort."},
+{q:"What is the Global Educators Summit?",k:"global educators summit ges what is included",a:"A summit included in both 2026 cohorts — Day 4 for July 2026, and part of the October 2026 programme. The October edition is expected to be bigger than previous editions. Attendance is part of the ALS experience, not optional."},
+{q:"Is summit attendance optional?",k:"optional summit skip attend mandatory required choice",a:"No. Summit attendance is part of the ALS programme rather than an optional add-on."},
+
+// ---------- CERTIFICATE & RECOGNITION ----------
+{q:"What certificate do I receive?",k:"certificate certification award qualification unitar achievement receive",a:"A UNITAR Certificate of Achievement, plus a personalised recommendation letter co-signed by UNITAR and Ureka."},
+{q:"Is the certificate a degree?",k:"degree academic qualification masters credit accredited university",a:"No. It is a UNITAR Certificate of Achievement — a professional executive certificate, not an academic degree and not credit-bearing."},
+{q:"Is the certificate recognised internationally?",k:"recognised international recognition valid worldwide credible value",a:"It is issued by UNITAR, the United Nations Institute for Training and Research, which carries international standing as a UN body. It is a professional certificate rather than an academic accreditation."},
+{q:"What do I need to do to earn the certificate?",k:"earn certificate requirements criteria eligibility attendance qualify",a:"Full attendance is expected. Missing sessions may affect certificate eligibility."},
+{q:"When do I receive my certificate?",k:"when receive certificate timing after issued delivered",a:"Certificates are issued in connection with programme completion. For the exact timing for your cohort, contact malak.j@ureka.co.uk."},
+{q:"What is the Ureka Fellow recognition?",k:"ureka fellow recognition title fellowship what is",a:"A professional title — not an academic degree — connected to the ALS leadership network and programme legacy. Successful ALS participants may be recognised as Ureka Fellows. You may mention it on LinkedIn and in professional biographies. It creates visibility within the network but does not guarantee speaking or collaboration opportunities."},
+{q:"Can I put Ureka Fellow on LinkedIn?",k:"linkedin fellow title use profile bio mention post",a:"Yes. Ureka Fellow recognition can be mentioned on LinkedIn and in professional biographies. It is a professional recognition, so present it as such rather than as an academic qualification."},
+{q:"Can I use the UNITAR name or logo?",k:"unitar logo branding use name marketing promote",a:"You may state your participation and cite your association professionally. Use of UNITAR branding or logos is a separate matter — check with malak.j@ureka.co.uk before using any marks in institutional materials."},
+
+// ---------- WHITE PAPER ----------
+{q:"What is the UNITAR Academic Leadership Framework?",k:"white paper framework roadmap future ready education geneva declaration",a:"A UNITAR-led white paper titled A Roadmap for Future-Ready Education. ALS participants are named in it as part of the cohort contribution and legacy. Earlier materials called this the Geneva Declaration — the current preferred term is the UNITAR Academic Leadership Framework."},
+{q:"Is the white paper a peer-reviewed publication?",k:"peer reviewed journal publication academic paper research cite",a:"No. It is a white paper, not a peer-reviewed journal article. Participants may cite their association with it professionally, but it should not be presented as peer-reviewed research."},
+{q:"Will my name appear in the white paper?",k:"named name appear listed included white paper credit",a:"Yes — ALS participants are named in the UNITAR white paper as part of the cohort contribution."},
+{q:"What happened to the Geneva Declaration?",k:"geneva declaration renamed old term changed name",a:"It was renamed. Earlier materials referred to the Geneva Declaration; the current preferred term for the same white paper is the UNITAR Academic Leadership Framework."},
+
+// ---------- APPLICATION & SELECTION ----------
+{q:"How do I apply for ALS?",k:"apply application process how join enrol register steps",a:"Submit your CV and a Statement of Purpose. Shortlisted candidates are invited to an online interview. Selection is merit-based — payment alone does not secure a place. Applications and questions go to malak.j@ureka.co.uk."},
+{q:"What documents do I need to apply?",k:"documents application cv resume sop required submit materials",a:"A CV and a Statement of Purpose (up to 600 words). Shortlisted candidates are then invited to an online interview."},
+{q:"Is there an interview?",k:"interview online selection call meeting stage assessment",a:"Yes — shortlisted candidates are invited to an online interview as part of the selection process."},
+{q:"How competitive is selection?",k:"competitive selective acceptance rate chances odds difficult",a:"Selection is merit-based and places are limited, which is why a CV, Statement of Purpose and interview are all part of the process. Acceptance rates are not published."},
+{q:"Is there an application deadline?",k:"deadline application closing date cutoff apply by when",a:"Application timelines are managed per cohort by the programme team. Given that selection involves an interview and visas can take 6-8 weeks, apply as early as you can. Confirm the current deadline with malak.j@ureka.co.uk."},
+{q:"When will I hear back about my application?",k:"hear back response timeline decision notified outcome result waiting",a:"The programme team communicates decisions as part of the selection process. For the status of your specific application, contact malak.j@ureka.co.uk."},
+{q:"Can I defer to a later cohort?",k:"defer postpone move later cohort transfer reschedule change",a:"Deferrals to future cohorts may be considered by the ALS team. Contact malak.j@ureka.co.uk as early as possible."},
+{q:"Can I send a colleague in my place?",k:"transfer seat colleague substitute replace someone else send",a:"Seat transfers to a colleague may be considered by the ALS team. Raise it with malak.j@ureka.co.uk as early as possible."},
+
+// ---------- WHO SHOULD ATTEND ----------
+{q:"Who should attend ALS?",k:"who attend audience profile suitable right for me target eligible",a:"Chancellors, vice-chancellors, presidents, provosts, deans, directors, department heads, registrars, senior faculty and education policymakers. Deans are an ideal profile."},
+{q:"Is ALS for students?",k:"student undergraduate postgraduate phd study course learner",a:"No. ALS is an executive programme for academic leaders, not a student programme."},
+{q:"Am I too junior for ALS?",k:"junior early career lecturer young experience level suitable senior",a:"Early-career academics are not the target audience. The programme is designed for senior academic leadership — deans, directors, provosts, vice-chancellors and education policymakers."},
+{q:"Can non-academics attend?",k:"non academic industry government policymaker ngo corporate outside",a:"Education policymakers are explicitly part of the intended audience. If your role sits outside a university but shapes education policy or systems, contact malak.j@ureka.co.uk to discuss fit."},
+{q:"How many participants are in a cohort?",k:"cohort size participants number how many people class",a:"Cohort size is kept deliberately small to support genuine peer exchange, but an exact number is not published. Contact malak.j@ureka.co.uk for the current cohort."},
+{q:"Which countries do participants come from?",k:"countries nationalities international diverse global where from representation",a:"The ALS network spans 15+ countries across multiple cohorts, including presidents, vice-chancellors, deans, directors, researchers and innovators."},
+
+// ---------- REFUNDS & CANCELLATION ----------
+{q:"What is the refund policy?",k:"refund policy cancel cancellation money back terms",a:"Visa rejection: full refund. Cancellation 21 or more days before the programme: full refund. Cancellation 14 days before: 50% refund. Cancellation within 7 days: no refund. Seat transfers and deferrals may be considered — contact malak.j@ureka.co.uk as early as possible."},
+{q:"Can I get a full refund?",k:"full refund complete money back entire eligible",a:"Full refunds apply in two cases: visa rejection, and cancellation 21 or more days before the programme. Your specific eligibility is confirmed by the programme team, not here — contact malak.j@ureka.co.uk."},
+{q:"What if I cancel two weeks before?",k:"cancel 14 days two weeks before refund partial half",a:"Cancellation 14 days before the programme qualifies for a 50% refund."},
+{q:"What if I cancel at the last minute?",k:"last minute cancel 7 days week before no refund late",a:"Cancellation within 7 days of the programme carries no refund. A seat transfer to a colleague or a deferral may be possible instead — raise it with malak.j@ureka.co.uk immediately."},
+{q:"What if I get sick and cannot travel?",k:"sick illness emergency cannot travel unable attend medical",a:"That is handled case by case by the programme team rather than by a published rule. Contact malak.j@ureka.co.uk as soon as you know — deferral or seat transfer may be options."},
+
+// ---------- CONCIERGE: PREPARING FOR GENEVA ----------
+{m:["concierge"],q:"What should I pack for Geneva in July?",k:"pack packing july summer clothes bring weather what wear",a:"July in Geneva is warm — typically around 18-27°C — but evenings on the lake are cooler, so bring a light jacket for the Cruise Dinner. Pack business attire for UN venues, comfortable shoes (there is walking between buildings and gates), a refillable water bottle, and a European plug adapter (Switzerland uses Type J, 230V)."},
+{m:["concierge"],q:"What should I pack for Geneva in October?",k:"pack packing october autumn fall cold clothes bring weather",a:"October in Geneva is cool — roughly 8-15°C — and can be wet. Bring a warm coat, an umbrella or rain jacket, business attire for UN venues, comfortable waterproof shoes, and a Type J plug adapter (230V)."},
+{m:["concierge"],q:"What is the dress code?",k:"dress code attire clothing formal business suit wear outfit",a:"Business or business-formal for UN sessions and summit days — you are in official United Nations venues alongside senior delegates. Smart-casual works for the Cruise Networking Dinner, with a layer for the lake breeze."},
+{m:["concierge"],q:"What is the dress code for the cruise dinner?",k:"cruise dinner dress code attire evening boat wear formal",a:"Smart-casual. It is a networking dinner rather than a formal gala — but bring a jacket or wrap, as it gets noticeably cooler on Lake Geneva in the evening."},
+{m:["concierge"],q:"Do I need to bring my passport to sessions?",k:"passport id identification security badge bring entry access",a:"Yes — bring photo ID. UN venues including the Palais des Nations operate security screening and accreditation at the gates, and the Pregny Gate entry on Day 4 will require identification."},
+{m:["concierge"],q:"What is the weather like in Geneva?",k:"weather temperature climate rain sunny forecast conditions",a:"July is warm, typically around 18-27°C, with cooler lakeside evenings. October is cool and often wet, roughly 8-15°C. Check the forecast close to travel and pack a layer either way."},
+{m:["concierge"],q:"What currency is used in Switzerland?",k:"currency money chf swiss franc cash euro payment card",a:"The Swiss franc (CHF). Cards are accepted almost everywhere, and while some places take euros, you will usually get change in francs at a poor rate — so use a card or withdraw CHF."},
+{m:["concierge"],q:"Do I need cash in Geneva?",k:"cash money atm card contactless payment need",a:"Rarely. Cards and contactless are accepted very widely. A small amount of CHF is handy for incidentals, but you can manage a whole trip on card."},
+{m:["concierge"],q:"Is tipping expected in Switzerland?",k:"tip tipping gratuity service charge restaurant expected",a:"Not really — service is included in the bill. Rounding up or leaving a small amount for good service is appreciated but never obligatory."},
+{m:["concierge"],q:"What language is spoken in Geneva?",k:"language french english speak communication local translate",a:"French is the local language, but Geneva is highly international and English is widely spoken — especially in the UN district, hotels and restaurants. All ALS sessions are conducted in English."},
+{m:["concierge"],q:"What power adapter do I need?",k:"adapter plug socket power electricity voltage charger type",a:"Switzerland uses Type J sockets at 230V. Type C (standard European two-pin) plugs generally fit; three-pin plugs from other regions will not, so bring a Swiss or universal adapter."},
+{m:["concierge"],q:"Is Geneva safe?",k:"safe safety crime security walking night risk",a:"Geneva is a very safe city by international standards. Normal city precautions apply around the main station and at night, but participants routinely walk and use public transport without issue."},
+{m:["concierge"],q:"Should I get a local SIM or eSIM?",k:"sim esim data mobile phone internet roaming connectivity",a:"An eSIM data plan is the easiest option for a short stay, and hotels and UN venues generally have WiFi. If your home plan includes Switzerland (note: it is not in the EU, so EU roaming bundles often exclude it), check the rates before you travel."},
+{m:["concierge"],q:"Do I need travel insurance?",k:"insurance travel medical health cover emergency",a:"It is strongly recommended, and if you are applying for a Schengen visa it is normally a requirement of the application. Check your embassy's stated minimum cover."},
+{m:["concierge"],q:"How early should I arrive in Geneva?",k:"arrive early day before arrival timing when travel jet lag",a:"Arriving the day before Day 1 is sensible. Registration opens at 09:00 on the first morning, and arriving the night before removes any flight-delay risk and helps with jet lag."},
+{m:["concierge"],q:"How do I prepare for the SDGs workshop?",k:"prepare sdg workshop preparation reading homework ready",a:"Come with a concrete institutional example in mind — a live challenge where sustainability, governance or curriculum intersect. The workshop is far more valuable when you bring a real problem to work on rather than approaching it abstractly."},
+{m:["concierge"],q:"How should I prepare for the programme?",k:"prepare preparation before arrive readiness get ready homework",a:"Arrive with three things: a specific institutional challenge you want to solve, a clear sense of what your institution could offer a partner, and a short way of introducing your remit. The cohort is senior and the time is compressed — clarity is what converts conversations into collaborations."},
+{m:["concierge"],q:"Which sessions are best for networking?",k:"networking sessions best opportunities meet people connect prioritise",a:"The Cruise Networking Dinner on Day 2 is the strongest — it is long, informal and seated. On Day 3, the Partnerships and Networking session at the WMO Cafeteria (17:00-18:00) is purpose-built for it. Lunches and coffee breaks are also where most real introductions happen."},
+{m:["concierge"],q:"Should I bring business cards?",k:"business cards networking exchange contact details bring",a:"Yes. Despite digital alternatives, cards remain the norm in UN and diplomatic settings, and they make follow-up much easier. Bring more than you think you need."},
+{m:["concierge"],q:"Can I bring my partner or family?",k:"partner spouse family guest bring accompany plus one children",a:"Sessions and included activities are for enrolled participants. If you are travelling with family, they can enjoy Geneva independently during programme hours. Check with malak.j@ureka.co.uk before assuming any guest access to UN venues or the dinner."},
+{m:["concierge"],q:"Can I get a letter to show my employer?",k:"employer letter proof attendance confirmation institution justify approval",a:"Yes. Ask malak.j@ureka.co.uk for a formal programme letter — participants routinely use one to support institutional approval or funding requests."},
+{m:["concierge"],q:"What are the dietary options?",k:"dietary vegetarian vegan halal kosher allergy food restrictions",a:"Let the programme team know your requirements in advance via malak.j@ureka.co.uk so catering and the cruise dinner can be arranged accordingly."},
+{m:["concierge"],q:"Is there WiFi at the venues?",k:"wifi internet connection online access venue network",a:"UN venues and hotels generally provide WiFi. For guaranteed connectivity between buildings, an eSIM data plan is a reliable backup."},
+{m:["concierge"],q:"What should I do with free evenings?",k:"evening free time explore geneva sightseeing things to do restaurant",a:"The lakefront and Jet d'Eau, the Old Town, and the Red Cross Museum near the UN district are all close and worth the time. Evenings outside scheduled activities are yours — though Day 2 runs late with the cruise dinner."},
+
+// ---------- COLLABORATION & ALUMNI ----------
+{m:["collab"],q:"What collaborations are possible after ALS?",k:"collaboration partnership after alumni opportunities work together post",a:"Realistic options that ALS cohorts pursue: joint research partnerships, institutional MOUs, faculty and staff exchanges, joint grant applications, co-authored publications, regional working groups, reciprocal guest lectures, and joint curriculum or programme development. The network spans presidents, vice-chancellors, deans, directors, researchers and innovators across 15+ countries."},
+{m:["collab"],q:"How do I stay connected with fellow participants?",k:"stay connected contact keep touch network alumni after maintain",a:"Participants gain alumni network access. Practically: exchange details during the programme, follow up within two weeks while context is fresh, and propose something specific rather than a general keep-in-touch message."},
+{m:["collab"],q:"How do I start an MOU with another institution?",k:"mou memorandum understanding agreement institutional partnership formalise",a:"Start narrow. Agree one concrete activity first — a co-supervised project, a short exchange, a joint workshop — then formalise the MOU around what is already working. MOUs written before any shared activity tend to sit unused."},
+{m:["collab"],q:"Suggest a post-ALS action plan",k:"action plan after programme next steps implement apply learning back",a:"A workable 90-day shape: in the first two weeks, write a one-page brief for your leadership on what you learned and what you propose. By day 30, follow up with three specific cohort contacts with a concrete proposal each. By day 60, pick one initiative and secure internal sponsorship. By day 90, have one pilot running, however small. Concrete beats comprehensive."},
+{m:["collab"],q:"How can ALS help build international partnerships?",k:"international partnerships build global institution links develop",a:"The cohort is the mechanism — senior leaders from 15+ countries, all with authority to act, in the same room for four days. Partnerships form because you can identify complementary capability face to face and agree a first step before you leave Geneva."},
+{m:["collab"],q:"Can we apply for joint grants?",k:"joint grant funding apply consortium research money bid",a:"Yes — joint grant applications are one of the more productive collaborations. Cross-country consortia often strengthen eligibility for international funding schemes, and the ALS network is a practical way to find credible partners in other regions."},
+{m:["collab"],q:"Can I arrange a faculty exchange?",k:"faculty exchange staff visiting scholar mobility swap teaching",a:"Faculty and staff exchanges are a common ALS outcome. Short, reciprocal arrangements are easiest to get approved internally — a one-week teaching or research visit each way is a realistic starting point."},
+{m:["collab"],q:"Can I co-publish with other participants?",k:"publish co-author paper publication research writing joint article",a:"Co-authored publications are a natural fit, particularly comparative work drawing on multiple national contexts. Agree scope, authorship order and timeline early — that is where most cross-institution papers stall."},
+{m:["collab"],q:"How do I approach someone senior in the cohort?",k:"approach senior vice chancellor president introduce network intimidated speak",a:"Everyone is there for the same reason, so directness works. Lead with a specific point of overlap and a small ask — a fifteen-minute conversation about one shared challenge, rather than an open-ended request to collaborate."},
+{m:["collab"],q:"What should I offer a potential partner?",k:"offer value bring partner reciprocal what can i give contribute",a:"Be concrete about capability: a specialism, a dataset, a regional foothold, a cohort of students, an accreditation, a facility. Partnerships stall when both sides describe ambitions rather than assets."},
+{m:["collab"],q:"Can Ureka help facilitate partnerships?",k:"ureka help facilitate broker introduce support partnership assistance",a:"Alumni network access is part of the programme, and the team can point you toward relevant contacts. However, specific introductions, speaking opportunities and partnership outcomes cannot be guaranteed. Contact malak.j@ureka.co.uk with what you are trying to build."},
+{m:["collab"],q:"How do I get my institution to act on what I learned?",k:"institution buy in leadership convince implement change internal adoption",a:"Translate it into your institution's language and constraints. A one-page proposal naming a single initiative, its cost, its owner and its first milestone gets further than a comprehensive report on the whole programme. Use the UNITAR white paper association and your certificate as credibility for the ask."},
+];
+
+
+// ── LOCAL ANSWER MATCHER ──
+// Replaces the old browser-side Anthropic API call, which could never have worked:
+// it shipped no key, so every question fell through to the catch block. This scores
+// the question against ALS_QA and answers from the bank instead — no key, no network,
+// no failure mode. Unmatched questions route to Malak rather than inventing an answer.
+const QA_STOP = new Set(('a an the is are am was were do does did i me my we our you your it its of for to in on at ' +
+  'and or if as be been being can could will would should shall may might must have has had there that this these those ' +
+  'about with from by any some which whom whose why not no yes please tell know get got').split(' '));
+
+// Query-side synonym expansion: users rarely use the site's own vocabulary.
+const QA_SYN = {
+  cost:['fee','price'], price:['fee','cost'], fee:['cost','price'], expensive:['cost','fee'],
+  hotel:['accommodation','stay'], accommodation:['hotel','stay'], stay:['accommodation','hotel'],
+  scholarship:['grant','discount'], discount:['grant','reduction'], funding:['grant','sponsor'],
+  cancel:['refund','cancellation'], refund:['cancellation','money'],
+  apply:['application','admission'], admission:['application','apply'], enrol:['application','apply'], enroll:['application','apply'],
+  dates:['date','when','cohort'], schedule:['agenda','programme','timetable'], agenda:['schedule','programme'],
+  certificate:['certification','certificates'], cert:['certificate'],
+  visa:['schengen','entry'], flight:['flights','airfare'], airfare:['flight','flights'],
+  transport:['transfer','tram','bus'], transfer:['transport','airport'],
+  clothes:['dress','attire','pack'], wear:['dress','attire'], packing:['pack','bring'],
+  food:['meals','lunch','dinner'], meal:['meals','lunch'],
+  network:['networking','collaboration'], collaborate:['collaboration','partnership'], partner:['partnership','collaboration'],
+  fellow:['fellowship','recognition'], paper:['white','framework','publication'],
+  eligible:['eligibility','who','attend'], suitable:['who','attend','audience'],
+  refused:['rejected','refund'], denied:['rejected','refund'], rejection:['rejected'],
+  dates:['date','cohort','schedule'], deadline:['date','cutoff'], begin:['start'], finish:['end']
+};
+
+function qaTokens(s) {
+  return s.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(w => w.length > 1 && !QA_STOP.has(w));
+}
+// Cheap stem so "accommodations"/"accommodation" and "fees"/"fee" collide.
+function qaStem(w) { return w.replace(/(ies)$/, 'y').replace(/(sses|ches|shes|xes)$/, '').replace(/s$/, ''); }
+
+// Build an IDF index once, so distinctive words ("visa") outweigh common ones ("programme").
+const QA_INDEX = (function () {
+  const docs = ALS_QA.map(e => {
+    const set = new Set(qaTokens(e.q + ' ' + (e.k || '')).map(qaStem));
+    return set;
+  });
+  const df = Object.create(null);
+  docs.forEach(set => set.forEach(t => { df[t] = (df[t] || 0) + 1; }));
+  const N = docs.length;
+  const idf = Object.create(null);
+  for (const t in df) idf[t] = Math.log(1 + N / df[t]);
+  return { docs: docs, idf: idf };
+})();
+
+function qaExpand(tokens) {
+  // Original words carry full weight; synonym-derived ones carry half, so an entry
+  // that literally contains the user's word beats one reached only via a synonym.
+  const out = tokens.map(t => ({ t: qaStem(t), w: 1 }));
+  tokens.forEach(t => {
+    if (QA_SYN[t]) QA_SYN[t].forEach(s => out.push({ t: qaStem(s), w: 0.5 }));
+  });
+  const best = Object.create(null);
+  out.forEach(o => { if (!(o.t in best) || best[o.t] < o.w) best[o.t] = o.w; });
+  return Object.keys(best).map(t => ({ t: t, w: best[t] }));
+}
+
+// Returns the ranked matches for a free-text question.
+function qaSearch(query, mode) {
+  const raw = qaTokens(query);
+  if (!raw.length) return [];
+  const terms = qaExpand(raw);
+  const originals = terms.filter(x => x.w === 1);
+  const scored = ALS_QA.map(function (entry, i) {
+    const doc = QA_INDEX.docs[i];
+    let score = 0, covered = 0;
+    terms.forEach(function (term) {
+      const idf = QA_INDEX.idf[term.t] || 1;
+      let hit = 0;
+      if (doc.has(term.t)) {
+        hit = idf;
+      } else {
+        for (const d of doc) {
+          if (d.length > 3 && term.t.length > 3 && (d.indexOf(term.t) === 0 || term.t.indexOf(d) === 0)) {
+            hit = 0.6 * (QA_INDEX.idf[d] || 1);
+            break;
+          }
+        }
+      }
+      if (hit) {
+        score += hit * term.w;
+        if (term.w === 1) covered++;
+      }
+    });
+    score = score / Math.sqrt(doc.size);
+    // Coverage: answering 2 of the user's 2 words beats answering 1 of 2.
+    if (originals.length) score *= 0.45 + 0.55 * (covered / originals.length);
+    // Mode is a nudge, not a filter — a concierge question still deserves an answer in Guide mode.
+    if (entry.m && entry.m.indexOf(mode) === -1) score *= 0.72;
+    return { entry: entry, score: score };
+  });
+  scored.sort((a, b) => b.score - a.score);
+  return scored;
+}
+
+const QA_THRESHOLD = 0.55;   // tuned so vague one-word questions fall through to suggestions
+
+
 const MODES = {
   guide: {
     label: 'Mode: ALS Guide',
-    system: `You are the ALS Guide AI for the Academic Leadership Suite at UNITAR Geneva. Answer questions warmly, concisely and accurately using ONLY the knowledge base below. If something is not in the knowledge base, say so clearly and direct to malak.j@ureka.co.uk. Never make up information or guarantee outcomes.
-
-Knowledge base:
-
-${ALS_KNOWLEDGE}`,
-    welcome: "Hello! I'm the ALS Guide — your AI assistant for the Academic Leadership Suite. I can answer questions about the programme, fees, schedule, application, visa, Geneva logistics, and much more. What would you like to know?",
+    welcome: "Hello! I'm the ALS Guide — your assistant for the Academic Leadership Suite. I can answer questions about the programme, fees, schedule, application, visa, Geneva logistics, and much more. What would you like to know?",
     suggestions: ["What does the programme fee include?","Is accommodation included?","What is the refund policy?","What is the difference between July and October cohorts?","How do I apply for the financial grant?"]
   },
   concierge: {
     label: 'Mode: Participant Concierge',
-    system: `You are the ALS Participant Concierge — a warm personal assistant helping confirmed ALS participants prepare for Geneva. Help with practical preparation: what to pack, how to navigate each session, how to make the most of ALS, Geneva transport, dress code, the cruise dinner, networking tips. Be specific and practical.
-
-Knowledge base:
-
-${ALS_KNOWLEDGE}`,
     welcome: "Welcome to ALS! I'm your personal concierge for the programme. I'm here to help you prepare for Geneva — from what to pack to how to make the most of every session. What would you like to know?",
     suggestions: ["What should I pack for Geneva in July?","How do I get from the airport to my hotel?","What is the dress code for the cruise dinner?","How should I prepare for the SDGs workshop?","What sessions should I prioritise for networking?"]
   },
   collab: {
     label: 'Mode: Alumni Collaboration',
-    system: `You are the ALS Alumni Collaboration AI — helping ALS participants and alumni think through post-programme collaboration. The ALS network includes presidents, vice-chancellors, deans, directors, researchers, and innovators from 15+ countries across multiple cohorts. Suggest concrete, realistic collaborations: research partnerships, MOUs, faculty exchanges, joint grants, co-publications, regional working groups, guest lectures, curriculum development. Be creative and specific.
-
-Knowledge base:
-
-${ALS_KNOWLEDGE}`,
-    welcome: "Hello! I'm the ALS Collaboration AI. I can help you think through research collaborations, institutional partnerships, faculty exchanges, joint publications, and post-ALS action plans. The ALS network is remarkable — let's make the most of it. What are you working on?",
+    welcome: "Hello! I'm the ALS Collaboration guide. I can help you think through research collaborations, institutional partnerships, faculty exchanges, joint publications, and post-ALS action plans. The ALS network is remarkable — let's make the most of it. What are you working on?",
     suggestions: ["What collaborations are possible after ALS?","How do I stay connected with fellow participants?","Suggest a post-ALS action plan for my institution","What MOU possibilities exist within the ALS network?","How can ALS help my institution build international partnerships?"]
   }
 };
@@ -1179,24 +1443,32 @@ function renderSuggestions(suggs) {
     `<button class="sugg" onclick="sendSugg('${s.replace(/'/g,"\'")}')">${s}</button>`).join('');
 }
 function sendSugg(text) { document.getElementById('chat-input').value = text; sendMsg(); }
-async function sendMsg() {
+function sendMsg() {
   const input = document.getElementById('chat-input');
   const text = input.value.trim(); if (!text) return;
   input.value = '';
   document.getElementById('chat-send').disabled = true;
   document.getElementById('chat-suggestions').innerHTML = '';
   addMsg(text, 'user');
-  chatHistory.push({role:'user', content:text});
-  const typing = addMsg('Thinking...', 'typing');
-  try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({model:'claude-sonnet-4-6', max_tokens:1024, system: MODES[currentMode].system, messages: chatHistory})});
-    const d = await res.json();
-    const reply = d.content && d.content[0] ? d.content[0].text : "I'm unable to answer that right now. Please email malak.j@ureka.co.uk.";
-    typing.remove(); addMsg(reply, 'bot');
-    chatHistory.push({role:'assistant', content:reply});
-  } catch(e) { typing.remove(); addMsg("I'm having trouble connecting. Please email malak.j@ureka.co.uk for immediate assistance.", 'bot'); }
-  document.getElementById('chat-send').disabled = false;
+  const typing = addMsg('Looking that up...', 'typing');
+
+  const ranked = qaSearch(text, currentMode);
+  const best = ranked[0];
+  // Small delay purely so the answer doesn't snap in before the question renders.
+  setTimeout(function () {
+    typing.remove();
+    if (best && best.score >= QA_THRESHOLD) {
+      addMsg(best.entry.a, 'bot');
+      // Offer neighbouring questions so the user can keep exploring.
+      const near = ranked.slice(1, 4).filter(r => r.score > QA_THRESHOLD * 0.5).map(r => r.entry.q);
+      if (near.length) renderSuggestions(near);
+    } else {
+      addMsg("I don't have that in the official ALS materials, so I'd rather point you to someone who can answer properly: Ms. Malak Jaber, malak.j@ureka.co.uk or +971 50 207 3899. Here are some questions I can answer:", 'bot');
+      const fallback = ranked.slice(0, 4).map(r => r.entry.q);
+      renderSuggestions(fallback.length ? fallback : MODES[currentMode].suggestions);
+    }
+    document.getElementById('chat-send').disabled = false;
+  }, 220);
 }
 
 const FAQS = [
