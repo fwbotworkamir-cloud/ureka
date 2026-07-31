@@ -102,6 +102,11 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:560;letter-spacing:-0.012em
 .navbrand{display:flex;align-items:center;gap:8px;text-decoration:none;flex:none}
 .navbrand b{font-family:'Fraunces',serif;font-size:16px;font-weight:650;color:#fff;display:block;line-height:1.15}
 .navbrand span{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute-i)}
+.navlogos{display:flex;align-items:center;gap:6px;margin-top:4px}
+.navlogos img{width:auto;object-fit:contain;display:block}
+.navlogos img[src*="UNITAR"]{height:15px;background:#fff;border-radius:3px;padding:2px 4px}
+.navlogos img[src*="logo-HP"]{height:20px;border:1px solid rgba(255,255,255,.28);border-radius:3px;padding:2px}
+@media(max-width:420px){.navlogos img[src*="UNITAR"]{height:12px}.navlogos img[src*="logo-HP"]{height:15px}}
 .navlinks{display:flex;gap:24px;margin-left:auto}
 .navlinks a{font-size:13.5px;font-weight:600;color:#D6DDE6;text-decoration:none;transition:color .15s}
 .navlinks a:hover{color:var(--brass-lt)}
@@ -470,7 +475,12 @@ gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
   <div class="wrap">
     <a class="navbrand" href="#top">
       <span class="mk"></span>
-      <span><b>IPP</b><span>UNITAR &times; Ureka</span></span>
+      <span><b>IPP</b>
+        <span class="navlogos">
+          <img src="/wp-content/uploads/2025/04/UNITAR_2023_HORZ_blue-2.jpg" width="1325" height="367" alt="UNITAR">
+          <img src="/wp-content/uploads/2023/03/logo-HP.png" width="1806" height="1806" alt="Ureka Education">
+        </span>
+      </span>
     </a>
     <div class="navlinks">
       <a href="#glance">At a glance</a>
