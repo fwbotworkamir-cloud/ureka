@@ -1514,9 +1514,9 @@ function nav(page) {
 // Forms API takes only a portal id and form guid (both non-secret), so no key
 // lives in client code. Fill these in once the Ureka portal exists; until then
 // hsSend() is a no-op and CF7 email remains the only path.
-var HS_PORTAL   = '';   // e.g. '481234567'
-var HS_FORM_ALS = '';   // form GUID for the ALS form
-var HS_FORM_IPP = '';   // form GUID for the IPP form
+var HS_PORTAL   = '149014204';
+var HS_FORM_ALS = 'fca68ef0-4136-4e5b-b375-a59f76ca7b5f';
+var HS_FORM_IPP = '60ed617c-4476-443d-aaad-64df171c8678';
 
 function hsCookie(n) {
   var m = document.cookie.match('(^|;)\\s*' + n + '\\s*=\\s*([^;]+)');
@@ -1560,9 +1560,8 @@ async function submitForm() {
   fd.append('your-message', (vals[6] ? 'Interest: ' + vals[6] + '\n' : '') + 'Financial Grant interest: ' + (grant ? 'Yes' : 'No'));
   hsSend(HS_FORM_ALS, {
     firstname: vals[0], lastname: vals[1], email: vals[2],
-    company: vals[3], jobtitle: vals[4], country: vals[5],
-    programme: 'ALS', message: vals[6] || '',
-    grant_interest: grant ? 'Yes' : 'No'
+    company: vals[3], country: vals[5],
+    message: 'Programme: ALS -- ' + summary
   });
   let ok = false;
   try {

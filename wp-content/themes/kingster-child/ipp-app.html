@@ -1609,9 +1609,9 @@ gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
 // Forms API takes only a portal id and form guid (both non-secret), so no key
 // lives in client code. Fill these in once the Ureka portal exists; until then
 // hsSend() is a no-op and CF7 email remains the only path.
-var HS_PORTAL   = '';   // e.g. '481234567'
-var HS_FORM_ALS = '';   // form GUID for the ALS form
-var HS_FORM_IPP = '';   // form GUID for the IPP form
+var HS_PORTAL   = '149014204';
+var HS_FORM_ALS = 'fca68ef0-4136-4e5b-b375-a59f76ca7b5f';
+var HS_FORM_IPP = '60ed617c-4476-443d-aaad-64df171c8678';
 
 function hsCookie(n) {
   var m = document.cookie.match('(^|;)\\s*' + n + '\\s*=\\s*([^;]+)');
@@ -1709,8 +1709,7 @@ function hsSend(formGuid, fields) {
     hsSend(HS_FORM_IPP, {
       firstname: v('first_name'), lastname: v('last_name'), email: v('email'),
       phone: v('phone'), company: v('institution'), country: v('country_residence'),
-      nationality: v('nationality'), programme: 'IPP',
-      readiness: readiness || '', message: summary
+      message: 'Programme: IPP -- Readiness: ' + (readiness || '-') + ' -- ' + summary
     });
 
     var label = submit.textContent;
