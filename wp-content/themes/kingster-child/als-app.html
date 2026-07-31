@@ -1509,6 +1509,40 @@ function nav(page) {
   if (page === 'cohort2025') renderParticipants(PARTICIPANTS_2025, 'pgrid2025', 'showP2025');
   if (page === 'ai' && document.getElementById('chat-messages').children.length === 0) setMode('guide');
 }
+
+// ── HubSpot lead capture ──
+// Forms API takes only a portal id and form guid (both non-secret), so no key
+// lives in client code. Fill these in once the Ureka portal exists; until then
+// hsSend() is a no-op and CF7 email remains the only path.
+var HS_PORTAL   = '';   // e.g. '481234567'
+var HS_FORM_ALS = '';   // form GUID for the ALS form
+var HS_FORM_IPP = '';   // form GUID for the IPP form
+
+function hsCookie(n) {
+  var m = document.cookie.match('(^|;)\\s*' + n + '\\s*=\\s*([^;]+)');
+  return m ? m.pop() : '';
+}
+// Fire-and-forget: HubSpot must never block or break the CF7 submission that
+// already guarantees the lead reaches Malak by email.
+function hsSend(formGuid, fields) {
+  if (!HS_PORTAL || !formGuid) return Promise.resolve(false);
+  var body = {
+    fields: Object.keys(fields)
+      .filter(function (k) { return fields[k] !== '' && fields[k] != null; })
+      .map(function (k) { return { name: k, value: String(fields[k]) }; }),
+    context: {
+      pageUri: location.href,
+      pageName: document.title,
+      hutk: hsCookie('hubspotutk') || undefined
+    }
+  };
+  return fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + HS_PORTAL + '/' + formGuid, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  }).then(function (r) { return r.ok; }).catch(function () { return false; });
+}
+
 const CF7_FORM_ID = location.hostname === 'ureka.co.uk' ? 9198 : 9200; // live : staging
 async function submitForm() {
   const wrap = document.querySelector('.apply-form-wrap');
@@ -1524,6 +1558,12 @@ async function submitForm() {
   fd.append('your-institution', vals[3] || '-');
   fd.append('your-country', vals[5] || '');
   fd.append('your-message', (vals[6] ? 'Interest: ' + vals[6] + '\n' : '') + 'Financial Grant interest: ' + (grant ? 'Yes' : 'No'));
+  hsSend(HS_FORM_ALS, {
+    firstname: vals[0], lastname: vals[1], email: vals[2],
+    company: vals[3], jobtitle: vals[4], country: vals[5],
+    programme: 'ALS', message: vals[6] || '',
+    grant_interest: grant ? 'Yes' : 'No'
+  });
   let ok = false;
   try {
     const r = await fetch('/wp-json/contact-form-7/v1/contact-forms/' + CF7_FORM_ID + '/feedback', { method: 'POST', body: fd });

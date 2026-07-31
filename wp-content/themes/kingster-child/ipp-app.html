@@ -1604,6 +1604,40 @@ gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
      CF7 form 9199/9201 has only your-name / your-email / your-institution /
      your-country / your-message, so every other answer is serialised into
      your-message as readable "Label: value" lines. */
+
+// ── HubSpot lead capture ──
+// Forms API takes only a portal id and form guid (both non-secret), so no key
+// lives in client code. Fill these in once the Ureka portal exists; until then
+// hsSend() is a no-op and CF7 email remains the only path.
+var HS_PORTAL   = '';   // e.g. '481234567'
+var HS_FORM_ALS = '';   // form GUID for the ALS form
+var HS_FORM_IPP = '';   // form GUID for the IPP form
+
+function hsCookie(n) {
+  var m = document.cookie.match('(^|;)\\s*' + n + '\\s*=\\s*([^;]+)');
+  return m ? m.pop() : '';
+}
+// Fire-and-forget: HubSpot must never block or break the CF7 submission that
+// already guarantees the lead reaches Malak by email.
+function hsSend(formGuid, fields) {
+  if (!HS_PORTAL || !formGuid) return Promise.resolve(false);
+  var body = {
+    fields: Object.keys(fields)
+      .filter(function (k) { return fields[k] !== '' && fields[k] != null; })
+      .map(function (k) { return { name: k, value: String(fields[k]) }; }),
+    context: {
+      pageUri: location.href,
+      pageName: document.title,
+      hutk: hsCookie('hubspotutk') || undefined
+    }
+  };
+  return fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + HS_PORTAL + '/' + formGuid, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  }).then(function (r) { return r.ok; }).catch(function () { return false; });
+}
+
   var CF7_FORM_ID = location.hostname === 'ureka.co.uk' ? 9199 : 9201; // live : staging
 
   function clean(t){ return (t||'').replace(/\s+/g,' ').replace(/\s*\*\s*$/,'').trim(); }
@@ -1671,6 +1705,13 @@ gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
     fd.append('your-institution', v('institution') || '-');
     fd.append('your-country', v('country_residence'));
     fd.append('your-message', summary);
+
+    hsSend(HS_FORM_IPP, {
+      firstname: v('first_name'), lastname: v('last_name'), email: v('email'),
+      phone: v('phone'), company: v('institution'), country: v('country_residence'),
+      nationality: v('nationality'), programme: 'IPP',
+      readiness: readiness || '', message: summary
+    });
 
     var label = submit.textContent;
     submit.disabled = true; submit.textContent = 'Submitting\u2026';
