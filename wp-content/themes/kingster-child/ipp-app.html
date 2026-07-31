@@ -60,6 +60,11 @@
   ]
 }
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0BJ1XCV8LZ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
+
+<meta name="theme-color" content="#0B1D33">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -100,13 +105,11 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:560;letter-spacing:-0.012em
 .topnav{position:sticky;top:0;z-index:100;background:rgba(11,29,51,.93);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule-i)}
 .topnav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:12px;padding-bottom:12px}
 .navbrand{display:flex;align-items:center;gap:8px;text-decoration:none;flex:none}
+.unmark{width:24px;height:24px;flex:none;display:block}
+.clock .unmark{width:20px;height:20px}
+.lockup .unmark{width:26px;height:26px}
 .navbrand b{font-family:'Fraunces',serif;font-size:16px;font-weight:650;color:#fff;display:block;line-height:1.15}
-.navbrand span{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute-i)}
-.navlogos{display:flex;align-items:center;gap:6px;margin-top:4px}
-.navlogos img{width:auto;object-fit:contain;display:block}
-.navlogos img[src*="UNITAR"]{height:15px;background:#fff;border-radius:3px;padding:2px 4px}
-.navlogos img[src*="logo-HP"]{height:26px;border:1px solid rgba(255,255,255,.28);border-radius:4px;padding:3px}
-@media(max-width:420px){.mk{width:26px;height:26px}.navlogos img[src*="logo-HP"]{height:22px}}
+.navbrand span{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute-i);white-space:nowrap}
 .navlinks{display:flex;gap:24px;margin-left:auto}
 .navlinks a{font-size:13.5px;font-weight:600;color:#D6DDE6;text-decoration:none;transition:color .15s}
 .navlinks a:hover{color:var(--brass-lt)}
@@ -149,8 +152,6 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:560;letter-spacing:-0.012em
 .credential:hover{transform:rotate(0) translateY(-4px)}
 .ctop{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:16px}
 .clock{display:flex;align-items:center;gap:8px}
-.mk{width:30px;height:30px;border-radius:50%;border:1.4px solid var(--brass-lt);background:#fff;flex:none;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:3px}
-.mk img{width:100%;height:100%;object-fit:contain;display:block}
 .cbrand{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:var(--mute-i);text-transform:uppercase;line-height:1.4}
 .cstatus{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#7FE0A6;border:1px solid rgba(127,224,166,.45);padding:4px 8px;border-radius:20px;text-transform:uppercase;white-space:nowrap}
 .cphoto{border-radius:6px;overflow:hidden;margin-bottom:16px;position:relative;border:1px solid rgba(255,255,255,.1)}
@@ -162,7 +163,7 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:560;letter-spacing:-0.012em
 .cbar{height:30px;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px,rgba(255,255,255,.3) 5px 6px,transparent 6px 10px);margin:0 -22px;opacity:.5;border-top:1px dashed rgba(255,255,255,.18)}
 .cser{text-align:center;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--mute-i);padding:8px 0 12px}
 /* ---------- PHOTO-BACKED SECTION ---------- */
-.band.photoband{position:relative;padding-top:clamp(150px,15vw,205px);padding-bottom:24px;background-color:var(--paper);background-image:url("/wp-content/themes/kingster/ipp-img/glance-band-background.jpg");background-size:cover;background-position:45% center;background-repeat:no-repeat}
+.band.photoband{position:relative;padding-top:clamp(150px,15vw,205px);padding-bottom:24px;background-color:var(--paper);background-image:url('/wp-content/themes/kingster/ipp-img/glance-band-background.jpg');background-size:cover;background-position:45% center;background-repeat:no-repeat}
 .band.photoband::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(236,239,233,.22) 0%,rgba(236,239,233,.24) 24%,rgba(236,239,233,.34) 29%,rgba(236,239,233,.96) 33%,rgba(236,239,233,.97) 42%,rgba(236,239,233,.98) 100%);z-index:0}
 .band.photoband > .wrap{position:relative;z-index:1}
 @media(max-width:760px){.band.photoband{padding-top:clamp(120px,32vw,180px);background-position:48% center}
@@ -259,10 +260,10 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:560;letter-spacing:-0.012em
 .pphoto img{width:100%;height:100%;object-fit:cover;display:block}
 .pphoto span{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--mute-i);text-transform:uppercase;text-align:center;padding:0 8px}
 .pphoto.tosupply span{color:var(--amber)}
-.pcard h3{font-size:18px;margin-bottom:4px}
+.pcard h3{font-size:18px;margin-bottom:4px;min-height:2.5em;display:flex;align-items:flex-start}
 .pcard h3 .plink{align-items:flex-start}
-.prole{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--blue-lt);line-height:1.7}
-.pcontrib{font-size:13.5px;color:var(--mute-i);margin-top:auto;padding-top:12px;border-top:1px solid var(--rule-i)}
+.prole{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--blue-lt);line-height:1.7;min-height:5.1em}
+.pcontrib{font-size:13.5px;color:var(--mute-i);margin-top:24px;padding-top:12px;border-top:1px solid var(--rule-i)}
 .pquote{font-family:'Fraunces',serif;font-style:italic;font-weight:450;font-size:16px;line-height:1.5;margin-bottom:16px}
 .pquote.pending{font-family:'IBM Plex Mono',monospace;font-style:normal;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber-ink)}
 .pattr{margin-top:auto;padding-top:12px;border-top:1px solid var(--rule-p)}
@@ -286,6 +287,7 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:560;letter-spacing:-0.012em
 /* placeholder marker */
 .tosupply{border:1.5px dashed var(--amber)!important;background:rgba(201,123,30,.06)!important;position:relative}
 .tspill{position:absolute;top:-11px;left:20px;background:var(--amber);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;padding:4px 8px;border-radius:20px;z-index:2}
+.tsnote{font-size:12.5px;color:var(--amber-ink);font-family:'IBM Plex Mono',monospace;margin-top:16px}
 
 /* ---------- FEES ---------- */
 .fees{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -316,6 +318,15 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:560;letter-spacing:-0.012em
 
 /* ---------- FAQ ---------- */
 .faqmaster{border:1px solid var(--rule-p);border-radius:10px;background:var(--card);overflow:hidden}
+.faqdark{margin-top:32px;border-color:var(--rule-i);background:rgba(255,255,255,.05)}
+.faqdark > summary{color:#fff}
+.faqdark > summary::after{color:var(--brass-lt)}
+.faqdark[open] > summary{border-bottom-color:var(--rule-i)}
+.faqdark .faqcount{color:var(--mute-i)}
+.faqdark .faq details{border-bottom-color:var(--rule-i)}
+.faqdark .faq summary{color:#fff}
+.faqdark .faq summary::after{color:var(--brass-lt)}
+.faqdark .faq p{color:var(--mute-i)}
 .faqmaster > summary{cursor:pointer;list-style:none;padding:24px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:'Fraunces',serif;font-size:19px;font-weight:560}
 .faqmaster > summary::-webkit-details-marker{display:none}
 .faqmaster > summary::after{content:"+";font-family:'IBM Plex Mono',monospace;color:var(--brass-ink);font-size:22px;flex:none;transition:transform .2s}
@@ -333,21 +344,24 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:560;letter-spacing:-0.012em
 
 /* ---------- CTA ---------- */
 .ctabox{text-align:left}
-.keyfacts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;border-top:1px solid var(--rule-i);padding-top:24px;margin-top:32px}
-@media(max-width:700px){.keyfacts{grid-template-columns:1fr}}
+.keyfacts{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;border-top:1px solid var(--rule-i);padding-top:24px;margin-top:32px}
+@media(max-width:640px){.keyfacts{grid-template-columns:1fr}}
 .kl{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--mute-i)}
 .kv{font-size:15px;font-weight:700;color:#fff;margin-top:4px}
 
 footer{background:var(--ink-3);color:var(--paper);padding:48px 0 24px}
 .fgrid{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;padding-bottom:32px;border-bottom:1px solid var(--rule-i)}
 @media(max-width:760px){.fgrid{grid-template-columns:1fr;gap:24px}}
+.fcontact{margin-bottom:16px}
+.fcontact span{display:block;font-size:13.5px;font-weight:700;color:#fff;opacity:1;margin-bottom:2px}
+.fcontact a{margin-bottom:0}
 .fgrid .flabel{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--mute-i);margin-bottom:12px}
 .fgrid a,.fgrid p{display:block;font-size:14px;text-decoration:none;margin-bottom:8px;opacity:.85}
 .fgrid a:hover{opacity:1;color:var(--brass-lt)}
 .fbot{padding-top:24px;font-size:12.5px;color:var(--mute-i);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .lockup{display:flex;align-items:center;gap:12px}
-.lockup b{font-family:'Fraunces',serif;font-size:17px;font-weight:650;display:block;color:#fff}
-.lockup span{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute-i)}
+.lockup b{font-family:'Fraunces',serif;font-size:17px;font-weight:650;display:block;color:#fff;white-space:nowrap}
+.lockup span{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute-i);white-space:nowrap}
 
 .rv{opacity:0;transform:translateY(16px);transition:opacity .65s ease,transform .65s ease}
 .rv.in{opacity:1;transform:none}
@@ -444,27 +458,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);outline:none;bo
 .fdone p{font-size:15px;color:var(--mute-p);max-width:460px;margin:0 auto 12px}
 .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .consent .opt a{color:var(--blue-ink);font-weight:700}
-/* ---------- HERO ---------- */
-.hero{position:relative}
-.hero .wrap,.hero .ticks{position:relative;z-index:1}
-
-/* ---------- PARTNERSHIP BAND ---------- */
-.partner-band{background:var(--card);border-bottom:1px solid var(--rule-p);padding:1.75rem 2rem;display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap}
-.partner-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute-p)}
-.partner-band img{height:48px;width:auto;max-width:42vw;object-fit:contain}
-.partner-band img[src*="logo-HP"],
-.footer-logos img[src*="logo-HP"]{background:#1C2A44;border-radius:6px;padding:6px 10px}
-@media(max-width:420px){.partner-band{gap:1.25rem}.partner-band img{height:38px}}
-
-/* ---------- FOOTER LOGOS ---------- */
-.footer-logos{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:1.25rem}
-.footer-logos img{height:34px;width:auto;background:#fff;border-radius:6px;padding:4px 9px;object-fit:contain}
-.footer-logos img[src*="logo-HP"]{background:transparent;border:1px solid rgba(255,255,255,.25);padding:4px}
 </style>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0BJ1XCV8LZ"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
 </head>
 <body>
 
@@ -473,17 +467,13 @@ gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
 <nav class="topnav" aria-label="Primary">
   <div class="wrap">
     <a class="navbrand" href="#top">
-      <span class="mk"><img src="/wp-content/themes/kingster/ipp-img/unitar-emblem.jpg" width="256" height="256" alt="UNITAR"></span>
-      <span><b>IPP</b>
-        <span class="navlogos">
-          <img src="/wp-content/uploads/2023/03/logo-HP.png" width="1806" height="1806" alt="Ureka Education">
-        </span>
-      </span>
+      <img class="unmark" src="/wp-content/themes/kingster/ipp-img/un-emblem-gold.png" width="320" height="320" alt="United Nations emblem" decoding="async">
+      <span><b>IPP</b><span>Ureka Education Group</span></span>
     </a>
     <div class="navlinks">
       <a href="#glance">At a glance</a>
       <a href="#geneva">Why Geneva</a>
-      <a href="#journey">The week</a>
+      <a href="#journey">The Week</a>
       <a href="#speakers">Speakers</a>
       <a href="#fees">Fees</a>
       <a href="#faq">FAQ</a>
@@ -521,12 +511,12 @@ gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
       <div class="credential">
         <div class="ctop">
           <div class="clock">
-            <span class="mk"></span>
+            <img class="unmark" src="/wp-content/themes/kingster/ipp-img/un-emblem-gold.png" width="320" height="320" alt="United Nations emblem" decoding="async">
             <div class="cbrand">International<br>Project Programme</div>
           </div>
           <span class="cstatus">Applications Open</span>
         </div>
-        <div class="cphoto"><picture><source type="image/webp" srcset="/wp-content/themes/kingster/ipp-img/an-ipp-participant-with-her-unitar-certificate.webp"><img loading="lazy" decoding="async" src="/wp-content/themes/kingster/ipp-img/an-ipp-participant-with-her-unitar-certificate.jpg" width="820" height="820" alt="An IPP participant with her UNITAR Certificate of Completion in the WHO Executive Board chamber, Geneva"></picture></div>
+        <div class="cphoto"><picture><source type="image/webp" srcset="/wp-content/themes/kingster/ipp-img/an-ipp-participant-with-her-unitar-certificate.webp"><img src="/wp-content/themes/kingster/ipp-img/an-ipp-participant-with-her-unitar-certificate.jpg" width="820" height="820" loading="lazy" decoding="async" alt="An IPP participant with her UNITAR Certificate of Completion in the WHO Executive Board chamber, Geneva"></picture></div>
         <div class="cfields">
           <div><div class="cl">Access</div><div class="cv">Geneva Week</div></div>
           <div><div class="cl">Delivered by</div><div class="cv">UNITAR × UREKA</div></div>
@@ -540,13 +530,6 @@ gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
   </div>
 
 </section>
-
-<div class="partner-band">
-  <span class="partner-label">Delivered in partnership</span>
-  <img loading="lazy" decoding="async" src="/wp-content/uploads/2025/04/UNITAR_2023_HORZ_blue-2.jpg" alt="UNITAR — United Nations Institute for Training and Research">
-  <img loading="lazy" decoding="async" src="/wp-content/uploads/2023/03/logo-HP.png" alt="Ureka Education Group">
-</div>
-
 
 <!-- 02 AT A GLANCE -->
 <main id="main">
@@ -625,11 +608,11 @@ gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
         <div class="placebody"><h3>Palais des Nations</h3><p>The United Nations in Europe — multilateral diplomacy and negotiation in practice.</p></div>
       </div>
       <div class="place">
-        <div class="placeimg"><picture><img src="/wp-content/themes/kingster/ipp-img/the-ipp-cohort-at-the-international-committee.jpg" width="620" height="465" loading="lazy" decoding="async" alt="The IPP cohort at the International Committee of the Red Cross, Geneva"></picture></div>
+        <div class="placeimg"><img src="/wp-content/themes/kingster/ipp-img/the-ipp-cohort-at-the-international-committee.jpg" width="620" height="465" loading="lazy" decoding="async" alt="The IPP cohort at the International Committee of the Red Cross, Geneva"></div>
         <div class="placebody"><h3>International Committee of the Red Cross</h3><p>Humanitarian action, neutrality and crisis response.</p></div>
       </div>
       <div class="place">
-        <div class="placeimg"><picture><img src="/wp-content/themes/kingster/ipp-img/an-ipp-participant-using-a-virtual-reality.jpg" width="620" height="465" loading="lazy" decoding="async" alt="An IPP participant using a virtual-reality exhibit during the CERN visit"></picture></div>
+        <div class="placeimg"><img src="/wp-content/themes/kingster/ipp-img/an-ipp-participant-using-a-virtual-reality.jpg" width="620" height="465" loading="lazy" decoding="async" alt="An IPP participant using a virtual-reality exhibit during the CERN visit"></div>
         <div class="placebody"><h3>CERN</h3><p>Scientific collaboration across borders, at the frontier of what is known.</p></div>
       </div>
       <div class="place">
@@ -747,37 +730,37 @@ gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
       </div>
     </div>
     <div class="people rv">
-      <div class="pcard">
+<div class="pcard">
         <div class="pphoto"><picture><source type="image/webp" srcset="/wp-content/themes/kingster/ipp-img/jerome-lhost-founder-and-general-manager-of.webp"><img src="/wp-content/themes/kingster/ipp-img/jerome-lhost-founder-and-general-manager-of.jpg" width="880" height="880" loading="lazy" decoding="async" alt="Jerome Lhost, Founder and General Manager of The November Company"></picture></div>
         <h3><a class="plink" href="https://www.linkedin.com/in/jerome-lhost-6268984/" target="_blank" rel="noopener noreferrer" aria-label="Jerome Lhost on LinkedIn, opens in a new tab">Jerome Lhost<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm1.78 13.02H3.55V9h3.57v11.45z"/></svg></a></h3>
         <div class="prole">Founder &amp; General Manager<br>The November Company</div>
         <div class="pcontrib">Project management, negotiation skills and the SDG project pitch</div>
       </div>
-      <div class="pcard">
+<div class="pcard">
         <div class="pphoto"><picture><source type="image/webp" srcset="/wp-content/themes/kingster/ipp-img/dr-elodie-tranchez-senior-lecturer-at-unitar.webp"><img src="/wp-content/themes/kingster/ipp-img/dr-elodie-tranchez-senior-lecturer-at-unitar.jpg" width="880" height="880" loading="lazy" decoding="async" alt="Dr Elodie Tranchez, Senior Lecturer at UNITAR"></picture></div>
         <h3><a class="plink" href="https://www.linkedin.com/in/elodie-tranchez/" target="_blank" rel="noopener noreferrer" aria-label="Dr Elodie Tranchez on LinkedIn, opens in a new tab">Dr Elodie Tranchez<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm1.78 13.02H3.55V9h3.57v11.45z"/></svg></a></h3>
         <div class="prole">Senior Lecturer, UNITAR<br>Former Human Rights Officer, UN OHCHR</div>
         <div class="pcontrib">International law, human rights and UN mechanisms</div>
       </div>
-      <div class="pcard">
+<div class="pcard">
         <div class="pphoto"><picture><source type="image/webp" srcset="/wp-content/themes/kingster/ipp-img/ambassador-amr-aljowaily-visiting-faculty-on-unitar.webp"><img src="/wp-content/themes/kingster/ipp-img/ambassador-amr-aljowaily-visiting-faculty-on-unitar.jpg" width="880" height="880" loading="lazy" decoding="async" alt="Ambassador Amr Aljowaily, visiting faculty on UNITAR's multilateral diplomacy programme"></picture></div>
         <h3><a class="plink" href="https://www.linkedin.com/in/aljowaily/" target="_blank" rel="noopener noreferrer" aria-label="Amb. Amr Aljowaily on LinkedIn, opens in a new tab">Amb. Amr Aljowaily<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm1.78 13.02H3.55V9h3.57v11.45z"/></svg></a></h3>
         <div class="prole">Visiting Faculty, Multilateral Diplomacy Programme<br>UNITAR</div>
         <div class="pcontrib">Multilateral diplomacy, global governance and international security</div>
       </div>
-      <div class="pcard">
+<div class="pcard">
         <div class="pphoto"><picture><source type="image/webp" srcset="/wp-content/themes/kingster/ipp-img/alice-richard-sustainability-facilitator.webp"><img src="/wp-content/themes/kingster/ipp-img/alice-richard-sustainability-facilitator.jpg" width="880" height="880" loading="lazy" decoding="async" alt="Alice Richard, sustainability facilitator"></picture></div>
         <h3><a class="plink" href="https://www.linkedin.com/in/alice-richard/" target="_blank" rel="noopener noreferrer" aria-label="Alice Richard on LinkedIn, opens in a new tab">Alice Richard<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm1.78 13.02H3.55V9h3.57v11.45z"/></svg></a></h3>
         <div class="prole">Sustainability Facilitator</div>
         <div class="pcontrib">Sustainability and the SDGs through experiential, game-based learning</div>
       </div>
-      <div class="pcard">
+<div class="pcard">
         <div class="pphoto"><picture><source type="image/webp" srcset="/wp-content/themes/kingster/ipp-img/suddha-chakravartti-director-of-cuts-international-geneva.webp"><img src="/wp-content/themes/kingster/ipp-img/suddha-chakravartti-director-of-cuts-international-geneva.jpg" width="880" height="880" loading="lazy" decoding="async" alt="Suddha Chakravartti, Director of CUTS International, Geneva"></picture></div>
         <h3><a class="plink" href="https://www.linkedin.com/in/suddha-chakravartti-2b084b5/" target="_blank" rel="noopener noreferrer" aria-label="Suddha Chakravartti on LinkedIn, opens in a new tab">Suddha Chakravartti<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm1.78 13.02H3.55V9h3.57v11.45z"/></svg></a></h3>
         <div class="prole">Director<br>CUTS International, Geneva</div>
         <div class="pcontrib">Introduction to diplomacy and the gateway to the United Nations</div>
       </div>
-      <div class="pcard">
+<div class="pcard">
         <div class="pphoto"><picture><source type="image/webp" srcset="/wp-content/themes/kingster/ipp-img/dr-margaret-harris-global-spokesperson-at-the.webp"><img src="/wp-content/themes/kingster/ipp-img/dr-margaret-harris-global-spokesperson-at-the.jpg" width="880" height="880" loading="lazy" decoding="async" alt="Dr Margaret Harris, Global Spokesperson at the World Health Organization"></picture></div>
         <h3><a class="plink" href="https://x.com/DrMargaretH" target="_blank" rel="noopener noreferrer" aria-label="Dr Margaret Harris on X, opens in a new tab">Dr Margaret Harris<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.65l-5.21-6.82-5.96 6.82H1.68l7.73-8.84L1.26 2.25h6.82l4.71 6.23 5.45-6.23zm-1.16 17.52h1.83L7.01 4.13H5.05l12.03 15.64z"/></svg></a></h3>
         <div class="prole">Global Spokesperson<br>World Health Organization</div>
@@ -858,13 +841,13 @@ gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
         <div class="fbadge">Most chosen</div>
         <div class="fl">With accommodation — twin sharing</div>
         <div class="fv">USD 3,550</div>
-        <p>A shared twin room at the IntercityHotel Geneva or similar.</p>
+        <p>A shared twin room at the B&amp;B Hotel Geneva or similar.</p>
         <div class="facc">Six nights twin sharing + daily breakfast</div>
       </div>
       <div class="fee">
         <div class="fl">With accommodation — single room</div>
         <div class="fv">USD 4,100</div>
-        <p>A private single room at the IntercityHotel Geneva or similar.</p>
+        <p>A private single room at the B&amp;B Hotel Geneva or similar.</p>
         <div class="facc">Six nights single room + daily breakfast</div>
       </div>
     </div>
@@ -908,7 +891,7 @@ gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
         </div>
 
         <div class="accnote">
-          <b>Accommodation.</b> Both accommodation options add six nights at the IntercityHotel Geneva or
+          <b>Accommodation.</b> Both accommodation options add six nights at the B&amp;B Hotel Geneva or
           similar, with daily breakfast — shared twin, or a single room. The no-accommodation option covers
           the identical programme without a room or breakfast.
         </div>
@@ -934,11 +917,65 @@ gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
   </div>
 </section>
 
-<!-- 10 INSTITUTIONAL PATHWAY -->
-<section class="band" id="institutions">
+<!-- 10 CTA -->
+<section class="band ink" id="apply">
   <div class="wrap">
     <div class="shead rv">
       <div class="snum">10</div>
+      <div>
+        <div class="skicker">Apply</div>
+        <h2>Your journey to Geneva starts here</h2>
+        <p class="sdek">Join an international cohort of students and emerging leaders ready to explore global
+        challenges, develop practical ideas and experience international cooperation at its centre.</p>
+      </div>
+    </div>
+    <div class="ctabox rv">
+      <a href="mailto:pierre.p@ureka.co.uk?subject=IPP%20Geneva%20Application" data-apply class="btn btn-gold">Apply now <span class="ar">→</span></a>
+      <div class="keyfacts">
+        <div><div class="kl">Online programme</div><div class="kv">15 November – 28 November 2026</div></div>
+        <div><div class="kl">Geneva week</div><div class="kv">29 November – 5 December 2026</div></div>
+      </div>
+      <details class="faqmaster faqdark rv" id="faq">
+      <summary><span>View all frequently asked questions</span><span class="faqcount">5 questions</span></summary>
+      <div class="faq">
+        <details>
+          <summary>Who can apply to IPP?</summary>
+          <p>IPP is designed for university students and emerging leaders seeking international exposure and
+          practical experience in diplomacy, leadership, entrepreneurship and global impact.</p>
+        </details>
+        <details>
+          <summary>Is IPP limited to students from international relations or political science?</summary>
+          <p>No. IPP welcomes participants from all academic disciplines, including business, engineering,
+          technology, law, medicine, social sciences and the humanities.</p>
+        </details>
+        <details>
+          <summary>How is the programme delivered?</summary>
+          <p>IPP begins with a two-week guided remote project phase. Participants then travel to Geneva for the
+          final seven-day immersive learning experience.</p>
+        </details>
+        <details>
+          <summary>Is visa support provided?</summary>
+          <p>Successful participants receive relevant programme documentation to support their visa application.
+          Visa decisions remain under the authority of the relevant embassy or consulate.</p>
+        </details>
+        <details>
+          <summary>Can universities nominate a delegation?</summary>
+          <p>Yes. Universities and educational institutions may nominate groups of students to participate as part
+          of the international cohort.</p>
+        </details>
+      </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- 11 INSTITUTIONAL PATHWAY -->
+<section class="band" id="institutions">
+  <div class="wrap">
+    <div class="shead rv">
+      <div class="snum">11</div>
       <div>
         <div class="skicker">For universities and schools</div>
         <h2>Bring a delegation.</h2>
@@ -978,16 +1015,16 @@ gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
       </div>
     </div>
     <div style="margin-top:34px">
-      <a href="mailto:malak.j@ureka.co.uk?subject=IPP%20Geneva%20%E2%80%94%20University%20Delegation" class="btn btn-gold">Discuss a delegation <span class="ar">→</span></a>
+      <a href="https://calendly.com/REPLACE-ME" target="_blank" rel="noopener noreferrer" class="btn btn-gold">Book a delegation call <span class="ar">→</span></a>
     </div>
   </div>
 </section>
 
-<!-- 11 NEXT CITY -->
+<!-- 12 NEXT CITY -->
 <section class="band ink" id="cities">
   <div class="wrap">
     <div class="shead rv">
-      <div class="snum">11</div>
+      <div class="snum">12</div>
       <div>
         <div class="skicker">What comes next</div>
         <h2>Geneva is the first city.</h2>
@@ -1010,75 +1047,12 @@ gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
         diplomacy.</p>
       </div>
     </div>
-    <p class="rv" style="margin-top:28px;font-size:14.5px;color:var(--mute-i)">
-      To hear first when applications open for New York, note it in the “anything else” field on your
-      Geneva application, or email <a href="mailto:malak.j@ureka.co.uk?subject=IPP%20New%20York%202027" style="color:var(--brass-lt)">malak.j@ureka.co.uk</a>.
+    <p class="rv" style="margin-top:24px;font-size:14.5px;color:var(--mute-i);max-width:var(--measure)">
+      Registration for New York opens ahead of the March 2027 session. Add your details and we will
+      contact you first when applications open.
     </p>
-  </div>
-</section>
-
-<!-- 12 FAQ -->
-<section class="band" id="faq">
-  <div class="wrap">
-    <div class="shead rv">
-      <div class="snum">12</div>
-      <div>
-        <div class="skicker">Frequently asked questions</div>
-        <h2>Before you apply</h2>
-      </div>
-    </div>
-    <details class="faqmaster rv">
-      <summary><span>View all frequently asked questions</span><span class="faqcount">5 questions</span></summary>
-      <div class="faq">
-        <details>
-          <summary>Who can apply to IPP?</summary>
-          <p>IPP is designed for university students and emerging leaders seeking international exposure and
-          practical experience in diplomacy, leadership, entrepreneurship and global impact.</p>
-        </details>
-        <details>
-          <summary>Is IPP limited to students from international relations or political science?</summary>
-          <p>No. IPP welcomes participants from all academic disciplines, including business, engineering,
-          technology, law, medicine, social sciences and the humanities.</p>
-        </details>
-        <details>
-          <summary>How is the programme delivered?</summary>
-          <p>IPP begins with a two-week guided remote project phase. Participants then travel to Geneva for the
-          final seven-day immersive learning experience.</p>
-        </details>
-        <details>
-          <summary>Is visa support provided?</summary>
-          <p>Successful participants receive relevant programme documentation to support their visa application.
-          Visa decisions remain under the authority of the relevant embassy or consulate.</p>
-        </details>
-        <details>
-          <summary>Can universities nominate a delegation?</summary>
-          <p>Yes. Universities and educational institutions may nominate groups of students to participate as part
-          of the international cohort.</p>
-        </details>
-      </div>
-    </details>
-  </div>
-</section>
-
-<!-- 13 CTA -->
-<section class="band ink" id="apply">
-  <div class="wrap">
-    <div class="shead rv">
-      <div class="snum">13</div>
-      <div>
-        <div class="skicker">Apply</div>
-        <h2>Your journey to Geneva starts here</h2>
-        <p class="sdek">Join an international cohort of students and emerging leaders ready to explore global
-        challenges, develop practical ideas and experience international cooperation at its centre.</p>
-      </div>
-    </div>
-    <div class="ctabox rv">
-      <a href="mailto:malak.j@ureka.co.uk?subject=IPP%20Geneva%20Application" data-apply class="btn btn-gold">Apply now <span class="ar">→</span></a>
-      <div class="keyfacts">
-        <div><div class="kl">Geneva Week</div><div class="kv">29 November – 5 December 2026</div></div>
-        <div><div class="kl">Location</div><div class="kv">Geneva, Switzerland</div></div>
-        <div><div class="kl">Contact</div><div class="kv">malak.j@ureka.co.uk</div></div>
-      </div>
+    <div class="rv" style="margin-top:24px">
+      <button type="button" data-ny class="btn btn-gold">Register interest — New York 2027 <span class="ar">→</span></button>
     </div>
   </div>
 </section>
@@ -1090,7 +1064,7 @@ gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
     <div class="fgrid">
       <div>
         <div class="lockup" style="margin-bottom:16px">
-          <span class="mk"></span>
+          <img class="unmark" src="/wp-content/themes/kingster/ipp-img/un-emblem-gold.png" width="320" height="320" alt="United Nations emblem" decoding="async">
           <div><b>International Project Programme</b><span>UNITAR × Ureka Education Group</span></div>
         </div>
         <p style="max-width:380px;opacity:.7;font-size:13.5px">An international learning experience bridging
@@ -1098,15 +1072,17 @@ gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
       </div>
       <div>
         <div class="flabel">Contact</div>
-        <p style="opacity:.85">Ms. Malak Jaber</p>
-        <a href="mailto:malak.j@ureka.co.uk">malak.j@ureka.co.uk</a>
-        <a href="tel:+971502073899">+971 50 207 3899</a>
-        <a href="https://ureka.co.uk" rel="noopener noreferrer">ureka.co.uk</a>
+        <div class="fcontact"><span>Pierre Pascal</span>
+          <a href="mailto:pierre.p@ureka.co.uk">pierre.p@ureka.co.uk</a>
+          <a href="tel:+33633431065">+33 6 33 43 10 65</a></div>
+        <div class="fcontact"><span>Malak Jaber</span>
+          <a href="mailto:malak.j@ureka.co.uk">malak.j@ureka.co.uk</a>
+          <a href="tel:+971502073899">+971 50 207 3899</a></div>
+        <div class="fcontact"><span>Wael Azeem</span>
+          <a href="mailto:wael.a@ureka.co.uk">wael.a@ureka.co.uk</a>
+          <a href="tel:+971527388583">+971 52 738 8583</a></div>
+        <a href="https://ureka.co.uk" rel="noopener noreferrer" style="margin-top:16px">ureka.co.uk</a>
       </div>
-    </div>
-<div class="footer-logos" style="margin-top:22px">
-      <img loading="lazy" decoding="async" src="/wp-content/uploads/2025/04/UNITAR_2023_HORZ_blue-2.jpg" alt="UNITAR">
-      <img loading="lazy" decoding="async" src="/wp-content/uploads/2023/03/logo-HP.png" alt="Ureka Education Group">
     </div>
     <div class="fbot">
       <span>© 2026 Ureka Education Group</span>
@@ -1114,6 +1090,73 @@ gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
     </div>
   </div>
 </footer>
+
+
+<!-- ================= NEW YORK REGISTER ================= -->
+<div class="fmodal" id="nyModal" role="dialog" aria-modal="true" aria-labelledby="nyTitle">
+  <div class="fpanel" style="max-width:520px">
+    <div class="fhead" style="padding-bottom:24px">
+      <div class="fheadtop">
+        <div>
+          <div class="fsub">International Project Programme — New York</div>
+          <h2 id="nyTitle">Register your interest</h2>
+        </div>
+        <button type="button" class="fclose" aria-label="Close registration form">&times;</button>
+      </div>
+    </div>
+    <form id="nyForm" novalidate>
+    <p class="visually-hidden" aria-live="polite" id="nyAnnounce"></p>
+    <div class="fbody">
+      <section id="nyFields">
+        <p class="fsecdek">The March 2027 session at the United Nations Headquarters in New York.
+        Add your details and we will contact you first when applications open.</p>
+        <div class="fgrid2">
+          <div class="fq"><label for="nyFirst">First name <span class="freq">*</span></label>
+            <input type="text" id="nyFirst" name="first_name" autocomplete="given-name" required></div>
+          <div class="fq"><label for="nyLast">Last name <span class="freq">*</span></label>
+            <input type="text" id="nyLast" name="last_name" autocomplete="family-name" required></div>
+        </div>
+        <div class="fq"><label for="nyEmail">Email address <span class="freq">*</span></label>
+          <input type="email" id="nyEmail" name="email" autocomplete="email" inputmode="email" required></div>
+        <div class="fq"><label for="nyWa">WhatsApp number</label>
+          <input type="tel" id="nyWa" name="whatsapp" placeholder="+971 50 123 4567" autocomplete="tel"
+                 inputmode="tel" pattern="^\+[0-9][0-9 ()\-]{6,20}$"
+                 title="Start with + and your country code, for example +971 50 123 4567"
+                 aria-describedby="nyWaHint">
+          <div class="fhint" id="nyWaHint">Optional. Include your country code.</div></div>
+        <div class="fq"><label for="nyCountry">Country of residence <span class="freq">*</span></label>
+          <select id="nyCountry" name="country_residence" autocomplete="country-name" required><option value="">Select…</option><option>Afghanistan</option><option>Albania</option><option>Algeria</option><option>Andorra</option><option>Angola</option><option>Antigua and Barbuda</option><option>Argentina</option><option>Armenia</option><option>Australia</option><option>Austria</option><option>Azerbaijan</option><option>Bahamas</option><option>Bahrain</option><option>Bangladesh</option><option>Barbados</option><option>Belarus</option><option>Belgium</option><option>Belize</option><option>Benin</option><option>Bhutan</option><option>Bolivia</option><option>Bosnia and Herzegovina</option><option>Botswana</option><option>Brazil</option><option>Brunei</option><option>Bulgaria</option><option>Burkina Faso</option><option>Burundi</option><option>Cabo Verde</option><option>Cambodia</option><option>Cameroon</option><option>Canada</option><option>Central African Republic</option><option>Chad</option><option>Chile</option><option>China</option><option>Colombia</option><option>Comoros</option><option>Congo</option><option>Congo (DRC)</option><option>Costa Rica</option><option>Côte d'Ivoire</option><option>Croatia</option><option>Cuba</option><option>Cyprus</option><option>Czechia</option><option>Denmark</option><option>Djibouti</option><option>Dominica</option><option>Dominican Republic</option><option>Ecuador</option><option>Egypt</option><option>El Salvador</option><option>Equatorial Guinea</option><option>Eritrea</option><option>Estonia</option><option>Eswatini</option><option>Ethiopia</option><option>Fiji</option><option>Finland</option><option>France</option><option>Gabon</option><option>Gambia</option><option>Georgia</option><option>Germany</option><option>Ghana</option><option>Greece</option><option>Grenada</option><option>Guatemala</option><option>Guinea</option><option>Guinea-Bissau</option><option>Guyana</option><option>Haiti</option><option>Honduras</option><option>Hong Kong SAR</option><option>Hungary</option><option>Iceland</option><option>India</option><option>Indonesia</option><option>Iran</option><option>Iraq</option><option>Ireland</option><option>Israel</option><option>Italy</option><option>Jamaica</option><option>Japan</option><option>Jordan</option><option>Kazakhstan</option><option>Kenya</option><option>Kiribati</option><option>Kosovo</option><option>Kuwait</option><option>Kyrgyzstan</option><option>Laos</option><option>Latvia</option><option>Lebanon</option><option>Lesotho</option><option>Liberia</option><option>Libya</option><option>Liechtenstein</option><option>Lithuania</option><option>Luxembourg</option><option>Macao SAR</option><option>Madagascar</option><option>Malawi</option><option>Malaysia</option><option>Maldives</option><option>Mali</option><option>Malta</option><option>Marshall Islands</option><option>Mauritania</option><option>Mauritius</option><option>Mexico</option><option>Micronesia</option><option>Moldova</option><option>Monaco</option><option>Mongolia</option><option>Montenegro</option><option>Morocco</option><option>Mozambique</option><option>Myanmar</option><option>Namibia</option><option>Nauru</option><option>Nepal</option><option>Netherlands</option><option>New Zealand</option><option>Nicaragua</option><option>Niger</option><option>Nigeria</option><option>North Korea</option><option>North Macedonia</option><option>Norway</option><option>Oman</option><option>Pakistan</option><option>Palau</option><option>Palestine</option><option>Panama</option><option>Papua New Guinea</option><option>Paraguay</option><option>Peru</option><option>Philippines</option><option>Poland</option><option>Portugal</option><option>Qatar</option><option>Romania</option><option>Russia</option><option>Rwanda</option><option>Saint Kitts and Nevis</option><option>Saint Lucia</option><option>Saint Vincent and the Grenadines</option><option>Samoa</option><option>San Marino</option><option>Sao Tome and Principe</option><option>Saudi Arabia</option><option>Senegal</option><option>Serbia</option><option>Seychelles</option><option>Sierra Leone</option><option>Singapore</option><option>Slovakia</option><option>Slovenia</option><option>Solomon Islands</option><option>Somalia</option><option>South Africa</option><option>South Korea</option><option>South Sudan</option><option>Spain</option><option>Sri Lanka</option><option>Sudan</option><option>Suriname</option><option>Sweden</option><option>Switzerland</option><option>Syria</option><option>Taiwan</option><option>Tajikistan</option><option>Tanzania</option><option>Thailand</option><option>Timor-Leste</option><option>Togo</option><option>Tonga</option><option>Trinidad and Tobago</option><option>Tunisia</option><option>Türkiye</option><option>Turkmenistan</option><option>Tuvalu</option><option>Uganda</option><option>Ukraine</option><option>United Arab Emirates</option><option>United Kingdom</option><option>United States</option><option>Uruguay</option><option>Uzbekistan</option><option>Vanuatu</option><option>Vatican City</option><option>Venezuela</option><option>Vietnam</option><option>Yemen</option><option>Zambia</option><option>Zimbabwe</option><option>Other</option></select></div>
+        <div class="fq"><label for="nyStatus">Current status <span class="freq">*</span></label>
+          <select id="nyStatus" name="status" required>
+            <option value="">Select…</option>
+            <option>Undergraduate student</option>
+            <option>Postgraduate student</option>
+            <option>Recent graduate</option>
+            <option>Young professional</option>
+            <option>Taking a gap year</option>
+            <option>University or institution representative</option>
+            <option>Other</option>
+          </select></div>
+        <div class="fq"><fieldset><legend>Consent <span class="freq">*</span></legend>
+          <div class="consent">
+            <label class="opt"><input type="checkbox" name="ny_consent" required> I agree to be contacted by Ureka Education Group about IPP New York and relevant programme updates.</label>
+            <label class="opt"><input type="checkbox" name="ny_privacy" required> I have read and agree to the <a href="https://ureka.co.uk/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</label>
+          </div>
+        </fieldset></div>
+      </section>
+      <section id="nyDone" class="fdone" hidden>
+        <div class="tick">&check;</div>
+        <h3>You are on the list</h3>
+        <p>Thank you. We will contact you first when registration for IPP New York, March 2027, opens.</p>
+      </section>
+    </div>
+    <div class="ffoot" id="nyFoot">
+      <div class="fstepno">New York &middot; March 2027</div>
+      <div class="fbtns"><button type="submit" class="fbtn fbtn-primary">Register interest</button></div>
+    </div>
+    </form>
+  </div>
+</div>
 
 <!-- ================= APPLICATION FORM ================= -->
 <div class="fmodal" id="applyModal" role="dialog" aria-modal="true" aria-labelledby="fTitle">
@@ -1399,7 +1442,7 @@ gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
             <label class="opt"><input type="radio" name="readiness" value="Institutional approval"> I need approval from my university or institution</label>
             <label class="opt"><input type="radio" name="readiness" value="Explore funding"> I need to explore funding or sponsorship</label>
             <label class="opt"><input type="radio" name="readiness" value="Need more information"> I need more information before deciding</label>
-            <label class="opt"><input type="radio" name="readiness" value="Comparing programmes"> I am currently exploring several programmes</label>
+            <label class="opt"><input type="radio" name="readiness" value="Comparing programs"> I am currently exploring several programs</label>
           </div></fieldset></div>
       </section>
 
@@ -1460,6 +1503,102 @@ gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
   } else {
     document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')});
   }
+
+
+/* ---------- NEW YORK REGISTRATION ---------- */
+(function(){
+  try{
+    var m=document.getElementById('nyModal'), f=document.getElementById('nyForm');
+    if(!m||!f) return;
+    var fields=document.getElementById('nyFields'), done=document.getElementById('nyDone'),
+        foot=document.getElementById('nyFoot'), ann=document.getElementById('nyAnnounce'), last=null;
+    function open(){ last=document.activeElement; m.classList.add('on'); document.body.style.overflow='hidden'; m.querySelector('.fclose').focus(); }
+    function close(){ m.classList.remove('on'); document.body.style.overflow=''; if(last&&last.focus) last.focus(); }
+    document.querySelectorAll('[data-ny]').forEach(function(b){ b.addEventListener('click',function(e){e.preventDefault();open();}); });
+    m.querySelector('.fclose').addEventListener('click',close);
+    m.addEventListener('mousedown',function(e){ if(e.target===m) close(); });
+    var FOCUSABLE='a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
+    document.addEventListener('keydown',function(e){
+      if(!m.classList.contains('on')) return;
+      if(e.key==='Escape'){ close(); return; }
+      if(e.key!=='Tab') return;
+      var items=Array.prototype.filter.call(m.querySelectorAll(FOCUSABLE),function(el){return el.offsetParent!==null||el===document.activeElement;});
+      if(!items.length) return;
+      var first=items[0], lastEl=items[items.length-1];
+      if(e.shiftKey && document.activeElement===first){ e.preventDefault(); lastEl.focus(); }
+      else if(!e.shiftKey && document.activeElement===lastEl){ e.preventDefault(); first.focus(); }
+    });
+    f.addEventListener('change',function(e){
+      if(e.target&&(e.target.type==='checkbox')){ var l=e.target.closest('.opt'); if(l) l.classList.toggle('is-on', e.target.checked); }
+    });
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var els=f.querySelectorAll('input,select');
+      for(var i=0;i<els.length;i++){
+        if(els[i].disabled) continue;
+        if(!els[i].checkValidity()){ els[i].reportValidity(); if(els[i].scrollIntoView) els[i].scrollIntoView({block:'center',behavior:'smooth'}); return; }
+      }
+      var data={interest:'IPP New York — March 2027'};
+      new FormData(f).forEach(function(v,k){ data[k]=v; });
+      hsSend(HS_FORM_IPP, {
+      firstname:data.first_name||'', lastname:data.last_name||'', email:data.email||'',
+      phone:data.whatsapp||'', country:data.country_residence||'',
+      message:'Programme: IPP New York — March 2027 (interest) -- '+
+              Object.keys(data).map(function(k){return k+': '+data[k];}).join('\n')
+    }).then(function(ok){
+      if(!ok){
+        /* ponytail: never silently lose an interest registration */
+        window.location.href='mailto:pierre.p@ureka.co.uk?subject='+
+          encodeURIComponent('IPP New York 2027 — interest')+'&body='+
+          encodeURIComponent(Object.keys(data).map(function(k){return k+': '+data[k];}).join('\n'));
+      }
+    });
+    
+      fields.hidden=true; done.hidden=false; foot.hidden=true;
+      if(ann) ann.textContent='Registration received. We will contact you when applications open.';
+    });
+  }catch(err){
+    document.querySelectorAll('[data-ny]').forEach(function(b){
+      b.setAttribute('onclick',"location.href='mailto:pierre.p@ureka.co.uk?subject=IPP%20New%20York%202027'");
+    });
+  }
+})();
+
+/* ---------- LEAD CAPTURE ---------- */
+// ── HubSpot lead capture ──
+// Forms API takes only a portal id and form guid (both non-secret), so no key
+// lives in client code. Fill these in once the Ureka portal exists; until then
+// hsSend() is a no-op and CF7 email remains the only path.
+var HS_PORTAL   = '149014204';
+var HS_FORM_ALS = 'fca68ef0-4136-4e5b-b375-a59f76ca7b5f';
+var HS_FORM_IPP = '60ed617c-4476-443d-aaad-64df171c8678';
+
+function hsCookie(n) {
+  var m = document.cookie.match('(^|;)\\s*' + n + '\\s*=\\s*([^;]+)');
+  return m ? m.pop() : '';
+}
+// Fire-and-forget: HubSpot must never block or break the CF7 submission that
+// already guarantees the lead reaches Malak by email.
+function hsSend(formGuid, fields) {
+  if (!HS_PORTAL || !formGuid) return Promise.resolve(false);
+  var body = {
+    fields: Object.keys(fields)
+      .filter(function (k) { return fields[k] !== '' && fields[k] != null; })
+      .map(function (k) { return { name: k, value: String(fields[k]) }; }),
+    context: {
+      pageUri: location.href,
+      pageName: document.title,
+      hutk: hsCookie('hubspotutk') || undefined
+    }
+  };
+  return fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + HS_PORTAL + '/' + formGuid, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  }).then(function (r) { return r.ok; }).catch(function () { return false; });
+}
+
+  var CF7_FORM_ID = location.hostname === 'ureka.co.uk' ? 9199 : 9201; // live : staging
 
 /* ---------- APPLICATION FORM ---------- */
 (function(){
@@ -1593,76 +1732,46 @@ gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");</script>
   next.addEventListener('click',function(){ if(validStep()) go(cur+1); });
   back.addEventListener('click',function(){ if(cur>0) go(cur-1); });
 
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!validStep()) return;
 
-  /* ---------- CF7 submission ----------
-     CF7 form 9199/9201 has only your-name / your-email / your-institution /
-     your-country / your-message, so every other answer is serialised into
-     your-message as readable "Label: value" lines. */
-
-// ── HubSpot lead capture ──
-// Forms API takes only a portal id and form guid (both non-secret), so no key
-// lives in client code. Fill these in once the Ureka portal exists; until then
-// hsSend() is a no-op and CF7 email remains the only path.
-var HS_PORTAL   = '149014204';
-var HS_FORM_ALS = 'fca68ef0-4136-4e5b-b375-a59f76ca7b5f';
-var HS_FORM_IPP = '60ed617c-4476-443d-aaad-64df171c8678';
-
-function hsCookie(n) {
-  var m = document.cookie.match('(^|;)\\s*' + n + '\\s*=\\s*([^;]+)');
-  return m ? m.pop() : '';
-}
-// Fire-and-forget: HubSpot must never block or break the CF7 submission that
-// already guarantees the lead reaches Malak by email.
-function hsSend(formGuid, fields) {
-  if (!HS_PORTAL || !formGuid) return Promise.resolve(false);
-  var body = {
-    fields: Object.keys(fields)
-      .filter(function (k) { return fields[k] !== '' && fields[k] != null; })
-      .map(function (k) { return { name: k, value: String(fields[k]) }; }),
-    context: {
-      pageUri: location.href,
-      pageName: document.title,
-      hutk: hsCookie('hubspotutk') || undefined
-    }
-  };
-  return fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + HS_PORTAL + '/' + formGuid, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body)
-  }).then(function (r) { return r.ok; }).catch(function () { return false; });
-}
-
-  var CF7_FORM_ID = location.hostname === 'ureka.co.uk' ? 9199 : 9201; // live : staging
-
-  function clean(t){ return (t||'').replace(/\s+/g,' ').replace(/\s*\*\s*$/,'').trim(); }
-  function labelFor(el){
-    var box = el.type==='checkbox', bare = box && (!el.value || el.value==='on');
-    if(!bare && (el.type==='radio' || box)){
-      var fs = el.closest('fieldset'), lg = fs && fs.querySelector('legend');
-      if(lg) return clean(lg.textContent);
-    }
-    if(bare){ var own = el.closest('label'); if(own) return clean(own.textContent); }
-    var l = el.id && form.querySelector('label[for="'+el.id+'"]');
-    if(l) return clean(l.textContent);
-    var wrap = el.closest('label');
-    return wrap ? clean(wrap.textContent) : el.name;
-  }
-  /* every answer the form collects, in page order, one "Label: value" per line */
-  function serialise(){
-    var out = [], seen = {};
-    Array.prototype.forEach.call(form.elements, function(el){
-      if(!el.name || el.disabled || el.type==='submit' || el.type==='button') return;
-      if((el.type==='radio' || el.type==='checkbox') && !el.checked) return;
-      var bare = el.type==='checkbox' && (!el.value || el.value==='on');
-      var val = bare ? 'Yes' : el.value;
-      if(!val) return;
-      if(seen[el.name] !== undefined){ out[seen[el.name]].v.push(val); }
-      else { seen[el.name] = out.length; out.push({l: labelFor(el), v: [val]}); }
+    var data={};
+    new FormData(form).forEach(function(v,k){
+      if(data[k]){ data[k]=[].concat(data[k],v); } else { data[k]=v; }
     });
-    return out.map(function(o){ return o.l + ': ' + o.v.join(', '); }).join('\n');
-  }
 
-  function showDone(readiness){
+    var name=(data.first_name||'')+' '+(data.last_name||'');
+    var summary=Object.keys(data).map(function(k){return k+': '+data[k];}).join('\n');
+    hsSend(HS_FORM_IPP, {
+      firstname:data.first_name||'', lastname:data.last_name||'', email:data.email||'',
+      phone:data.phone||data.whatsapp||'', company:data.institution||'',
+      country:data.country_residence||'',
+      message:'Programme: IPP Geneva -- '+summary
+    });
+    var fd=new FormData();
+    fd.append('_wpcf7_unit_tag','wpcf7-ipp');
+    fd.append('your-name', name.trim()||'-');
+    fd.append('your-email', data.email||'');
+    fd.append('your-institution', data.institution||'-');
+    fd.append('your-country', data.country_residence||'');
+    fd.append('your-message', summary);
+    fetch('/wp-json/contact-form-7/v1/contact-forms/'+CF7_FORM_ID+'/feedback',{method:'POST',body:fd})
+      .then(function(r){return r.json();})
+      .then(function(j){
+        if(j.status==='mail_sent'){
+          window.location.href='/thank-you-ipp/?r='+encodeURIComponent(data.readiness||'');
+          return;
+        }
+        throw new Error(j.message||'submit failed');
+      })
+      .catch(function(){
+        /* ponytail: backend unreachable — mailto draft so no lead is lost */
+        window.location.href='mailto:malak.j@ureka.co.uk?subject='+
+          encodeURIComponent('IPP Application — '+name.trim())+'&body='+encodeURIComponent(summary);
+      });
+    
+
     steps.forEach(function(s){s.hidden=true});
     done.hidden=false;
     foot.hidden=true;
@@ -1670,69 +1779,23 @@ function hsSend(formGuid, fields) {
     if(announce) announce.textContent='Application submitted. Thank you for applying to IPP.';
     dots.forEach(function(d){d.classList.remove('now');d.classList.add('done')});
     body.scrollTop=0;
-    var extra=document.getElementById('doneExtra');
+
+    var readiness=data.readiness, extra=document.getElementById('doneExtra');
     if(readiness==='Ready to proceed'){
       extra.innerHTML='<b>Next step.</b> Because you indicated you are ready to proceed, we will send your selection-interview invitation and enrolment instructions first.';
       extra.hidden=false;
-    } else if(readiness==='Need more information'||readiness==='Comparing programmes'){
+    } else if(readiness==='Need more information'||readiness==='Comparing programs'){
       extra.innerHTML='<b>Next step.</b> We will offer you a short call with the programme team so you can ask questions before deciding.';
       extra.hidden=false;
     } else if(readiness==='Explore funding'||readiness==='Institutional approval'){
       extra.innerHTML='<b>Next step.</b> We will include a formal programme letter you can use to support a funding or institutional-approval request.';
       extra.hidden=false;
     }
-  }
-
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    if(!validStep()) return;
-
-    var v = function(n){ var el=form.elements[n]; return el ? (el.value||'').trim() : ''; };
-    var name = (v('first_name') + ' ' + v('last_name')).trim();
-    var readiness = (form.querySelector('input[name="readiness"]:checked')||{}).value;
-    var summary = serialise();
-
-    var fd = new FormData();
-    fd.append('_wpcf7_unit_tag','wpcf7-ipp');
-    fd.append('your-name', name || '-');
-    fd.append('your-email', v('email'));
-    fd.append('your-institution', v('institution') || '-');
-    fd.append('your-country', v('country_residence'));
-    fd.append('your-message', summary);
-
-    hsSend(HS_FORM_IPP, {
-      firstname: v('first_name'), lastname: v('last_name'), email: v('email'),
-      phone: v('phone'), company: v('institution'), country: v('country_residence'),
-      message: 'Programme: IPP -- Readiness: ' + (readiness || '-') + ' -- ' + summary
-    });
-
-    var label = submit.textContent;
-    submit.disabled = true; submit.textContent = 'Submitting\u2026';
-
-    fetch('/wp-json/contact-form-7/v1/contact-forms/' + CF7_FORM_ID + '/feedback', {method:'POST', body:fd})
-      .then(function(r){ return r.json(); })
-      .then(function(j){
-        if(j.status === 'mail_sent'){ dirty=false; window.location.href = '/thank-you-ipp/?r=' + encodeURIComponent(readiness||''); return; }
-        if(j.status === 'validation_failed'){
-          var f = j.invalid_fields && j.invalid_fields[0];
-          alert((f && f.message) || j.message || 'Please check your answers and try again.');
-          submit.disabled = false; submit.textContent = label;
-          return;
-        }
-        throw new Error(j.message || 'submit failed');
-      })
-      .catch(function(){
-        /* ponytail: backend unreachable — fall back to a mailto draft so no lead is lost */
-        window.location.href = 'mailto:malak.j@ureka.co.uk?subject=' +
-          encodeURIComponent('IPP Application \u2014 ' + name) + '&body=' + encodeURIComponent(summary);
-        submit.disabled = false; submit.textContent = label;
-        showDone(readiness);
-      });
   });
   }catch(err){
     /* if anything above fails, fall back to email so an applicant is never stranded */
     document.querySelectorAll('[data-apply]').forEach(function(b){
-      b.setAttribute('href','mailto:malak.j@ureka.co.uk?subject=IPP%20Geneva%20Application');
+      b.setAttribute('href','mailto:pierre.p@ureka.co.uk?subject=IPP%20Geneva%20Application');
     });
   }
 })();
