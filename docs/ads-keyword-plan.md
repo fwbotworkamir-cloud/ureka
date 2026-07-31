@@ -3,6 +3,8 @@
 Researched 1 Aug 2026 via Ahrefs (paid-pages index dated 1 Jul 2026 — August not yet indexed).
 LinkedIn intel added 1 Aug 2026 (Amir's session). All CPCs in USD. Volumes = monthly, per-country.
 This document **revises** `ads-strategy.md` §2–3. Amir approved: MUN campaign + UNITAR probe (1 Aug).
+Per-product strategies split 1 Aug per Amir: **`ipp-strategy.md`** and **`als-strategy.md`** —
+those are now the canonical strategy docs; `ads-strategy.md` is historical.
 
 ---
 
