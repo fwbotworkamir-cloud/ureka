@@ -12,11 +12,63 @@ separate strategies. This doc = ALS only. IPP: see `ipp-strategy.md`.
 | Offer | Academic Leadership Summit — 4 days in Geneva, with UNITAR |
 | Next cohort | **27–30 Oct 2026** |
 | Price | USD 6,000 (−1,500 merit grant → USD 4,500 net) |
-| Audience | **Deans, provosts, VCs, education policymakers** — institutional budgets, annual cycles |
+| Audience | **Professors, deans, provosts, VCs, policymakers** — attendee is the academic; **the university pays** |
 | Decision deadline | ~10 Sept (visa 6–8 weeks for many nationalities + CV/SOP/interview selection) |
 
 **Unit economics:** order value $4,500 net · max CPA 15% = $675 · assumed lead→enrol 8%
 (unmeasured) → **max CPL $54**. Same caveat as IPP: placeholder until real funnel data exists.
+
+### 1.1 The buyer model — sponsored, not personal (Amir, 1 Aug)
+
+ALS is **university-sponsored professional development**: the professor/dean attends, but the
+institution pays from its faculty-development / staff-development budget. Consequences:
+
+1. **Two-step sale — champion + budget-holder.** The academic is the *champion* who wants to go;
+   the university (dean's office / HR / faculty development) signs. Marketing's job is to arm
+   the champion to sell it internally.
+2. **Champion-enablement kit is the core asset:** a "convince your university" pack — sponsorship
+   request letter template, institutional-ROI one-pager (UNITAR/UN-system credential, Geneva
+   network, what the department gains), invoice-to-university process, and the $1,500 merit
+   grant positioned as *"I secured us a grant"* — an internal selling tool for the champion.
+3. **Bigger targetable pool than "deans only".** Any ambitious professor with a development
+   budget behind them is a prospect — LinkedIn targeting widens from C-level academic titles to
+   faculty broadly (Professor, Associate Professor, Head of Department) in target geos.
+4. **Low price sensitivity** — sponsored budgets don't negotiate like personal wallets. Don't
+   discount beyond the grant; sell certainty and prestige instead.
+5. **Invoice-to-institution must be frictionless:** the ALS page/form should ask "will your
+   institution sponsor you?" — it qualifies the lead AND triggers the right follow-up (send the
+   sponsorship kit vs. personal-payment flow).
+6. **Multi-seat upsell:** one university sponsoring one professor can sponsor three. Group
+   pricing for 3+ faculty from one institution belongs in the kit.
+
+### 1.2 The PROVEN attendee profile — target who actually came (LinkedIn, July 2026 cohort)
+
+Three real attendees found posting about the July cohort (they call it "Academic Leadership
+**Suite**" — ⚠️ check official name vs "Summit" on our page):
+
+| Attendee | Title | Institution | What sold them (their words) |
+|---|---|---|---|
+| Dr. Yaw Amponsah Adoo | **Assoc. Professor (Tenured) & Dept Chair, Business** | Morris Brown College (HBCU, Atlanta) | Institutional legitimacy — "carried its name into Geneva… into the working group shaping how universities will govern AI"; **thanked Provost + President for sponsoring the seat** |
+| Karen Freberg | **Professor, Strategic Communication** | Univ. of Louisville | Personal brand + future-of-education — "Still pinching myself 🇺🇳" |
+| Jeremy VanHooser, M.S. | Educator, DEI focus | US | Cohort network — "presidents, vice chancellors, deans, principals from US, India, Europe, Africa, Asia" |
+
+**The pattern (this IS the targeting spec):**
+- **Who:** professors, associate professors, department chairs, provosts — mid-senior academics,
+  NOT only C-level. Confirms §1.1: the chair attends, the provost/president signs.
+- **From where:** **aspirational, mission-driven institutions** — HBCUs, regional publics,
+  universities in India/Africa/Gulf seeking global legitimacy. NOT elite R1s (Harvard doesn't
+  need Geneva; Morris Brown puts it in its recruitment story). Sell upward mobility of the
+  *institution*, not just the individual.
+- **Geos actually in the room:** US, India, Europe, Africa, Asia — wider than the IPP geo plan;
+  ALS demand is global. India + Africa are real ALS markets even though they're not IPP markets.
+- **Hooks that worked:** (1) institutional prestige on a global stage, (2) the UN rooms
+  themselves + WHO visit, (3) **AI-governance-in-education working group** (both professors led
+  with AI), (4) the peer cohort ("every coffee break its own masterclass").
+- **Marketing assets sitting in plain sight:** these three public posts ARE the testimonials —
+  142/172/52 reactions. Ask permission to quote; Morris Brown's post is a ready-made case study
+  of the sponsored-seat model (chair → provost → president chain, exactly §1.1).
+- **Lookalike seed:** engagers on these posts + the July cohort = the retargeting/lookalike seed
+  list for 2027.
 
 ## 2. The central call: October 2026 is NOT winnable with paid media (audit A1)
 
@@ -51,9 +103,11 @@ and on LinkedIn — classic ABM, not classic PPC.
 - Content engine: UNITAR co-branded proof (Sports Diplomacy White Paper model shows Ureka can
   co-publish with UNITAR — an **Academic Leadership White Paper** would be the perfect ALS lead
   magnet for deans).
-- LinkedIn Ads (later, if organic stalls): title targeting = Dean, Provost, Vice-Chancellor,
-  Pro-VC, Director of Internationalization; geo US/UAE/QA/GCC; lead-gen forms with the grant
-  ($1,500 merit) as the offer. Budget only after IPP test proves tracking end-to-end.
+- LinkedIn Ads (later, if organic stalls): title targeting per the **proven profile (§1.2)** =
+  Professor, Associate Professor, Department Chair/Head, Dean, Provost, Vice-Chancellor; company
+  filter toward aspirational institutions (HBCUs, regional publics, Gulf/India/Africa unis), NOT
+  elite R1s; geo US + India + Africa + GCC; lead-gen forms with the $1,500 grant as the offer.
+  Budget only after IPP test proves tracking end-to-end.
 - Expect LinkedIn CPLs of $50–150 for this seniority — inside the $54 target only at the top of
   that range's luck; judge on **pipeline quality**, not CPL (a single enrolment = $4,500).
 
