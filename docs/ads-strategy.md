@@ -78,18 +78,19 @@ Break-even is **one IPP enrolment** (USD 3,000). Two enrolments or one delegatio
 
 Kill any ad group whose cost-per-lead exceeds 1.5× target for two consecutive weeks.
 
-## 5. Geography — US, Dubai, China (confirmed target markets, 1 Aug 2026)
+## 5. Geography — US, UAE, Qatar (confirmed 1 Aug 2026; China dropped)
 
 Search volumes checked per market. **All three are near-zero for non-brand intent**, which reinforces §2: this is demand generation everywhere, not just in aggregate.
 
-| Keyword | US | UAE |
-|---|---|---|
-| `pre college summer program` | 80 | — |
-| `study abroad summer program` | 100 | 0 |
-| `model united nations` | 900 | 100 (KD 68) |
-| `student exchange program` | — | 30 |
-| `leadership summer program high school` | 0 | 0 |
-| `un youth delegate program` | 10 | — |
+| Keyword | US | UAE | Qatar |
+|---|---|---|---|
+| `pre college summer program` | 80 | — | — |
+| `study abroad summer program` | 100 | 0 | 0 |
+| `model united nations` | 900 | 100 (KD 68) | 30 |
+| `student exchange program` | — | 30 | 0 |
+| `unitar` | 250 | 50 | 20 |
+| `leadership summer program high school` | 0 | 0 | 0 |
+| `un youth delegate program` | 10 | — | — |
 
 ### 🇦🇪 Dubai / UAE — start here
 Best fit and lowest friction. Home market with existing operational knowledge, a dense population of IB and international schools, affluent fee-paying parents, and easy Schengen access (Emiratis visa-free; residents typically have strong travel history, so low refund exposure).
@@ -99,18 +100,24 @@ Best fit and lowest friction. Home market with existing operational knowledge, a
 Google and Meta both work. Price is actually *competitive*: USD 3,000 sits below US pre-college programmes (Yale YGS, Georgetown, LSE summer), which run USD 5,000–10,000. But education CPCs in the US are among the highest in any vertical, and we would be an unknown brand against established names.
 **Channel:** Meta/IG to **parents** (they pay in the US), plus school-counsellor and honours-college outreach. Treat Search as brand-only.
 
-### 🇨🇳 China — Google Ads cannot reach it. *(Structural, not a targeting setting)*
-Google, YouTube, Instagram and Facebook are all blocked in mainland China. Budget allocated to "China" in a Google Ads account will reach only Chinese speakers **outside** the mainland. This is not a bid or geo problem; the channel does not exist there.
+### 🇶🇦 Qatar — small, rich, and unusually concentrated
+Population ~3 million, so search volume is effectively zero (best term: `model united nations`, 30/mo). Nobody should expect Search to work here at all.
 
-Three real options:
-1. **Education agents — the dominant channel for Chinese outbound study programmes.** Commission-based (typically 10–20% of fee), relationship-driven, and they handle the parent conversation and visa paperwork. For a cohort programme this is almost certainly the highest-yield route into China.
-2. **Chinese platforms** — Baidu SEM, WeChat Official Account, RED/Xiaohongshu, Douyin. Effective but a separate build: Chinese-language creative, local payment, and usually a Chinese entity or ICP filing. Not a quick extension of the Google account.
-3. **Chinese students already abroad** (US/UK/UAE campuses) — reachable through the normal Google/Meta stack, no China-specific infrastructure needed. The cheapest way to start.
+What makes Qatar interesting is not its size but its **concentration**. Qatar Foundation's Education City hosts branch campuses of Georgetown, Carnegie Mellon, Northwestern, Texas A&M, Weill Cornell, HEC Paris and UCL inside a single district, alongside Qatar Academy and a dense set of international schools. That is an unusually short list of doors to knock on for the delegation channel — and because most are US institutions, the same pitch, academic framing and calendar logic serve both the Qatar and US markets.
 
-**Recommendation:** do not allocate Google Ads budget to China. Pursue China through agents (and option 3 opportunistically), and treat Chinese-platform advertising as a separate future project with its own budget.
+Doha–Geneva is a direct Qatar Airways route, which removes a practical objection.
 
-### Visa and refund exposure
-Visa rejection triggers a **full refund**, so refusal rates are a direct cost, not just a conversion-rate issue. UAE is low-risk; US passport holders are low-risk; **Chinese nationals need Schengen visas at 6–8 weeks' lead time**, which collides with the 4 October application deadline. Agents mitigate this materially — another argument for route 1.
+**Channel:** almost entirely institutional outreach and paid social to parents. Do not build a Search campaign for Qatar beyond brand.
+
+### 🇨🇳 China — dropped 1 Aug 2026 (Amir)
+Retained for the record: Google, YouTube, Instagram and Facebook are blocked in mainland China, so a Google Ads budget aimed at China reaches only Chinese speakers outside the mainland. If China is ever revisited, the route is **education agents** (commission ~10–20%), not advertising.
+
+### Visa position — a genuine advantage in these three markets
+**Nationals of the US, UAE and Qatar do not need a Schengen visa** (confirmed by Amir, 1 Aug 2026). This removes the two biggest frictions that shaped the original plan:
+- No 6–8 week visa lead time, so the **4 October deadline is driven only by UN security clearance** (8 weeks before 29 November), not by embassy queues.
+- **No refund exposure from visa rejection**, which was the main reason to avoid certain markets.
+
+⚠️ **One caveat that affects targeting:** UAE and Qatar are majority-expatriate. A large share of residents hold Indian, Pakistani, Filipino, Egyptian and other passports that **do** require a Schengen visa. "UAE + Qatar" as a geo target is not the same as "visa-free audience". Either accept mixed visa status and reinstate the 6–8 week lead time for part of the cohort, or qualify nationality on the application form so the team can triage early. Worth an explicit decision rather than an assumption.
 
 ## 6. Gates before a single dollar is spent
 
@@ -162,8 +169,10 @@ This is not something ad creative can fix, and it has three consequences:
 
 Worth asking Ureka directly whether the dates are fixed, and if the ad-led individual-student route is viable at all in these markets at this time of year.
 
-### A11. "China" in the plan risks meaning three different things. *(High)*
-Mainland consumers, Chinese students already overseas, and Chinese agent networks are three separate go-to-market motions with different costs, timelines and infrastructure. Only the middle one is reachable from the existing Google account. Agree which one is meant before any budget is named, or the China line item will quietly become spend that reaches nobody.
+### A11. UAE + Qatar are small enough that paid media may not be the right tool at all. *(High)*
+Combined national populations are roughly 1.5 million, inside total populations of ~13 million that are majority expatriate. The realistic buyer pool — families able and willing to spend USD 3,000 plus flights on a one-week programme, with a student free to miss term time — is small enough to be reached by **naming the institutions and contacting them directly**. Education City alone concentrates seven Western university campuses in one district.
+
+Running broad paid social against markets this small risks paying for reach we could get by email. Recommend: institutional outreach as the primary motion in both Gulf markets, with paid social used narrowly for **retargeting and parent reassurance**, not cold prospecting.
 
 ### A12. Retargeting pools will be too small to matter at first. *(Low)*
 Both pages are new with minimal traffic. Retargeting needs audience volume; it will not perform until prospecting has run for several weeks. Do not judge it early.
@@ -176,9 +185,10 @@ Both pages are new with minimal traffic. Retargeting needs audience volume; it w
 2. **Concentrate everything on IPP** against the 4 October deadline.
 3. **Make delegations the priority commercial motion** — build `/delegations/` with its own form, then outbound in September. The term-time clash (A10) makes this the *only* route that comfortably survives the objection.
 4. **Sequence the three markets rather than running them together:**
-   - **Dubai first** — lowest friction, best fit, home advantage.
-   - **US second** — works on the existing stack, but expect high CPCs and target parents, not students.
-   - **China via agents, not via Google.** No Google budget; commission-based agent partnerships instead. Chinese students already studying abroad are a cheap bonus segment on the existing stack.
+   - **UAE first** — lowest friction, home advantage, visa-free for nationals.
+   - **Qatar alongside it** — same playbook, and Education City makes the institutional target list unusually short.
+   - **US last and largest** — the only market big enough for real paid-social prospecting, but also the most expensive and the one where we are least known. Target parents.
+   - **China dropped.**
 5. **Run Search small and defensively** (~USD 18/day), and judge it on brand protection, not volume.
 6. **Put the real money into prospecting creative** for 18+ students and parents.
 7. **Treat weeks 1–4 as measurement.** Wire conversions with values first; revise all targets from observed data.
