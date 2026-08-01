@@ -405,7 +405,11 @@ footer{background:var(--ink-3);color:var(--paper);padding:48px 0 24px}
 .pglabel{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute-i);line-height:1.35}
 .pgstep.now .pglabel{color:#fff}
 
-.fbody{padding:24px;overflow-y:auto;flex:1}
+/* the form sits between .fpanel (flex column, max-height) and .fbody, so it has to
+   pass the height constraint through - otherwise .fbody's flex:1 never applies and
+   the panel clips everything below the fold with no way to scroll to it */
+#ippForm,#nyForm{display:flex;flex-direction:column;flex:1;min-height:0}
+.fbody{padding:24px;overflow-y:auto;overflow-x:hidden;flex:1;min-height:0;-webkit-overflow-scrolling:touch}
 .fstep[hidden]{display:none}
 .fsectitle{font-family:'Fraunces',serif;font-size:20px;margin-bottom:4px}
 .fsecdek{font-size:14px;color:var(--mute-p);margin-bottom:24px}
