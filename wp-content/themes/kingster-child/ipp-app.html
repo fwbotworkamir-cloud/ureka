@@ -163,11 +163,14 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:560;letter-spacing:-0.012em
 .cbar{height:30px;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px,rgba(255,255,255,.3) 5px 6px,transparent 6px 10px);margin:0 -22px;opacity:.5;border-top:1px dashed rgba(255,255,255,.18)}
 .cser{text-align:center;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--mute-i);padding:8px 0 12px}
 /* ---------- PHOTO-BACKED SECTION ---------- */
-.band.photoband{position:relative;padding-top:clamp(150px,15vw,205px);padding-bottom:24px;background-color:var(--paper);background-image:url('https://i0.wp.com/ureka.co.uk/wp-content/themes/kingster/ipp-img/glance-band-background.jpg?w=2560&v=4');background-size:cover;background-position:45% center;background-repeat:no-repeat}
-.band.photoband::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(236,239,233,.22) 0%,rgba(236,239,233,.24) 24%,rgba(236,239,233,.34) 29%,rgba(236,239,233,.96) 33%,rgba(236,239,233,.97) 42%,rgba(236,239,233,.98) 100%);z-index:0}
+.band.photoband{position:relative;padding-top:clamp(190px,19vw,260px);padding-bottom:24px;background-color:var(--paper);background-image:url('https://i0.wp.com/ureka.co.uk/wp-content/themes/kingster/ipp-img/glance-band-background.jpg?w=2560&v=4');background-size:cover;background-position:45% center;background-repeat:no-repeat}
+/* stops in px, not %: the section is ~1500px tall (four cards), so percentage
+   stops put the 205px photo strip at ~13% where the scrim was already 25% white.
+   px stops keep the reveal clear and only ramp up where text actually starts. */
+.band.photoband::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(236,239,233,0) 0px,rgba(236,239,233,.03) 120px,rgba(236,239,233,.18) 165px,rgba(236,239,233,.86) 200px,rgba(236,239,233,.96) 240px,rgba(236,239,233,.98) 300px,rgba(236,239,233,.98) 100%);z-index:0}
 .band.photoband > .wrap{position:relative;z-index:1}
-@media(max-width:760px){.band.photoband{padding-top:clamp(120px,32vw,180px);background-position:48% center}
-  .band.photoband::before{background:linear-gradient(180deg,rgba(236,239,233,.24) 0%,rgba(236,239,233,.26) 22%,rgba(236,239,233,.94) 30%,rgba(236,239,233,.98) 40%,rgba(236,239,233,.98) 100%)}}
+@media(max-width:760px){.band.photoband{padding-top:clamp(150px,38vw,215px);background-position:48% center}
+  .band.photoband::before{background:linear-gradient(180deg,rgba(236,239,233,0) 0px,rgba(236,239,233,.03) 80px,rgba(236,239,233,.16) 118px,rgba(236,239,233,.90) 150px,rgba(236,239,233,.97) 172px,rgba(236,239,233,.98) 220px,rgba(236,239,233,.98) 100%)}}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;gap:8px;padding:16px 24px;border-radius:3px;font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;text-decoration:none;border:1px solid transparent;transition:transform .18s,background .18s,border-color .18s;cursor:pointer}
 .btn-gold{background:var(--brass);color:#0B1D33}
