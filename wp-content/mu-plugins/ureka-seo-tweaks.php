@@ -54,6 +54,9 @@ add_filter( 'the_content', function ( $content ) {
 // GA4 site-wide. The /als/ and /ipp/ templates bypass wp_head, so they carry
 // their own copy of this tag — guard against double-tagging there.
 define( 'UREKA_GA4_ID', 'G-0BJ1XCV8LZ' );
+// Google Ads tag (acct 798-872-3174). Conversion is page-load on /thank-you-ipp/,
+// so a site-wide config is all the wiring it needs; page-thankyou.php also reads this.
+define( 'UREKA_ADS_ID', 'AW-18358274990' );
 add_action( 'wp_head', function () {
 	if ( is_page( array( 'als', 'ipp' ) ) ) {
 		return;
@@ -61,8 +64,9 @@ add_action( 'wp_head', function () {
 	printf(
 		'<script async src="https://www.googletagmanager.com/gtag/js?id=%1$s"></script>' .
 		'<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}' .
-		'gtag("js",new Date());gtag("config","%1$s");</script>',
-		esc_js( UREKA_GA4_ID )
+		'gtag("js",new Date());gtag("config","%1$s");gtag("config","%2$s");</script>',
+		esc_js( UREKA_GA4_ID ),
+		esc_js( UREKA_ADS_ID )
 	);
 }, 1 );
 
