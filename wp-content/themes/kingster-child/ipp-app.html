@@ -176,14 +176,15 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:560;letter-spacing:-0.012em
 .cbar{height:30px;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px,rgba(255,255,255,.3) 5px 6px,transparent 6px 10px);margin:0 -22px;opacity:.5;border-top:1px dashed rgba(255,255,255,.18)}
 .cser{text-align:center;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--mute-i);padding:8px 0 12px}
 /* ---------- PHOTO-BACKED SECTION ---------- */
-.band.photoband{position:relative;padding-top:clamp(190px,19vw,260px);padding-bottom:24px;background-color:var(--paper);background-image:url('https://i0.wp.com/ureka.co.uk/wp-content/themes/kingster/ipp-img/glance-band-background.jpg?w=2400&v=6');background-size:cover;background-position:45% top;background-repeat:no-repeat}
-/* stops in px, not %: the section is ~1500px tall (four cards), so percentage
-   stops put the 205px photo strip at ~13% where the scrim was already 25% white.
-   px stops keep the reveal clear and only ramp up where text actually starts. */
-.band.photoband::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(236,239,233,0) 0px,rgba(236,239,233,.03) 120px,rgba(236,239,233,.18) 165px,rgba(236,239,233,.86) 200px,rgba(236,239,233,.96) 240px,rgba(236,239,233,.98) 300px,rgba(236,239,233,.98) 100%);z-index:0}
-.band.photoband > .wrap{position:relative;z-index:1}
-@media(max-width:760px){.band.photoband{padding-top:clamp(150px,38vw,215px);background-position:48% top}
-  .band.photoband::before{background:linear-gradient(180deg,rgba(236,239,233,0) 0px,rgba(236,239,233,.03) 80px,rgba(236,239,233,.16) 118px,rgba(236,239,233,.90) 150px,rgba(236,239,233,.97) 172px,rgba(236,239,233,.98) 220px,rgba(236,239,233,.98) 100%)}}
+.band.photoband{position:relative;overflow:hidden;padding-top:clamp(300px,32vw,390px);padding-bottom:24px;background-color:var(--paper)}
+/* Keep the panoramic photo in its own fixed-height layer. Sizing it against the
+   full card section made background-size:cover zoom into the empty centre on mobile. */
+.band.photoband::after{content:"";position:absolute;z-index:0;top:0;left:50%;width:min(100%,940px);height:clamp(300px,32vw,390px);transform:translateX(-50%);background:url('https://ureka.co.uk/wp-content/themes/kingster/ipp-img/glance-band-background.jpg?v=6') center center/cover no-repeat}
+.band.photoband::before{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(180deg,rgba(236,239,233,0) 0px,rgba(236,239,233,.03) 190px,rgba(236,239,233,.18) 250px,rgba(236,239,233,.86) 330px,rgba(236,239,233,.98) 390px,rgba(236,239,233,.98) 100%)}
+.band.photoband > .wrap{position:relative;z-index:2}
+@media(max-width:760px){.band.photoband{padding-top:clamp(290px,72vw,340px)}
+  .band.photoband::after{height:clamp(290px,72vw,340px);background-position:center center}
+  .band.photoband::before{background:linear-gradient(180deg,rgba(236,239,233,0) 0px,rgba(236,239,233,.03) 160px,rgba(236,239,233,.18) 215px,rgba(236,239,233,.84) 280px,rgba(236,239,233,.98) 335px,rgba(236,239,233,.98) 100%)}}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;gap:8px;padding:16px 24px;border-radius:3px;font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;text-decoration:none;border:1px solid transparent;transition:transform .18s,background .18s,border-color .18s;cursor:pointer}
 .btn-gold{background:var(--brass);color:#0B1D33}
@@ -282,11 +283,11 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:560;letter-spacing:-0.012em
 .pcontrib{font-size:13.5px;color:var(--mute-i);margin-top:24px;padding-top:12px;border-top:1px solid var(--rule-i)}
 .pquote{font-family:'Fraunces',serif;font-style:italic;font-weight:450;font-size:16px;line-height:1.5;margin-bottom:16px}
 .pquote.pending{font-family:'IBM Plex Mono',monospace;font-style:normal;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber-ink)}
-.pattr{margin-top:auto;padding-top:12px;border-top:1px solid var(--rule-p)}
-.pname{display:inline-flex;align-items:center;gap:8px;font-family:'Manrope',sans-serif;font-weight:800;font-size:16.5px;line-height:1.25;color:var(--txt);text-decoration:none;transition:color .15s}
+.pattr{display:grid;align-content:end;justify-items:start;gap:6px;margin-top:auto;padding-top:12px;border-top:1px solid var(--rule-p)}
+.pname{display:inline-flex;align-items:center;gap:8px;max-width:100%;font-family:'Manrope',sans-serif;font-weight:800;font-size:16.5px;line-height:1.25;color:var(--txt);text-decoration:none;transition:color .15s}
 .pname:hover{color:var(--blue-ink)}
-.pcountry{display:flex;align-items:center;gap:8px;margin-top:4px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute-p)}
-.flag{font-size:16px;line-height:1}
+.pcountry{display:grid;grid-template-columns:26px minmax(0,1fr);align-items:center;gap:8px;margin-top:0;font-family:'IBM Plex Mono',monospace;font-size:11.5px;line-height:1.35;letter-spacing:.08em;text-transform:uppercase;color:var(--mute-p)}
+.flag{display:inline-flex;align-items:center;justify-content:center;width:26px;min-height:18px;font-family:'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif;font-size:16px;line-height:1}
 .ico{width:14px;height:14px;fill:currentColor;opacity:.55;flex:none;transition:opacity .15s}
 .pname:hover .ico,.plink:hover .ico{opacity:1}
 .plink{display:inline-flex;align-items:center;gap:8px;color:inherit;text-decoration:none;transition:color .15s}
@@ -401,7 +402,7 @@ footer{background:var(--ink-3);color:var(--paper);padding:48px 0 24px}
   body{background:#fff;color:#000}
   .band,.band.ink,.band.alt,.band.photoband{background:#fff!important;color:#000;padding:16px 0;page-break-inside:avoid}
   .band.ink h2,.band.ink h3,.hero h1{color:#000!important}
-  .band.photoband::before{display:none}
+  .band.photoband::before,.band.photoband::after{display:none}
   .band.photoband{background-image:none!important}
   .hero{background:#fff!important;color:#000}
   .lede,.lede2,.sdek,.muted,.glead,.placebody p,.pcontrib,.citycard p{color:#333!important}
@@ -490,6 +491,15 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);outline:none;bo
 .fdone p{font-size:15px;color:var(--mute-p);max-width:460px;margin:0 auto 12px}
 .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .consent .opt a{color:var(--blue-ink);font-weight:700}
+.terms-modal{z-index:220}
+.terms-panel{max-width:720px}
+.terms-body{font-size:14px;color:var(--txt)}
+.terms-intro{font-size:14.5px;color:var(--mute-p);margin-bottom:20px}
+.terms-body h3{font-family:'Manrope',sans-serif;font-size:15px;font-weight:800;margin:20px 0 6px}
+.terms-body p,.terms-body li{color:var(--mute-p)}
+.terms-body ul{padding-left:20px;margin:8px 0}
+.terms-body li{margin-bottom:6px}
+.terms-updated{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mute-p);margin-top:24px;padding-top:16px;border-top:1px solid var(--rule-p)}
 
 /* ---------- PARTNERSHIP BAND ---------- */
 .partner-band{background:var(--card);border-bottom:1px solid var(--rule-p);padding:1.75rem 2rem;display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap}
@@ -1059,8 +1069,8 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);outline:none;bo
         sciences.</p>
       </div>
     </div>
-    <div style="margin-top:34px">
-      <a href="https://calendly.com/REPLACE-ME" target="_blank" rel="noopener noreferrer" class="btn btn-gold">Book a delegation call <span class="ar">→</span></a>
+    <div class="rv" style="margin-top:34px">
+      <a href="https://calendly.com/sh-ureka/interview-international-project-program" target="_blank" rel="noopener noreferrer" class="btn btn-gold">Book a delegation call <span aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
@@ -1512,7 +1522,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);outline:none;bo
             <label class="opt"><input type="checkbox" name="c1" required> I confirm that the information provided in this application is accurate.</label>
             <label class="opt"><input type="checkbox" name="c2" required> I understand that submitting an application does not guarantee admission to IPP.</label>
             <label class="opt"><input type="checkbox" name="c3" required> I agree to be contacted by Ureka Education Group regarding my application and relevant programme updates.</label>
-            <label class="opt"><input type="checkbox" name="c4" required> I have read and agree to the <a href="https://ureka.co.uk/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="https://ureka.co.uk/programme-terms" target="_blank" rel="noopener noreferrer">Programme Terms</a>.</label>
+            <label class="opt"><input type="checkbox" name="c4" required> I have read and agree to the <a href="https://ureka.co.uk/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="#termsModal" data-terms>Programme Terms</a>.</label>
           </div>
         </fieldset></div>
       </section>
@@ -1540,6 +1550,73 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);outline:none;bo
   </div>
 </div>
 
+<!-- ================= PROGRAMME TERMS ================= -->
+<div class="fmodal terms-modal" id="termsModal" role="dialog" aria-modal="true" aria-labelledby="termsTitle" aria-describedby="termsIntro">
+  <div class="fpanel terms-panel">
+    <div class="fhead" style="padding-bottom:24px">
+      <div class="fheadtop">
+        <div>
+          <div class="fsub">International Project Programme — Geneva</div>
+          <h2 id="termsTitle">Programme Terms</h2>
+        </div>
+        <button type="button" class="fclose" data-terms-close aria-label="Close programme terms">&times;</button>
+      </div>
+    </div>
+    <div class="fbody terms-body">
+      <p class="terms-intro" id="termsIntro">These terms explain the basis on which Ureka Education Group processes applications for the International Project Programme (IPP). Programme-specific payment and cancellation conditions will also be provided in writing before an accepted applicant is asked to make a payment.</p>
+
+      <h3>1. Application and admission</h3>
+      <ul>
+        <li>Submitting an application does not guarantee admission. Places are subject to review, eligibility, availability and any required interview.</li>
+        <li>Applicants must provide complete and accurate information and promptly advise the programme team if material information changes.</li>
+        <li>An applicant becomes enrolled only after receiving a written offer, accepting the enrolment conditions and making any payment required to secure the place.</li>
+      </ul>
+
+      <h3>2. Programme delivery and changes</h3>
+      <ul>
+        <li>IPP includes the published remote project phase and Geneva Week. Speakers, institutional visits, venues, schedules and activities may change where operational, security or partner requirements make this necessary.</li>
+        <li>Where reasonably possible, Ureka will provide advance notice and arrange a suitable alternative of comparable educational value.</li>
+        <li>References to previous speakers or contributors do not guarantee their participation in a future cohort.</li>
+      </ul>
+
+      <h3>3. Fees and payment</h3>
+      <ul>
+        <li>The applicable fee depends on the programme option selected. International flights and other items identified as not included remain the participant's responsibility.</li>
+        <li>The written offer will confirm the selected option, payment schedule, deposit requirements and any approved instalment arrangement.</li>
+        <li>Applicants should review the written payment, withdrawal, transfer and refund conditions before making a payment. Those written conditions will form part of the final enrolment agreement.</li>
+      </ul>
+
+      <h3>4. Travel, visas and insurance</h3>
+      <ul>
+        <li>Participants are responsible for holding a valid passport, obtaining any required visa and meeting immigration, health and entry requirements.</li>
+        <li>Ureka may provide supporting documentation but cannot guarantee a visa, entry clearance or any decision made by an embassy, consulate, border authority or partner institution.</li>
+        <li>Participants are responsible for appropriate travel and medical insurance and for their international travel and airport transfers unless expressly confirmed otherwise in writing.</li>
+      </ul>
+
+      <h3>5. Accommodation and participant conduct</h3>
+      <ul>
+        <li>Accommodation is included only in the accommodation option stated in the participant's written offer and may be provided at the named hotel or a comparable alternative.</li>
+        <li>Participants must follow reasonable programme, venue, accommodation, safety and security instructions and behave respectfully toward other participants, staff, speakers and partner organisations.</li>
+        <li>Serious misconduct, unsafe behaviour or a material breach of programme requirements may result in removal from an activity or the programme, subject to the final enrolment conditions.</li>
+      </ul>
+
+      <h3>6. Personal information and communications</h3>
+      <p>Application information will be used to assess the application, administer the programme and communicate relevant updates in accordance with Ureka's Privacy Policy. Applicants should contact the programme team if they need to correct or update submitted information.</p>
+
+      <h3>7. Events outside reasonable control</h3>
+      <p>Ureka is not responsible for decisions or disruptions outside its reasonable control, including visa decisions, transport disruption, changes required by host institutions, public-health measures or security restrictions. Ureka will take reasonable steps to communicate changes and reduce disruption.</p>
+
+      <h3>8. Contact</h3>
+      <p>Questions about these terms or the enrolment conditions can be sent to <a href="mailto:malak.j@ureka.co.uk">malak.j@ureka.co.uk</a>.</p>
+      <div class="terms-updated">Last updated: 2 August 2026</div>
+    </div>
+    <div class="ffoot">
+      <div class="fstepno">IPP Geneva</div>
+      <div class="fbtns"><button type="button" class="fbtn fbtn-primary" data-terms-close>Close terms</button></div>
+    </div>
+  </div>
+</div>
+
 <script>
   if ('IntersectionObserver' in window) {
     var ob=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');ob.unobserve(e.target)}})},{threshold:.1});
@@ -1547,6 +1624,44 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);outline:none;bo
   } else {
     document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')});
   }
+
+/* ---------- PROGRAMME TERMS ---------- */
+(function(){
+  var modal=document.getElementById('termsModal');
+  if(!modal)return;
+  var applicationModal=document.getElementById('applyModal');
+  var lastFocus=null;
+  var closeButtons=modal.querySelectorAll('[data-terms-close]');
+
+  function openTerms(event){
+    if(event){event.preventDefault();event.stopPropagation()}
+    lastFocus=document.activeElement;
+    if(applicationModal&&applicationModal.classList.contains('on'))applicationModal.setAttribute('aria-hidden','true');
+    modal.classList.add('on');
+    document.body.style.overflow='hidden';
+    closeButtons[0].focus();
+  }
+  function closeTerms(){
+    modal.classList.remove('on');
+    if(applicationModal)applicationModal.removeAttribute('aria-hidden');
+    document.body.style.overflow=document.querySelector('.fmodal.on')?'hidden':'';
+    if(lastFocus&&lastFocus.focus)lastFocus.focus();
+  }
+
+  document.querySelectorAll('[data-terms]').forEach(function(link){link.addEventListener('click',openTerms)});
+  closeButtons.forEach(function(button){button.addEventListener('click',closeTerms)});
+  modal.addEventListener('mousedown',function(event){if(event.target===modal)closeTerms()});
+  document.addEventListener('keydown',function(event){
+    if(!modal.classList.contains('on'))return;
+    if(event.key==='Escape'){event.preventDefault();closeTerms();return}
+    if(event.key!=='Tab')return;
+    var items=Array.prototype.filter.call(modal.querySelectorAll('a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])'),function(el){return el.offsetParent!==null});
+    if(!items.length)return;
+    var first=items[0],last=items[items.length-1];
+    if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}
+    else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}
+  });
+})();
 
 
 /* ---------- NEW YORK REGISTRATION ---------- */
@@ -1800,10 +1915,16 @@ function hsSend(formGuid, fields) {
     fd.append('your-institution', data.institution||'-');
     fd.append('your-country', data.country_residence||'');
     fd.append('your-message', summary);
+    var submitLabel=submit.textContent;
+    submit.disabled=true;
+    submit.textContent='Submitting…';
+    if(announce)announce.textContent='Submitting your application. Please wait.';
+
     fetch('/wp-json/contact-form-7/v1/contact-forms/'+CF7_FORM_ID+'/feedback',{method:'POST',body:fd})
       .then(function(r){return r.json();})
       .then(function(j){
         if(j.status==='mail_sent'){
+          dirty=false;
           window.location.href='/thank-you-ipp/?r='+encodeURIComponent(data.readiness||'');
           return;
         }
@@ -1811,30 +1932,13 @@ function hsSend(formGuid, fields) {
       })
       .catch(function(){
         /* ponytail: backend unreachable — mailto draft so no lead is lost */
+        submit.disabled=false;
+        submit.textContent=submitLabel;
+        dirty=false;
+        if(announce)announce.textContent='Online submission was unavailable. An email draft has been opened instead.';
         window.location.href='mailto:malak.j@ureka.co.uk?subject='+
           encodeURIComponent('IPP Application — '+name.trim())+'&body='+encodeURIComponent(summary);
       });
-    
-
-    steps.forEach(function(s){s.hidden=true});
-    done.hidden=false;
-    foot.hidden=true;
-    dirty=false;
-    if(announce) announce.textContent='Application submitted. Thank you for applying to IPP.';
-    dots.forEach(function(d){d.classList.remove('now');d.classList.add('done')});
-    body.scrollTop=0;
-
-    var readiness=data.readiness, extra=document.getElementById('doneExtra');
-    if(readiness==='Ready to proceed'){
-      extra.innerHTML='<b>Next step.</b> Because you indicated you are ready to proceed, we will send your selection-interview invitation and enrolment instructions first.';
-      extra.hidden=false;
-    } else if(readiness==='Need more information'||readiness==='Comparing programs'){
-      extra.innerHTML='<b>Next step.</b> We will offer you a short call with the programme team so you can ask questions before deciding.';
-      extra.hidden=false;
-    } else if(readiness==='Explore funding'||readiness==='Institutional approval'){
-      extra.innerHTML='<b>Next step.</b> We will include a formal programme letter you can use to support a funding or institutional-approval request.';
-      extra.hidden=false;
-    }
   });
   }catch(err){
     /* if anything above fails, fall back to email so an applicant is never stranded */
