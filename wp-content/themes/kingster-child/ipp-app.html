@@ -63,6 +63,19 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0BJ1XCV8LZ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
 gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");gtag("config","AW-18358274990");</script>
+<script>
+/* Jetpack's image proxy can briefly retain a failed response after a new image
+   is deployed. Retry that image directly from the Cloudflare-backed origin. */
+document.addEventListener('error',function(event){
+  var image=event.target;
+  if(!image||image.tagName!=='IMG'||image.dataset.originFallback==='1')return;
+  var failedUrl=image.currentSrc||image.src||'';
+  if(failedUrl.indexOf('https://i0.wp.com/ureka.co.uk/')!==0)return;
+  image.dataset.originFallback='1';
+  image.srcset='';
+  image.src=failedUrl.replace('https://i0.wp.com/ureka.co.uk/','https://ureka.co.uk/');
+},true);
+</script>
 
 <meta name="theme-color" content="#0B1D33">
 
@@ -85,11 +98,11 @@ gtag("js",new Date());gtag("config","G-0BJ1XCV8LZ");gtag("config","AW-1835827499
   --measure:100%;   /* body copy fills the column at every width */
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--txt);font-family:'Manrope',sans-serif;font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{background:var(--paper);color:var(--txt);font-family:'Manrope',sans-serif;font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;max-width:100%;overflow-x:hidden}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
-.wrap{max-width:940px;margin:0 auto;padding:0 32px}
+.wrap{width:100%;max-width:940px;min-width:0;margin:0 auto;padding:0 32px}
 @media(max-width:640px){.wrap{padding:0 16px}}
 h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:560;letter-spacing:-0.012em;line-height:1.14}
 
@@ -255,12 +268,12 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:560;letter-spacing:-0.012em
 .band.flushbottom{padding-bottom:0}
 
 /* ---------- PEOPLE (speakers + participants) ---------- */
-.people{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-@media(max-width:900px){.people{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.people{grid-template-columns:1fr}}
-.pcard{border:1px solid var(--rule-i);border-radius:10px;padding:24px;background:rgba(255,255,255,.03);display:flex;flex-direction:column}
-.pphoto{aspect-ratio:1/1;border-radius:8px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 10px,rgba(255,255,255,.02) 10px 20px);border:1px solid var(--rule-i);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
-.pphoto img{width:100%;height:100%;object-fit:cover;display:block}
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;min-width:0}
+@media(max-width:900px){.people{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.people{grid-template-columns:minmax(0,1fr)}}
+.pcard{border:1px solid var(--rule-i);border-radius:10px;padding:24px;background:rgba(255,255,255,.03);display:flex;flex-direction:column;min-width:0;max-width:100%;overflow:hidden}
+.pphoto{width:100%;max-width:100%;min-width:0;aspect-ratio:1/1;border-radius:8px;overflow:hidden;background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 10px,rgba(255,255,255,.02) 10px 20px);border:1px solid var(--rule-i);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.pphoto img{width:100%;max-width:100%;min-width:0;height:auto;aspect-ratio:1/1;object-fit:cover;display:block;flex:0 1 auto}
 .pphoto span{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--mute-i);text-transform:uppercase;text-align:center;padding:0 8px}
 .pphoto.tosupply span{color:var(--amber)}
 .pcard h3{font-size:18px;margin-bottom:4px;min-height:2.5em;display:flex;align-items:flex-start}
@@ -281,11 +294,23 @@ h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:560;letter-spacing:-0.012em
 .pcard.light{background:var(--card);border-color:var(--rule-p)}
 .pcard.light .pattr{color:var(--mute-p)}
 .pcard.light .pphoto{background:repeating-linear-gradient(135deg,rgba(16,31,46,.05) 0 10px,rgba(16,31,46,.02) 10px 20px);border-color:var(--rule-p)}
-.pcard.light .pphoto img{width:100%;height:100%;object-fit:cover;display:block}
+.pcard.light .pphoto img{width:100%;max-width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;display:block}
 .pphoto span{color:var(--mute-p)}
 .pcard.light .pphoto.tosupply span{color:var(--amber-ink)}
 .pnote{margin-top:24px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mute-i)}
 .band.alt .pnote,.band:not(.ink) .pnote{color:var(--mute-p)}
+
+/* iOS Safari can use a lazy-loaded image's intrinsic width while resolving an
+   aspect-ratio inside grid/flex. Keep every card descendant shrinkable. */
+.pcard h3,.pcard .plink,.pcard .prole,.pcard .pcontrib,.pcard .pquote,.pcard .pattr{min-width:0;max-width:100%;overflow-wrap:anywhere}
+
+/* Avoid costly WebKit backdrop compositing while the document scrolls. */
+@supports (-webkit-touch-callout:none){
+  @media(max-width:760px){
+    .topnav,.gcard,.fmodal{-webkit-backdrop-filter:none;backdrop-filter:none}
+    .topnav{background:#0B1D33}
+  }
+}
 
 /* placeholder marker */
 .tosupply{border:1.5px dashed var(--amber)!important;background:rgba(201,123,30,.06)!important;position:relative}
