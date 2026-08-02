@@ -1461,9 +1461,9 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);outline:none;bo
 
         <div class="fq"><fieldset><legend>Which programme option are you currently considering? <span class="freq">*</span></legend>
           <div class="opts">
-            <label class="opt"><input type="radio" name="package" value="Without accommodation" required> Programme fee — no accommodation</label>
-            <label class="opt"><input type="radio" name="package" value="Twin sharing"> With accommodation — twin sharing</label>
-            <label class="opt"><input type="radio" name="package" value="Single room"> With accommodation — single room</label>
+            <label class="opt"><input type="radio" name="package" value="Without accommodation" required> Programme fee — no accommodation — USD 3,000</label>
+            <label class="opt"><input type="radio" name="package" value="Twin sharing"> With accommodation — twin sharing — USD 3,550</label>
+            <label class="opt"><input type="radio" name="package" value="Single room"> With accommodation — single room — USD 4,100</label>
             <label class="opt"><input type="radio" name="package" value="Undecided"> I have not decided yet</label>
           </div></fieldset></div>
 
@@ -1473,7 +1473,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);outline:none;bo
             <label class="opt"><input type="radio" name="funding" value="Family"> My family will fund the programme</label>
             <label class="opt"><input type="radio" name="funding" value="University sponsorship"> My university or institution may sponsor me</label>
             <label class="opt"><input type="radio" name="funding" value="Employer sponsorship"> My employer may sponsor me</label>
-            <label class="opt"><input type="radio" name="funding" value="Seeking sponsorship"> I am actively seeking sponsorship or financial support</label>
             <label class="opt"><input type="radio" name="funding" value="Instalments"> I would need an instalment-payment option</label>
             <label class="opt"><input type="radio" name="funding" value="Undecided"> I have not decided yet</label>
           </div>
@@ -1747,7 +1746,7 @@ function hsSend(formGuid, fields) {
     });
   }
   bindNote('visa','visaNote',['Yes','Not sure']);
-  bindNote('funding','sponsorNote',['University sponsorship','Employer sponsorship','Seeking sponsorship']);
+  bindNote('funding','sponsorNote',['University sponsorship','Employer sponsorship']);
 
   function scrollTo(el){ if(el && typeof el.scrollIntoView==='function'){ el.scrollIntoView({block:'center',behavior:'smooth'}); } }
 
