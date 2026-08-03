@@ -1,0 +1,107 @@
+.uipp-read-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #687386;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.uipp-read-state::before {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #aab1bd;
+  content: "";
+}
+
+.uipp-read-state.is-unread {
+  color: #1769aa;
+}
+
+.uipp-read-state.is-unread::before {
+  background: #2271b1;
+  box-shadow: 0 0 0 3px #dceeff;
+}
+
+.uipp-unread-row td {
+  background: #f7fbff !important;
+}
+
+.uipp-unread-row .uipp-name {
+  font-weight: 800;
+}
+
+.uipp-detail-badges {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.uipp-card-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.uipp-card-heading h2 {
+  margin-bottom: 0;
+}
+
+.uipp-activity-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.uipp-activity-list li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 14px 1fr;
+  gap: 10px;
+  padding: 0 0 20px;
+}
+
+.uipp-activity-list li:not(:last-child)::before {
+  position: absolute;
+  top: 9px;
+  bottom: 0;
+  left: 4px;
+  width: 1px;
+  background: #dfe5ec;
+  content: "";
+}
+
+.uipp-activity-dot {
+  position: relative;
+  z-index: 1;
+  width: 9px;
+  height: 9px;
+  margin-top: 5px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #2271b1;
+  box-shadow: 0 0 0 1px #91b9d8;
+}
+
+.uipp-activity-list p,
+.uipp-log-detail {
+  display: block;
+  margin: 4px 0 0;
+  color: #687386;
+}
+
+.uipp-log-table td {
+  vertical-align: top;
+}
+
+.uipp-log-table .uipp-email,
+.uipp-log-table small {
+  display: block;
+  margin-top: 4px;
+  color: #687386;
+}

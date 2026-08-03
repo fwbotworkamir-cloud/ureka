@@ -1,0 +1,57 @@
+#toplevel_page_ureka-ipp-submissions .wp-menu-name {
+  position: relative;
+  white-space: nowrap;
+}
+
+#toplevel_page_ureka-ipp-submissions .uipp-menu-count {
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  transform: translateY(-50%);
+  border-radius: 10px;
+  background: #d63638;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 18px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+#toplevel_page_ureka-ipp-submissions.current .uipp-menu-count,
+#toplevel_page_ureka-ipp-submissions.wp-has-current-submenu .uipp-menu-count {
+  background: #fff;
+  color: #1d4ed8;
+}
+
+.folded #toplevel_page_ureka-ipp-submissions .uipp-menu-count {
+  right: 3px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  font-size: 10px;
+  line-height: 16px;
+}
+
+@media screen and (max-width: 960px) {
+  .auto-fold #toplevel_page_ureka-ipp-submissions .uipp-menu-count {
+    right: 3px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    font-size: 10px;
+    line-height: 16px;
+  }
+}
+
+@media screen and (min-width: 961px) {
+  .folded #toplevel_page_ureka-ipp-submissions .wp-menu-name {
+    padding-right: 0;
+  }
+}

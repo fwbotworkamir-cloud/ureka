@@ -1699,13 +1699,14 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);outline:none;bo
       }
       var data={interest:'IPP New York — March 2027'};
       new FormData(f).forEach(function(v,k){ data[k]=v; });
-      hsSend(HS_FORM_IPP, {
+      var wpSave=wpStoreSubmission('ny_interest',data,f);
+      Promise.all([hsSend(HS_FORM_IPP, {
       firstname:data.first_name||'', lastname:data.last_name||'', email:data.email||'',
       phone:data.whatsapp||'', country:data.country_residence||'',
       message:'Programme: IPP New York — March 2027 (interest) -- '+
               Object.keys(data).map(function(k){return k+': '+data[k];}).join('\n')
-    }).then(function(ok){
-      if(!ok){
+    }),wpSave]).then(function(results){
+      if(!results[0]&&!results[1]){
         /* ponytail: never silently lose an interest registration */
         window.location.href='mailto:pierre.p@ureka.co.uk?subject='+
           encodeURIComponent('IPP New York 2027 — interest')+'&body='+
@@ -1724,6 +1725,31 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);outline:none;bo
 })();
 
 /* ---------- LEAD CAPTURE ---------- */
+// Save a structured copy in WordPress so the programme team can review every
+// answer and export it to CSV. HubSpot and CF7 remain independent backups.
+function ippSubmissionId(){
+  if(window.crypto&&typeof window.crypto.randomUUID==='function') return window.crypto.randomUUID();
+  return 'ipp-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2);
+}
+function wpStoreSubmission(type,answers,form){
+  var submissionId=form&&form.getAttribute('data-ipp-submission-id');
+  if(!submissionId){
+    submissionId=ippSubmissionId();
+    if(form) form.setAttribute('data-ipp-submission-id',submissionId);
+  }
+  return fetch('/wp-json/ureka/v1/ipp-submissions',{
+    method:'POST',
+    credentials:'same-origin',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      submission_uuid:submissionId,
+      type:type,
+      answers:answers,
+      source_url:location.href
+    })
+  }).then(function(r){return r.ok}).catch(function(){return false});
+}
+
 // ── HubSpot lead capture ──
 // Forms API takes only a portal id and form guid (both non-secret), so no key
 // lives in client code. Fill these in once the Ureka portal exists; until then
@@ -1757,7 +1783,7 @@ function hsSend(formGuid, fields) {
   }).then(function (r) { return r.ok; }).catch(function () { return false; });
 }
 
-  var CF7_FORM_ID = location.hostname === 'ureka.co.uk' ? 9199 : 9201; // live : staging
+  var CF7_FORM_ID = location.hostname.replace(/^www\./,'') === 'ureka.co.uk' ? 9199 : 9201; // live : staging
 
 /* ---------- APPLICATION FORM ---------- */
 (function(){
@@ -1902,6 +1928,7 @@ function hsSend(formGuid, fields) {
 
     var name=(data.first_name||'')+' '+(data.last_name||'');
     var summary=Object.keys(data).map(function(k){return k+': '+data[k];}).join('\n');
+    var wpSave=wpStoreSubmission('application',data,form);
     hsSend(HS_FORM_IPP, {
       firstname:data.first_name||'', lastname:data.last_name||'', email:data.email||'',
       phone:data.phone||data.whatsapp||'', company:data.institution||'',
@@ -1925,7 +1952,13 @@ function hsSend(formGuid, fields) {
       .then(function(j){
         if(j.status==='mail_sent'){
           dirty=false;
-          window.location.href='/thank-you-ipp/?r='+encodeURIComponent(data.readiness||'');
+          /* Give WordPress storage a moment to finish before navigating away. */
+          Promise.race([
+            wpSave,
+            new Promise(function(resolve){setTimeout(resolve,2500)})
+          ]).then(function(){
+            window.location.href='/thank-you-ipp/?r='+encodeURIComponent(data.readiness||'');
+          });
           return;
         }
         throw new Error(j.message||'submit failed');
